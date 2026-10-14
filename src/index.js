@@ -21,7 +21,7 @@ app.use(express.json());                 // Permite recibir JSON en el body
 
 
 app.get('/', (req, res) => {
-  res.json({ mensaje: 'API Cauca Resiliente funcionando ✅' });
+  res.json({ mensaje: 'API Cauca Resiliente funcionando' });
 });
 //todas la peticiones que hagamos son manejadas por el controlador de rutas correspondiente
 app.use('/api/usuarios', usuarioRoutes); //
@@ -33,5 +33,5 @@ app.use('/api/zonas-riesgo', zonaRiesgoRoutes);
 conectarDB();                            // Nos conectamos a MongoDB
 
 app.listen(PORT, () => {
-  console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
+  console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
