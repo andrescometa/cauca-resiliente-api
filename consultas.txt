@@ -1,0 +1,100 @@
+1: POST http://localhost:3000/api/usuarios
+// Crear usuario
+
+{
+  "_id": 7,
+  "nombres": "Andrés Felipe",
+  "apellidos": "Cometa Pillimue",
+  "tipo_documento": "CC",
+  "identificacion": "10469099",
+  "genero": "Masculino",
+  "edad": 22,
+  "email": "andres.cometa@email.com",
+  "telefono": "3145678901",
+  "ciudad": "Popayán",
+  "direccion": "Calle 10 # 5-20",
+  "fecha_registro": "2026-01-20",
+  "rol": "Ciudadano",
+  "tipo_sangre": "O+",
+  "alergias": ["Polen"],
+  "discapacidades": [],
+  "contacto_emergencia": {
+    "nombre": "Mamá",
+    "telefono": "3171234567",
+    "parentesco": "Madre"
+  },
+  "activo": true
+}
+Actualizar estado (PUT)
+PUT http://localhost:3000/api/estados/1
+// Actualizar estado de seguridad
+{
+  "estado": "En riesgo",
+  "mensaje_estado": "Réplica fuerte, estoy en la calle"
+}
+Consultar estado (GET)
+GET http://localhost:3000/api/estados/1
+// Consultar estado de seguridad
+
+Enviar ubicación GPS (POST)
+POST http://localhost:3000/api/ubicaciones
+// Enviar ubicación GPS
+{
+  "usuario_id": 7,
+  "latitud": 2.4425,
+  "longitud": -76.6070,
+  "direccion_aproximada": "Calle 10 # 5-20, Popayán",
+  "precision_metros": 8.0,
+  "bateria": 78
+}
+ Consultar historial de ubicaciones (GET)
+ GET http://localhost:3000/api/ubicaciones/1
+// Consultar historial de ubicaciones del usuario 1
+
+Crear solicitud SOS (POST)
+POST http://localhost:3000/api/solicitudes
+// Crear solicitud SOS
+{
+  "usuario_id": 7,
+  "tipo_ayuda": "Rescate",
+  "descripcion_emergencia": "Atrapado en el segundo piso por derrumbe",
+  "nivel_prioridad": "Crítica",
+  "latitud": 2.4425,
+  "longitud": -76.6070,
+  "personas_afectadas": 2,
+  "requiere_ambulancia": true
+}
+
+Listar solicitudes priorizadas (GET)
+GET http://localhost:3000/api/solicitudes
+// Listar todas las solicitudes ordenadas por prioridad
+
+Asignar socorrista (POST)
+POST http://localhost:3000/api/asignaciones
+// Asignar socorrista a una solicitud
+{
+  "solicitud_id": 6,
+  "socorrista_id": 3
+}
+
+Actualizar asignación (PUT)
+PUT http://localhost:3000/api/asignaciones/4
+// Actualizar estado de atención de la asignación
+{
+  "estado_atencion": "En el sitio"
+}
+Registrar zona de riesgo (POST)
+POST http://localhost:3000/api/zonas-riesgo
+// Registrar zona de riesgo
+{
+  "nombre_zona": "Barrio Los Sauces",
+  "tipo": "Escape de Gas",
+  "nivel_peligro": "Inminente",
+  "descripcion": "Fuga de gas por daño en tubería principal",
+  "latitud": 2.4440,
+  "longitud": -76.6060,
+  "radio_metros": 180
+}
+Consultar zonas cercanas (GET)
+GET http://localhost:3000/api/zonas-riesgo/cercanas?lat=2.4420&lng=-76.6060
+// Consultar zonas de riesgo cercanas a una ubicación

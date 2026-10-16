@@ -301,7 +301,7 @@ Como ciudadano, quiero consultar las zonas de riesgo cercanas a mi ubicación pa
 ## Tabla de Resumen de funcionalidades
 
 
-| # | Funcionalidad | Método | Endpoint |
+| # |       Funcionalidad               | Método |                Endpoint                          |
 
 | 1 | Registrar usuario                  | POST | http://localhost:3000/api/usuarios                |
 | 2 | Actualizar estado de seguridad     | PUT  | http://localhost:3000/api/estados/:usuarioId      |
