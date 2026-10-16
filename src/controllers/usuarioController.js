@@ -43,3 +43,26 @@ export const listarUsuarios = async (req, res) => {
     res.status(500).json({ mensaje: 'Error al listar', error: error.message });
   }
 };
+
+
+// ========== OBTENER USUARIO ==========
+
+export const ObtenerUsuario = async (req, res) => {
+  try {
+    const usuarioId = Number(req.params.usuarioId);
+
+    if (isNaN(usuarioId)) {
+      return res.status(400).json({ mensaje: 'ID inválido' });
+    }
+
+    const usuario = await Usuario.findById(usuarioId);
+
+    if (!usuario) {
+      return res.status(404).json({ mensaje: 'Usuario no encontrado' });
+    }
+
+    res.status(200).json(usuario);
+  } catch (error) {
+    res.status(500).json({ mensaje: 'Error al listar', error: error.message });
+  }
+};
