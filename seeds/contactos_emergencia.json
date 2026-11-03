@@ -1,0 +1,167 @@
+[
+  {
+    "_id": {
+      "$oid": "6c0000000000000000000001"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000001"
+    },
+    "nombre_contacto": "Luisa Gómez",
+    "telefono_contacto": "3176543210",
+    "parentesco": "Madre",
+    "prioridad": {
+      "$numberInt": "1"
+    },
+    "notificado": false
+  },
+  {
+    "_id": {
+      "$oid": "6c0000000000000000000002"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000001"
+    },
+    "nombre_contacto": "Carlos Valencia",
+    "telefono_contacto": "3156789012",
+    "parentesco": "Padre",
+    "prioridad": {
+      "$numberInt": "2"
+    },
+    "notificado": false
+  },
+  {
+    "_id": {
+      "$oid": "6c0000000000000000000003"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000002"
+    },
+    "nombre_contacto": "Ana Mina",
+    "telefono_contacto": "3109876543",
+    "parentesco": "Hermana",
+    "prioridad": {
+      "$numberInt": "1"
+    },
+    "notificado": false
+  },
+  {
+    "_id": {
+      "$oid": "6c0000000000000000000004"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000003"
+    },
+    "nombre_contacto": "Roberto Díaz",
+    "telefono_contacto": "3187654321",
+    "parentesco": "Padre",
+    "prioridad": {
+      "$numberInt": "1"
+    },
+    "notificado": false
+  },
+  {
+    "_id": {
+      "$oid": "6c0000000000000000000005"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000004"
+    },
+    "nombre_contacto": "Patricia Cauca",
+    "telefono_contacto": "3154321098",
+    "parentesco": "Esposa",
+    "prioridad": {
+      "$numberInt": "1"
+    },
+    "notificado": true
+  },
+  {
+    "_id": {
+      "$oid": "6c0000000000000000000006"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000005"
+    },
+    "nombre_contacto": "Carlos López",
+    "telefono_contacto": "3124567890",
+    "parentesco": "Padre",
+    "prioridad": {
+      "$numberInt": "1"
+    },
+    "notificado": true
+  },
+  {
+    "_id": {
+      "$oid": "6c0000000000000000000007"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000006"
+    },
+    "nombre_contacto": "Marta Guerrero",
+    "telefono_contacto": "3161234567",
+    "parentesco": "Madre",
+    "prioridad": {
+      "$numberInt": "1"
+    },
+    "notificado": false
+  },
+  {
+    "_id": {
+      "$oid": "6c0000000000000000000008"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000007"
+    },
+    "nombre_contacto": "Andrés Arias",
+    "telefono_contacto": "3149876543",
+    "parentesco": "Hermano",
+    "prioridad": {
+      "$numberInt": "1"
+    },
+    "notificado": false
+  },
+  {
+    "_id": {
+      "$oid": "6c0000000000000000000009"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000008"
+    },
+    "nombre_contacto": "Gloria Burbano",
+    "telefono_contacto": "3171234567",
+    "parentesco": "Madre",
+    "prioridad": {
+      "$numberInt": "1"
+    },
+    "notificado": true
+  },
+  {
+    "_id": {
+      "$oid": "6c0000000000000000000010"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000009"
+    },
+    "nombre_contacto": "Felipe Ortega",
+    "telefono_contacto": "3134567890",
+    "parentesco": "Padre",
+    "prioridad": {
+      "$numberInt": "1"
+    },
+    "notificado": false
+  },
+  {
+    "_id": {
+      "$oid": "6c0000000000000000000011"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000010"
+    },
+    "nombre_contacto": "Diana Rivera",
+    "telefono_contacto": "3198765432",
+    "parentesco": "Hermana",
+    "prioridad": {
+      "$numberInt": "1"
+    },
+    "notificado": false
+  }
+]

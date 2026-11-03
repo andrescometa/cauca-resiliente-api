@@ -1,0 +1,569 @@
+[
+  {
+    "_id": {
+      "$oid": "690000000000000000000001"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000001"
+    },
+    "tipo_ayuda": "Incendio",
+    "descripcion_emergencia": "Cortocircuito e incendio en cocina",
+    "nivel_prioridad": "Crítica",
+    "estado_solicitud": "Atendido",
+    "ubicacion_solicitud": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.6063"
+        },
+        {
+          "$numberDouble": "2.4419"
+        }
+      ]
+    },
+    "personas_afectadas": {
+      "$numberInt": "3"
+    },
+    "imagenes_adjuntas": [
+      "https://cdn.caucaresiliente.com/sos/001.jpg"
+    ],
+    "requiere_ambulancia": true,
+    "fecha_hora": {
+      "$date": {
+        "$numberLong": "1788814800000"
+      }
+    },
+    "fecha_cierre": {
+      "$date": {
+        "$numberLong": "1788820200000"
+      }
+    },
+    "asignacion": {
+      "organismo_id": {
+        "$oid": "6b0000000000000000000002"
+      },
+      "socorrista_id": {
+        "$oid": "660000000000000000000003"
+      },
+      "fecha_asignacion": {
+        "$date": {
+          "$numberLong": "1788815700000"
+        }
+      },
+      "estado_atencion": "Finalizado"
+    },
+    "latitud": {
+      "$numberDouble": "2.4419"
+    },
+    "longitud": {
+      "$numberDouble": "-76.6063"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "690000000000000000000002"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000002"
+    },
+    "tipo_ayuda": "Rescate",
+    "descripcion_emergencia": "Vivienda inundada por desbordamiento de río",
+    "nivel_prioridad": "Crítica",
+    "estado_solicitud": "En proceso",
+    "ubicacion_solicitud": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.4847"
+        },
+        {
+          "$numberDouble": "3.0094"
+        }
+      ]
+    },
+    "personas_afectadas": {
+      "$numberInt": "5"
+    },
+    "imagenes_adjuntas": [
+      "https://cdn.caucaresiliente.com/sos/002.jpg"
+    ],
+    "requiere_ambulancia": false,
+    "fecha_hora": {
+      "$date": {
+        "$numberLong": "1788855600000"
+      }
+    },
+    "fecha_cierre": null,
+    "asignacion": {
+      "organismo_id": {
+        "$oid": "6b0000000000000000000003"
+      },
+      "socorrista_id": {
+        "$oid": "660000000000000000000006"
+      },
+      "fecha_asignacion": {
+        "$date": {
+          "$numberLong": "1788856200000"
+        }
+      },
+      "estado_atencion": "En camino"
+    },
+    "latitud": {
+      "$numberDouble": "3.0094"
+    },
+    "longitud": {
+      "$numberDouble": "-76.4847"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "690000000000000000000003"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000003"
+    },
+    "tipo_ayuda": "Apoyo Logístico",
+    "descripcion_emergencia": "Rescate y evacuación de mascotas en zona de riesgo",
+    "nivel_prioridad": "Media",
+    "estado_solicitud": "Finalizado",
+    "ubicacion_solicitud": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.5981"
+        },
+        {
+          "$numberDouble": "2.4552"
+        }
+      ]
+    },
+    "personas_afectadas": {
+      "$numberInt": "1"
+    },
+    "imagenes_adjuntas": [],
+    "requiere_ambulancia": false,
+    "fecha_hora": {
+      "$date": {
+        "$numberLong": "1788802200000"
+      }
+    },
+    "fecha_cierre": {
+      "$date": {
+        "$numberLong": "1788807600000"
+      }
+    },
+    "asignacion": null,
+    "latitud": {
+      "$numberDouble": "2.4552"
+    },
+    "longitud": {
+      "$numberDouble": "-76.5981"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "690000000000000000000004"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000004"
+    },
+    "tipo_ayuda": "Atención Médica",
+    "descripcion_emergencia": "Posible fractura por caída durante réplica",
+    "nivel_prioridad": "Alta",
+    "estado_solicitud": "Pendiente",
+    "ubicacion_solicitud": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.4171"
+        },
+        {
+          "$numberDouble": "3.2306"
+        }
+      ]
+    },
+    "personas_afectadas": {
+      "$numberInt": "1"
+    },
+    "imagenes_adjuntas": [
+      "https://cdn.caucaresiliente.com/sos/004.jpg"
+    ],
+    "requiere_ambulancia": true,
+    "fecha_hora": {
+      "$date": {
+        "$numberLong": "1788860100000"
+      }
+    },
+    "fecha_cierre": null,
+    "asignacion": null,
+    "latitud": {
+      "$numberDouble": "3.2306"
+    },
+    "longitud": {
+      "$numberDouble": "-76.4171"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "690000000000000000000005"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000005"
+    },
+    "tipo_ayuda": "Rescate",
+    "descripcion_emergencia": "Atrapada en segundo piso del bloque universitario",
+    "nivel_prioridad": "Crítica",
+    "estado_solicitud": "En proceso",
+    "ubicacion_solicitud": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.6083"
+        },
+        {
+          "$numberDouble": "2.4431"
+        }
+      ]
+    },
+    "personas_afectadas": {
+      "$numberInt": "2"
+    },
+    "imagenes_adjuntas": [
+      "https://cdn.caucaresiliente.com/sos/005.jpg"
+    ],
+    "requiere_ambulancia": true,
+    "fecha_hora": {
+      "$date": {
+        "$numberLong": "1788862200000"
+      }
+    },
+    "fecha_cierre": null,
+    "asignacion": {
+      "organismo_id": {
+        "$oid": "6b0000000000000000000002"
+      },
+      "socorrista_id": {
+        "$oid": "660000000000000000000003"
+      },
+      "fecha_asignacion": {
+        "$date": {
+          "$numberLong": "1788862500000"
+        }
+      },
+      "estado_atencion": "En el sitio"
+    },
+    "latitud": {
+      "$numberDouble": "2.4431"
+    },
+    "longitud": {
+      "$numberDouble": "-76.6083"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "690000000000000000000006"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000006"
+    },
+    "tipo_ayuda": "Apoyo Logístico",
+    "descripcion_emergencia": "Solicitud de equipo de corte para remoción de escombros",
+    "nivel_prioridad": "Alta",
+    "estado_solicitud": "Atendido",
+    "ubicacion_solicitud": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.486"
+        },
+        {
+          "$numberDouble": "3.0112"
+        }
+      ]
+    },
+    "personas_afectadas": {
+      "$numberInt": "1"
+    },
+    "imagenes_adjuntas": [],
+    "requiere_ambulancia": false,
+    "fecha_hora": {
+      "$date": {
+        "$numberLong": "1788808500000"
+      }
+    },
+    "fecha_cierre": {
+      "$date": {
+        "$numberLong": "1788811200000"
+      }
+    },
+    "asignacion": null,
+    "latitud": {
+      "$numberDouble": "3.0112"
+    },
+    "longitud": {
+      "$numberDouble": "-76.486"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "690000000000000000000007"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000007"
+    },
+    "tipo_ayuda": "Víveres/Agua",
+    "descripcion_emergencia": "Punto de encuentro requiere agua potable",
+    "nivel_prioridad": "Baja",
+    "estado_solicitud": "Finalizado",
+    "ubicacion_solicitud": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.6091"
+        },
+        {
+          "$numberDouble": "2.4398"
+        }
+      ]
+    },
+    "personas_afectadas": {
+      "$numberInt": "15"
+    },
+    "imagenes_adjuntas": [],
+    "requiere_ambulancia": false,
+    "fecha_hora": {
+      "$date": {
+        "$numberLong": "1788853800000"
+      }
+    },
+    "fecha_cierre": {
+      "$date": {
+        "$numberLong": "1788858000000"
+      }
+    },
+    "asignacion": null,
+    "latitud": {
+      "$numberDouble": "2.4398"
+    },
+    "longitud": {
+      "$numberDouble": "-76.6091"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "690000000000000000000008"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000008"
+    },
+    "tipo_ayuda": "Evacuación",
+    "descripcion_emergencia": "Vía bloqueada por deslizamiento de tierra",
+    "nivel_prioridad": "Alta",
+    "estado_solicitud": "Atendido",
+    "ubicacion_solicitud": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.592"
+        },
+        {
+          "$numberDouble": "2.461"
+        }
+      ]
+    },
+    "personas_afectadas": {
+      "$numberInt": "4"
+    },
+    "imagenes_adjuntas": [
+      "https://cdn.caucaresiliente.com/sos/008.jpg"
+    ],
+    "requiere_ambulancia": false,
+    "fecha_hora": {
+      "$date": {
+        "$numberLong": "1788868500000"
+      }
+    },
+    "fecha_cierre": {
+      "$date": {
+        "$numberLong": "1790125704953"
+      }
+    },
+    "asignacion": null,
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790125704953"
+      }
+    },
+    "latitud": {
+      "$numberDouble": "2.461"
+    },
+    "longitud": {
+      "$numberDouble": "-76.592"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "690000000000000000000009"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000009"
+    },
+    "tipo_ayuda": "Víveres/Agua",
+    "descripcion_emergencia": "Solicitud de kit de primeros auxilios",
+    "nivel_prioridad": "Media",
+    "estado_solicitud": "Finalizado",
+    "ubicacion_solicitud": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.6831"
+        },
+        {
+          "$numberDouble": "2.3512"
+        }
+      ]
+    },
+    "personas_afectadas": {
+      "$numberInt": "2"
+    },
+    "imagenes_adjuntas": [],
+    "requiere_ambulancia": false,
+    "fecha_hora": {
+      "$date": {
+        "$numberLong": "1788798000000"
+      }
+    },
+    "fecha_cierre": {
+      "$date": {
+        "$numberLong": "1788804000000"
+      }
+    },
+    "asignacion": null,
+    "latitud": {
+      "$numberDouble": "2.3512"
+    },
+    "longitud": {
+      "$numberDouble": "-76.6831"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "690000000000000000000010"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000010"
+    },
+    "tipo_ayuda": "Atención Médica",
+    "descripcion_emergencia": "Apoyo médico para traslado de paciente",
+    "nivel_prioridad": "Alta",
+    "estado_solicitud": "Atendido",
+    "ubicacion_solicitud": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.6015"
+        },
+        {
+          "$numberDouble": "2.4501"
+        }
+      ]
+    },
+    "personas_afectadas": {
+      "$numberInt": "1"
+    },
+    "imagenes_adjuntas": [],
+    "requiere_ambulancia": true,
+    "fecha_hora": {
+      "$date": {
+        "$numberLong": "1788848700000"
+      }
+    },
+    "fecha_cierre": {
+      "$date": {
+        "$numberLong": "1788848760000"
+      }
+    },
+    "latitud": {
+      "$numberDouble": "2.4501"
+    },
+    "longitud": {
+      "$numberDouble": "-76.6015"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab3261b24bfffd52d2df360"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000001"
+    },
+    "tipo_ayuda": "Atención Médica",
+    "descripcion_emergencia": "SOS de prueba desde la API: caída en escaleras",
+    "nivel_prioridad": "Alta",
+    "estado_solicitud": "Pendiente",
+    "ubicacion_solicitud": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.6063"
+        },
+        {
+          "$numberDouble": "2.4419"
+        }
+      ]
+    },
+    "personas_afectadas": {
+      "$numberInt": "1"
+    },
+    "imagenes_adjuntas": [],
+    "requiere_ambulancia": true,
+    "fecha_cierre": null,
+    "fecha_hora": {
+      "$date": {
+        "$numberLong": "1790125595472"
+      }
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790125595473"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790125595473"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    },
+    "latitud": {
+      "$numberDouble": "2.4419"
+    },
+    "longitud": {
+      "$numberDouble": "-76.6063"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ae78bf70f8cfecbfe389036"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000001"
+    },
+    "tipo_ayuda": "Atención Médica",
+    "descripcion_emergencia": "necesito medicacion",
+    "nivel_prioridad": "Media",
+    "estado_solicitud": "Pendiente",
+    "latitud": {
+      "$numberDouble": "2.4448"
+    },
+    "longitud": {
+      "$numberDouble": "-76.6147"
+    },
+    "fecha_hora": {
+      "$date": {
+        "$numberLong": "1793559543028"
+      }
+    }
+  }
+]

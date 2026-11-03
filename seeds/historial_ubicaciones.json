@@ -1,0 +1,401 @@
+[
+  {
+    "_id": {
+      "$oid": "680000000000000000000001"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000001"
+    },
+    "direccion_aproximada": "Calle 5 # 3-12, Popayán",
+    "coordenadas": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.6063"
+        },
+        {
+          "$numberDouble": "2.4419"
+        }
+      ]
+    },
+    "precision_metros": {
+      "$numberDouble": "8.5"
+    },
+    "bateria_dispositivo": {
+      "$numberInt": "75"
+    },
+    "fecha_hora": {
+      "$date": {
+        "$numberLong": "1788790500000"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "680000000000000000000002"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000002"
+    },
+    "direccion_aproximada": "Carrera 8 # 10-20, Santander de Quilichao",
+    "coordenadas": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.4847"
+        },
+        {
+          "$numberDouble": "3.0094"
+        }
+      ]
+    },
+    "precision_metros": {
+      "$numberInt": "12"
+    },
+    "bateria_dispositivo": {
+      "$numberInt": "15"
+    },
+    "fecha_hora": {
+      "$date": {
+        "$numberLong": "1788855000000"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "680000000000000000000003"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000003"
+    },
+    "direccion_aproximada": "Avenida Norte # 15-45, Popayán",
+    "coordenadas": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.5981"
+        },
+        {
+          "$numberDouble": "2.4552"
+        }
+      ]
+    },
+    "precision_metros": {
+      "$numberDouble": "6.2"
+    },
+    "bateria_dispositivo": {
+      "$numberInt": "90"
+    },
+    "fecha_hora": {
+      "$date": {
+        "$numberLong": "1788806400000"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "680000000000000000000004"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000004"
+    },
+    "direccion_aproximada": "Diagonal 2 # 8-30, Puerto Tejada",
+    "coordenadas": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.4171"
+        },
+        {
+          "$numberDouble": "3.2306"
+        }
+      ]
+    },
+    "precision_metros": {
+      "$numberInt": "20"
+    },
+    "bateria_dispositivo": {
+      "$numberInt": "5"
+    },
+    "fecha_hora": {
+      "$date": {
+        "$numberLong": "1788859500000"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "680000000000000000000005"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000005"
+    },
+    "direccion_aproximada": "Calle 12 # 7-56, Popayán",
+    "coordenadas": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.6083"
+        },
+        {
+          "$numberDouble": "2.4431"
+        }
+      ]
+    },
+    "precision_metros": {
+      "$numberDouble": "9.1"
+    },
+    "bateria_dispositivo": {
+      "$numberInt": "28"
+    },
+    "fecha_hora": {
+      "$date": {
+        "$numberLong": "1788861600000"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "680000000000000000000006"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000006"
+    },
+    "direccion_aproximada": "Carrera 5 # 4-18, Santander de Quilichao",
+    "coordenadas": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.486"
+        },
+        {
+          "$numberDouble": "3.0112"
+        }
+      ]
+    },
+    "precision_metros": {
+      "$numberDouble": "7.4"
+    },
+    "bateria_dispositivo": {
+      "$numberInt": "82"
+    },
+    "fecha_hora": {
+      "$date": {
+        "$numberLong": "1788811500000"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "680000000000000000000007"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000007"
+    },
+    "direccion_aproximada": "Carrera 9 # 2-15, Popayán",
+    "coordenadas": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.6091"
+        },
+        {
+          "$numberDouble": "2.4398"
+        }
+      ]
+    },
+    "precision_metros": {
+      "$numberDouble": "10.3"
+    },
+    "bateria_dispositivo": {
+      "$numberInt": "64"
+    },
+    "fecha_hora": {
+      "$date": {
+        "$numberLong": "1788852900000"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "680000000000000000000008"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000008"
+    },
+    "direccion_aproximada": "Calle 25 # 9-40, Popayán",
+    "coordenadas": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.592"
+        },
+        {
+          "$numberDouble": "2.461"
+        }
+      ]
+    },
+    "precision_metros": {
+      "$numberInt": "25"
+    },
+    "bateria_dispositivo": {
+      "$numberInt": "12"
+    },
+    "fecha_hora": {
+      "$date": {
+        "$numberLong": "1788867900000"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "680000000000000000000009"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000009"
+    },
+    "direccion_aproximada": "Calle 4 # 6-11, Timbío",
+    "coordenadas": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.6831"
+        },
+        {
+          "$numberDouble": "2.3512"
+        }
+      ]
+    },
+    "precision_metros": {
+      "$numberDouble": "11.7"
+    },
+    "bateria_dispositivo": {
+      "$numberInt": "50"
+    },
+    "fecha_hora": {
+      "$date": {
+        "$numberLong": "1788796500000"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "680000000000000000000010"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000010"
+    },
+    "direccion_aproximada": "Carrera 11 # 18-22, Popayán",
+    "coordenadas": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.6015"
+        },
+        {
+          "$numberDouble": "2.4501"
+        }
+      ]
+    },
+    "precision_metros": {
+      "$numberDouble": "5.8"
+    },
+    "bateria_dispositivo": {
+      "$numberInt": "95"
+    },
+    "fecha_hora": {
+      "$date": {
+        "$numberLong": "1788847800000"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ab3264124bfffd52d2df38c"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000001"
+    },
+    "coordenadas": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.6063"
+        },
+        {
+          "$numberDouble": "2.4419"
+        }
+      ]
+    },
+    "precision_metros": {
+      "$numberDouble": "6.2"
+    },
+    "bateria_dispositivo": {
+      "$numberInt": "70"
+    },
+    "fecha_hora": {
+      "$date": {
+        "$numberLong": "1790125633432"
+      }
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1790125633434"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790125633434"
+      }
+    },
+    "__v": {
+      "$numberInt": "0"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ae92b01c292cc7d770e280e"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000004"
+    },
+    "latitud": {
+      "$numberDouble": "37.4219983"
+    },
+    "longitud": {
+      "$numberDouble": "-122.084"
+    },
+    "direccion_aproximada": "1600 Amphitheatre Pkwy, Mountain View, CA 94043, USA",
+    "precision_metros": {
+      "$numberInt": "5"
+    },
+    "fecha_hora": {
+      "$date": {
+        "$numberLong": "1793665793899"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ae9ff0136267b24bb9a9c24"
+    },
+    "usuario_id": {
+      "$oid": "6ae9fe9b36267b24bb9a9c23"
+    },
+    "latitud": {
+      "$numberDouble": "37.4219983"
+    },
+    "longitud": {
+      "$numberDouble": "-122.084"
+    },
+    "direccion_aproximada": "1600 Amphitheatre Pkwy, Mountain View, CA 94043, USA",
+    "precision_metros": {
+      "$numberInt": "5"
+    },
+    "fecha_hora": {
+      "$date": {
+        "$numberLong": "1793720065324"
+      }
+    }
+  }
+]

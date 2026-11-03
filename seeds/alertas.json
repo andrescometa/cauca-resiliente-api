@@ -1,0 +1,169 @@
+[
+  {
+    "_id": {
+      "$oid": "700000000000000000000001"
+    },
+    "tipo_alerta": "Evacuación",
+    "mensaje": "Evacuación preventiva en Laderas del Barrio La Villa por riesgo de derrumbe",
+    "nivel_severidad": "Crítica",
+    "zona_afectada": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.6156"
+        },
+        {
+          "$numberDouble": "2.4567"
+        }
+      ]
+    },
+    "radio_metros": {
+      "$numberInt": "300"
+    },
+    "usuarios_notificados": [
+      {
+        "$oid": "660000000000000000000001"
+      },
+      {
+        "$oid": "660000000000000000000007"
+      }
+    ],
+    "emitida_por": {
+      "$oid": "660000000000000000000010"
+    },
+    "activa": true,
+    "fecha_emision": {
+      "$date": {
+        "$numberLong": "1788854400000"
+      }
+    },
+    "fecha_expiracion": {
+      "$date": {
+        "$numberLong": "1788940800000"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "700000000000000000000002"
+    },
+    "tipo_alerta": "Réplica",
+    "mensaje": "Réplica de magnitud 4.5 detectada. Mantenga la calma y ubíquese en zonas seguras",
+    "nivel_severidad": "Urgente",
+    "zona_afectada": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.6092"
+        },
+        {
+          "$numberDouble": "2.4523"
+        }
+      ]
+    },
+    "radio_metros": {
+      "$numberInt": "5000"
+    },
+    "usuarios_notificados": [
+      {
+        "$oid": "660000000000000000000001"
+      },
+      {
+        "$oid": "660000000000000000000002"
+      },
+      {
+        "$oid": "660000000000000000000003"
+      },
+      {
+        "$oid": "660000000000000000000005"
+      },
+      {
+        "$oid": "660000000000000000000007"
+      }
+    ],
+    "emitida_por": {
+      "$oid": "660000000000000000000010"
+    },
+    "activa": true,
+    "fecha_emision": {
+      "$date": {
+        "$numberLong": "1788858600000"
+      }
+    },
+    "fecha_expiracion": {
+      "$date": {
+        "$numberLong": "1788879600000"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "700000000000000000000003"
+    },
+    "tipo_alerta": "Vía Bloqueada",
+    "mensaje": "Variante Norte - Tramo Bellavista bloqueado por deslizamiento",
+    "nivel_severidad": "Preventiva",
+    "zona_afectada": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.589"
+        },
+        {
+          "$numberDouble": "2.471"
+        }
+      ]
+    },
+    "radio_metros": {
+      "$numberInt": "800"
+    },
+    "usuarios_notificados": [],
+    "emitida_por": {
+      "$oid": "660000000000000000000010"
+    },
+    "activa": true,
+    "fecha_emision": {
+      "$date": {
+        "$numberLong": "1788865200000"
+      }
+    },
+    "fecha_expiracion": null
+  },
+  {
+    "_id": {
+      "$oid": "700000000000000000000004"
+    },
+    "tipo_alerta": "Refugio Disponible",
+    "mensaje": "Refugio habilitado en el Coliseo Municipal. Capacidad para 200 personas",
+    "nivel_severidad": "Informativa",
+    "zona_afectada": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.6055"
+        },
+        {
+          "$numberDouble": "2.447"
+        }
+      ]
+    },
+    "radio_metros": {
+      "$numberInt": "2000"
+    },
+    "usuarios_notificados": [],
+    "emitida_por": {
+      "$oid": "660000000000000000000010"
+    },
+    "activa": true,
+    "fecha_emision": {
+      "$date": {
+        "$numberLong": "1788863400000"
+      }
+    },
+    "fecha_expiracion": {
+      "$date": {
+        "$numberLong": "1789468200000"
+      }
+    }
+  }
+]

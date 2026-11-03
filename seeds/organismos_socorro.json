@@ -1,0 +1,149 @@
+[
+  {
+    "_id": {
+      "$oid": "6b0000000000000000000001"
+    },
+    "nombre_organismo": "Cuerpo de Bomberos Voluntarios Popayán",
+    "tipo": "Bomberos",
+    "telefono_emergencia": "119",
+    "cobertura": "Popayán y zonas rurales",
+    "disponibilidad": true,
+    "ubicacion_base": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.6092"
+        },
+        {
+          "$numberDouble": "2.444"
+        }
+      ]
+    },
+    "capacidad_personal": {
+      "$numberInt": "45"
+    },
+    "recursos_disponibles": [
+      "Autobomba",
+      "Escalera",
+      "Equipo de rescate urbano",
+      "Trajes ignífugos"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6b0000000000000000000002"
+    },
+    "nombre_organismo": "Cruz Roja Colombiana Seccional Cauca",
+    "tipo": "Atención Médica",
+    "telefono_emergencia": "132",
+    "cobertura": "Departamental",
+    "disponibilidad": true,
+    "ubicacion_base": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.6075"
+        },
+        {
+          "$numberDouble": "2.4425"
+        }
+      ]
+    },
+    "capacidad_personal": {
+      "$numberInt": "120"
+    },
+    "recursos_disponibles": [
+      "Ambulancias",
+      "Puesto de mando",
+      "Kits médicos",
+      "Personal paramédico"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6b0000000000000000000003"
+    },
+    "nombre_organismo": "Defensa Civil Seccional Cauca",
+    "tipo": "Rescate y Evacuación",
+    "telefono_emergencia": "144",
+    "cobertura": "Departamental",
+    "disponibilidad": true,
+    "ubicacion_base": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.605"
+        },
+        {
+          "$numberDouble": "2.446"
+        }
+      ]
+    },
+    "capacidad_personal": {
+      "$numberInt": "80"
+    },
+    "recursos_disponibles": [
+      "Equipo de búsqueda y rescate",
+      "Drones de reconocimiento",
+      "Vehículos 4x4"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6b0000000000000000000004"
+    },
+    "nombre_organismo": "Scouts de Emergencia Popayán",
+    "tipo": "Apoyo Logístico",
+    "telefono_emergencia": "3120000000",
+    "cobertura": "Zona Urbana",
+    "disponibilidad": false,
+    "ubicacion_base": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.612"
+        },
+        {
+          "$numberDouble": "2.448"
+        }
+      ]
+    },
+    "capacidad_personal": {
+      "$numberInt": "60"
+    },
+    "recursos_disponibles": [
+      "Carpa de campaña",
+      "Logística de refugios",
+      "Distribución de víveres"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6b0000000000000000000005"
+    },
+    "nombre_organismo": "Policía Nacional - Estación Popayán",
+    "tipo": "Policía",
+    "telefono_emergencia": "123",
+    "cobertura": "Popayán y municipios cercanos",
+    "disponibilidad": true,
+    "ubicacion_base": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.6105"
+        },
+        {
+          "$numberDouble": "2.4433"
+        }
+      ]
+    },
+    "capacidad_personal": {
+      "$numberInt": "200"
+    },
+    "recursos_disponibles": [
+      "Patrullas",
+      "Control de tránsito",
+      "Seguridad perimetral"
+    ]
+  }
+]

@@ -1,0 +1,603 @@
+[
+  {
+    "_id": {
+      "$oid": "660000000000000000000001"
+    },
+    "nombres": "María Fernanda",
+    "apellidos": "Valencia Gómez",
+    "tipo_documento": "CC",
+    "identificacion": "12345678",
+    "genero": "Femenino",
+    "edad": {
+      "$numberInt": "21"
+    },
+    "telefono": "3124567890",
+    "email": "maria.valencia@email.com",
+    "ciudad": "Popayán",
+    "direccion": "Calle 5 # 3-12",
+    "rol_id": {
+      "$oid": "650000000000000000000001"
+    },
+    "fecha_registro": {
+      "$date": {
+        "$numberLong": "1768435200000"
+      }
+    },
+    "activo": true,
+    "ubicacion_actual": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.6063"
+        },
+        {
+          "$numberDouble": "2.4419"
+        }
+      ]
+    },
+    "bateria_dispositivo": {
+      "$numberInt": "70"
+    },
+    "ultima_conexion": {
+      "$date": {
+        "$numberLong": "1790125633434"
+      }
+    },
+    "contacto_principal": {
+      "nombre": "Luisa Gómez",
+      "telefono": "3176543210",
+      "parentesco": "Madre"
+    },
+    "password": "$2a$10$mC1Oi9q9QUUICOoqMdNveeVaotXX0qMfkYteQR5Y//tQr6kS1p/Vm",
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790125633434"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "660000000000000000000002"
+    },
+    "nombres": "Carlos",
+    "apellidos": "Mina",
+    "tipo_documento": "CC",
+    "identificacion": "87654321",
+    "genero": "Masculino",
+    "edad": {
+      "$numberInt": "24"
+    },
+    "telefono": "3109876543",
+    "email": "carlos.mina@email.com",
+    "ciudad": "Popayán",
+    "direccion": "Calle 5 # 6-20, Centro, Popayán",
+    "rol_id": {
+      "$oid": "650000000000000000000001"
+    },
+    "fecha_registro": {
+      "$date": {
+        "$numberLong": "1768003200000"
+      }
+    },
+    "activo": true,
+    "ubicacion_actual": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.6105"
+        },
+        {
+          "$numberDouble": "2.447"
+        }
+      ]
+    },
+    "bateria_dispositivo": {
+      "$numberInt": "15"
+    },
+    "ultima_conexion": {
+      "$date": {
+        "$numberLong": "1788855000000"
+      }
+    },
+    "contacto_principal": {
+      "nombre": "Ana Mina",
+      "telefono": "3109876543",
+      "parentesco": "Hermana"
+    },
+    "password": "$2a$10$mC1Oi9q9QUUICOoqMdNveeVaotXX0qMfkYteQR5Y//tQr6kS1p/Vm",
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1793720855108"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "660000000000000000000003"
+    },
+    "nombres": "Laura Sofía",
+    "apellidos": "Díaz",
+    "tipo_documento": "CC",
+    "identificacion": "56781234",
+    "genero": "Femenino",
+    "edad": {
+      "$numberInt": "28"
+    },
+    "telefono": "3187654321",
+    "email": "laura.diaz@email.com",
+    "ciudad": "Popayán",
+    "direccion": "Avenida Norte # 15-45",
+    "rol_id": {
+      "$oid": "650000000000000000000002"
+    },
+    "fecha_registro": {
+      "$date": {
+        "$numberLong": "1768176000000"
+      }
+    },
+    "activo": true,
+    "ubicacion_actual": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.5981"
+        },
+        {
+          "$numberDouble": "2.4552"
+        }
+      ]
+    },
+    "bateria_dispositivo": {
+      "$numberInt": "90"
+    },
+    "ultima_conexion": {
+      "$date": {
+        "$numberLong": "1790125704219"
+      }
+    },
+    "contacto_principal": {
+      "nombre": "Roberto Díaz",
+      "telefono": "3187654321",
+      "parentesco": "Padre"
+    },
+    "password": "$2a$10$mC1Oi9q9QUUICOoqMdNveeVaotXX0qMfkYteQR5Y//tQr6kS1p/Vm",
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790125704219"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "660000000000000000000004"
+    },
+    "nombres": "Jorge Alberto",
+    "apellidos": "Cauca Hurtado",
+    "tipo_documento": "CE",
+    "identificacion": "43218765",
+    "genero": "Masculino",
+    "edad": {
+      "$numberInt": "23"
+    },
+    "telefono": "3154321098",
+    "email": "jorge.cauca@email.com",
+    "ciudad": "Popayán",
+    "direccion": "Carrera 6 # 12-30, Norte, Popayán",
+    "rol_id": {
+      "$oid": "650000000000000000000001"
+    },
+    "fecha_registro": {
+      "$date": {
+        "$numberLong": "1768348800000"
+      }
+    },
+    "activo": true,
+    "ubicacion_actual": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.5988"
+        },
+        {
+          "$numberDouble": "2.4512"
+        }
+      ]
+    },
+    "bateria_dispositivo": {
+      "$numberInt": "5"
+    },
+    "ultima_conexion": {
+      "$date": {
+        "$numberLong": "1788859500000"
+      }
+    },
+    "contacto_principal": {
+      "nombre": "Patricia Cauca",
+      "telefono": "3154321098",
+      "parentesco": "Esposa"
+    },
+    "password": "$2a$10$mC1Oi9q9QUUICOoqMdNveeVaotXX0qMfkYteQR5Y//tQr6kS1p/Vm",
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1793720855133"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "660000000000000000000005"
+    },
+    "nombres": "Ana",
+    "apellidos": "López Mosquera",
+    "tipo_documento": "TI",
+    "identificacion": "90123456",
+    "genero": "Femenino",
+    "edad": {
+      "$numberInt": "19"
+    },
+    "telefono": "3112345678",
+    "email": "ana.lopez@email.com",
+    "ciudad": "Popayán",
+    "direccion": "Calle 12 # 7-56",
+    "rol_id": {
+      "$oid": "650000000000000000000001"
+    },
+    "fecha_registro": {
+      "$date": {
+        "$numberLong": "1768521600000"
+      }
+    },
+    "activo": true,
+    "ubicacion_actual": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.6083"
+        },
+        {
+          "$numberDouble": "2.4431"
+        }
+      ]
+    },
+    "bateria_dispositivo": {
+      "$numberInt": "28"
+    },
+    "ultima_conexion": {
+      "$date": {
+        "$numberLong": "1788861600000"
+      }
+    },
+    "contacto_principal": {
+      "nombre": "Carlos López",
+      "telefono": "3124567890",
+      "parentesco": "Padre"
+    },
+    "password": "$2a$10$mC1Oi9q9QUUICOoqMdNveeVaotXX0qMfkYteQR5Y//tQr6kS1p/Vm",
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790125474518"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "660000000000000000000006"
+    },
+    "nombres": "Pedro",
+    "apellidos": "Guerrero",
+    "tipo_documento": "CC",
+    "identificacion": "65432109",
+    "genero": "Masculino",
+    "edad": {
+      "$numberInt": "31"
+    },
+    "telefono": "3167890123",
+    "email": "pedro.guerrero@email.com",
+    "ciudad": "Popayán",
+    "direccion": "Calle 18 # 8-15, Sur, Popayán",
+    "rol_id": {
+      "$oid": "650000000000000000000002"
+    },
+    "fecha_registro": {
+      "$date": {
+        "$numberLong": "1768089600000"
+      }
+    },
+    "activo": true,
+    "ubicacion_actual": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.6072"
+        },
+        {
+          "$numberDouble": "2.4385"
+        }
+      ]
+    },
+    "bateria_dispositivo": {
+      "$numberInt": "82"
+    },
+    "ultima_conexion": {
+      "$date": {
+        "$numberLong": "1790125632811"
+      }
+    },
+    "contacto_principal": {
+      "nombre": "Marta Guerrero",
+      "telefono": "3161234567",
+      "parentesco": "Madre"
+    },
+    "password": "$2a$10$mC1Oi9q9QUUICOoqMdNveeVaotXX0qMfkYteQR5Y//tQr6kS1p/Vm",
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1793720855136"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "660000000000000000000007"
+    },
+    "nombres": "Juan Pablo",
+    "apellidos": "Arias Delgado",
+    "tipo_documento": "CC",
+    "identificacion": "10467890",
+    "genero": "Masculino",
+    "edad": {
+      "$numberInt": "22"
+    },
+    "telefono": "3145678901",
+    "email": "juan.arias@email.com",
+    "ciudad": "Popayán",
+    "direccion": "Carrera 9 # 2-15",
+    "rol_id": {
+      "$oid": "650000000000000000000001"
+    },
+    "fecha_registro": {
+      "$date": {
+        "$numberLong": "1768608000000"
+      }
+    },
+    "activo": true,
+    "ubicacion_actual": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.6091"
+        },
+        {
+          "$numberDouble": "2.4398"
+        }
+      ]
+    },
+    "bateria_dispositivo": {
+      "$numberInt": "64"
+    },
+    "ultima_conexion": {
+      "$date": {
+        "$numberLong": "1788852900000"
+      }
+    },
+    "contacto_principal": {
+      "nombre": "Andrés Arias",
+      "telefono": "3149876543",
+      "parentesco": "Hermano"
+    },
+    "password": "$2a$10$mC1Oi9q9QUUICOoqMdNveeVaotXX0qMfkYteQR5Y//tQr6kS1p/Vm",
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790125474522"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "660000000000000000000008"
+    },
+    "nombres": "Daniela",
+    "apellidos": "Burbano",
+    "tipo_documento": "PAS",
+    "identificacion": "10468901",
+    "genero": "Femenino",
+    "edad": {
+      "$numberInt": "20"
+    },
+    "telefono": "3176543210",
+    "email": "daniela.burbano@email.com",
+    "ciudad": "Popayán",
+    "direccion": "Calle 25 # 9-40",
+    "rol_id": {
+      "$oid": "650000000000000000000001"
+    },
+    "fecha_registro": {
+      "$date": {
+        "$numberLong": "1768694400000"
+      }
+    },
+    "activo": true,
+    "ubicacion_actual": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.592"
+        },
+        {
+          "$numberDouble": "2.461"
+        }
+      ]
+    },
+    "bateria_dispositivo": {
+      "$numberInt": "12"
+    },
+    "ultima_conexion": {
+      "$date": {
+        "$numberLong": "1788867900000"
+      }
+    },
+    "contacto_principal": {
+      "nombre": "Gloria Burbano",
+      "telefono": "3171234567",
+      "parentesco": "Madre"
+    },
+    "password": "$2a$10$mC1Oi9q9QUUICOoqMdNveeVaotXX0qMfkYteQR5Y//tQr6kS1p/Vm",
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790125474524"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "660000000000000000000009"
+    },
+    "nombres": "Santiago Esteban",
+    "apellidos": "Ortega Paz",
+    "tipo_documento": "CC",
+    "identificacion": "10469012",
+    "genero": "Masculino",
+    "edad": {
+      "$numberInt": "25"
+    },
+    "telefono": "3138901234",
+    "email": "santiago.ortega@email.com",
+    "ciudad": "Popayán",
+    "direccion": "Carrera 9 # 25-40, Popayán",
+    "rol_id": {
+      "$oid": "650000000000000000000001"
+    },
+    "fecha_registro": {
+      "$date": {
+        "$numberLong": "1768780800000"
+      }
+    },
+    "activo": true,
+    "ubicacion_actual": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.601"
+        },
+        {
+          "$numberDouble": "2.4555"
+        }
+      ]
+    },
+    "bateria_dispositivo": {
+      "$numberInt": "50"
+    },
+    "ultima_conexion": {
+      "$date": {
+        "$numberLong": "1788796500000"
+      }
+    },
+    "contacto_principal": {
+      "nombre": "Felipe Ortega",
+      "telefono": "3134567890",
+      "parentesco": "Padre"
+    },
+    "password": "$2a$10$mC1Oi9q9QUUICOoqMdNveeVaotXX0qMfkYteQR5Y//tQr6kS1p/Vm",
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1793720855138"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "660000000000000000000010"
+    },
+    "nombres": "Valentina",
+    "apellidos": "Muñoz Rivera",
+    "tipo_documento": "CC",
+    "identificacion": "10460123",
+    "genero": "Femenino",
+    "edad": {
+      "$numberInt": "29"
+    },
+    "telefono": "3190123456",
+    "email": "valentina.munoz@email.com",
+    "ciudad": "Popayán",
+    "direccion": "Carrera 11 # 18-22",
+    "rol_id": {
+      "$oid": "650000000000000000000002"
+    },
+    "fecha_registro": {
+      "$date": {
+        "$numberLong": "1768867200000"
+      }
+    },
+    "activo": true,
+    "ubicacion_actual": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.6015"
+        },
+        {
+          "$numberDouble": "2.4501"
+        }
+      ]
+    },
+    "bateria_dispositivo": {
+      "$numberInt": "95"
+    },
+    "ultima_conexion": {
+      "$date": {
+        "$numberLong": "1790125704889"
+      }
+    },
+    "contacto_principal": {
+      "nombre": "Diana Rivera",
+      "telefono": "3198765432",
+      "parentesco": "Hermana"
+    },
+    "password": "$2a$10$mC1Oi9q9QUUICOoqMdNveeVaotXX0qMfkYteQR5Y//tQr6kS1p/Vm",
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1790125704890"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6ae9fe9b36267b24bb9a9c23"
+    },
+    "nombres": "Didier",
+    "apellidos": "Felipe valencia",
+    "tipo_documento": "CC",
+    "identificacion": "3256415245",
+    "email": "didife43.@gmail.com",
+    "password": "saryfelipe26",
+    "telefono": "3256415245",
+    "fecha_registro": {
+      "$date": {
+        "$numberLong": "1793719963373"
+      }
+    },
+    "rol": "usuario",
+    "rol_id": {
+      "$oid": "650000000000000000000001"
+    },
+    "alergias": [],
+    "discapacidades": [],
+    "activo": true,
+    "ciudad": "Popayán",
+    "ubicacion_actual": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.6143"
+        },
+        {
+          "$numberDouble": "2.4447"
+        }
+      ]
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1793720863068"
+      }
+    }
+  }
+]

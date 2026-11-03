@@ -1,0 +1,318 @@
+[
+  {
+    "_id": {
+      "$oid": "6a0000000000000000000001"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000001"
+    },
+    "tipo_sangre": "O+",
+    "eps": "Nueva EPS",
+    "peso": {
+      "$numberInt": "58"
+    },
+    "altura": {
+      "$numberDouble": "1.62"
+    },
+    "discapacidad": false,
+    "descripcion_discapacidad": null,
+    "condiciones_cronicas": [],
+    "alergias_medicamentos": [
+      "Penicilina",
+      "Ibuprofeno"
+    ],
+    "alergias_alimentos": [
+      "Mariscos"
+    ],
+    "medicamentos_uso": [
+      "Cetirizina"
+    ],
+    "fecha_actualizacion": {
+      "$date": {
+        "$numberLong": "1786788000000"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a0000000000000000000002"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000002"
+    },
+    "tipo_sangre": "A+",
+    "eps": "Sanitas",
+    "peso": {
+      "$numberInt": "72"
+    },
+    "altura": {
+      "$numberDouble": "1.75"
+    },
+    "discapacidad": false,
+    "descripcion_discapacidad": null,
+    "condiciones_cronicas": [
+      "Hipertensión"
+    ],
+    "alergias_medicamentos": [],
+    "alergias_alimentos": [
+      "Lácteos"
+    ],
+    "medicamentos_uso": [
+      "Losartan"
+    ],
+    "fecha_actualizacion": {
+      "$date": {
+        "$numberLong": "1786354200000"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a0000000000000000000003"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000003"
+    },
+    "tipo_sangre": "B+",
+    "eps": "Salud Total",
+    "peso": {
+      "$numberInt": "65"
+    },
+    "altura": {
+      "$numberDouble": "1.68"
+    },
+    "discapacidad": false,
+    "descripcion_discapacidad": null,
+    "condiciones_cronicas": [],
+    "alergias_medicamentos": [
+      "Aspirina"
+    ],
+    "alergias_alimentos": [],
+    "medicamentos_uso": [],
+    "fecha_actualizacion": {
+      "$date": {
+        "$numberLong": "1786532400000"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a0000000000000000000004"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000004"
+    },
+    "tipo_sangre": "AB+",
+    "eps": "Asmet Salud",
+    "peso": {
+      "$numberInt": "80"
+    },
+    "altura": {
+      "$numberDouble": "1.78"
+    },
+    "discapacidad": true,
+    "descripcion_discapacidad": "Discapacidad motriz en pierna derecha",
+    "condiciones_cronicas": [
+      "Diabetes tipo 2"
+    ],
+    "alergias_medicamentos": [],
+    "alergias_alimentos": [
+      "Maní"
+    ],
+    "medicamentos_uso": [
+      "Metformina",
+      "Enalapril"
+    ],
+    "fecha_actualizacion": {
+      "$date": {
+        "$numberLong": "1787234400000"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a0000000000000000000005"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000005"
+    },
+    "tipo_sangre": "O-",
+    "eps": "Nueva EPS",
+    "peso": {
+      "$numberInt": "55"
+    },
+    "altura": {
+      "$numberDouble": "1.6"
+    },
+    "discapacidad": false,
+    "descripcion_discapacidad": null,
+    "condiciones_cronicas": [
+      "Asma"
+    ],
+    "alergias_medicamentos": [
+      "Codeína"
+    ],
+    "alergias_alimentos": [
+      "Huevo"
+    ],
+    "medicamentos_uso": [
+      "Salbutamol"
+    ],
+    "fecha_actualizacion": {
+      "$date": {
+        "$numberLong": "1787042700000"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a0000000000000000000006"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000006"
+    },
+    "tipo_sangre": "O+",
+    "eps": "Coosalud",
+    "peso": {
+      "$numberInt": "78"
+    },
+    "altura": {
+      "$numberDouble": "1.8"
+    },
+    "discapacidad": false,
+    "descripcion_discapacidad": null,
+    "condiciones_cronicas": [],
+    "alergias_medicamentos": [],
+    "alergias_alimentos": [],
+    "medicamentos_uso": [],
+    "fecha_actualizacion": {
+      "$date": {
+        "$numberLong": "1785913200000"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a0000000000000000000007"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000007"
+    },
+    "tipo_sangre": "A-",
+    "eps": "Sanitas",
+    "peso": {
+      "$numberInt": "68"
+    },
+    "altura": {
+      "$numberDouble": "1.72"
+    },
+    "discapacidad": false,
+    "descripcion_discapacidad": null,
+    "condiciones_cronicas": [
+      "Asma leve"
+    ],
+    "alergias_medicamentos": [
+      "Sulfa"
+    ],
+    "alergias_alimentos": [
+      "Gluten"
+    ],
+    "medicamentos_uso": [
+      "Salbutamol"
+    ],
+    "fecha_actualizacion": {
+      "$date": {
+        "$numberLong": "1786713600000"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a0000000000000000000008"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000008"
+    },
+    "tipo_sangre": "B-",
+    "eps": "Nueva EPS",
+    "peso": {
+      "$numberInt": "62"
+    },
+    "altura": {
+      "$numberDouble": "1.65"
+    },
+    "discapacidad": false,
+    "descripcion_discapacidad": null,
+    "condiciones_cronicas": [],
+    "alergias_medicamentos": [],
+    "alergias_alimentos": [],
+    "medicamentos_uso": [],
+    "fecha_actualizacion": {
+      "$date": {
+        "$numberLong": "1787393400000"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a0000000000000000000009"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000009"
+    },
+    "tipo_sangre": "O+",
+    "eps": "Salud Total",
+    "peso": {
+      "$numberInt": "74"
+    },
+    "altura": {
+      "$numberDouble": "1.77"
+    },
+    "discapacidad": false,
+    "descripcion_discapacidad": null,
+    "condiciones_cronicas": [],
+    "alergias_medicamentos": [
+      "Dipirona"
+    ],
+    "alergias_alimentos": [
+      "Frutos secos"
+    ],
+    "medicamentos_uso": [],
+    "fecha_actualizacion": {
+      "$date": {
+        "$numberLong": "1786203000000"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6a0000000000000000000010"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000010"
+    },
+    "tipo_sangre": "AB-",
+    "eps": "Asmet Salud",
+    "peso": {
+      "$numberInt": "70"
+    },
+    "altura": {
+      "$numberDouble": "1.7"
+    },
+    "discapacidad": false,
+    "descripcion_discapacidad": null,
+    "condiciones_cronicas": [
+      "Hipotiroidismo"
+    ],
+    "alergias_medicamentos": [],
+    "alergias_alimentos": [],
+    "medicamentos_uso": [
+      "Levotiroxina"
+    ],
+    "fecha_actualizacion": {
+      "$date": {
+        "$numberLong": "1787140800000"
+      }
+    }
+  }
+]

@@ -1,0 +1,114 @@
+[
+  {
+    "_id": {
+      "$oid": "6e0000000000000000000001"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000001"
+    },
+    "universidad": "Uniautónoma del Cauca",
+    "carrera": "Ingeniería de Software",
+    "semestre": {
+      "$numberInt": "6"
+    },
+    "codigo_estudiantil": "20241001",
+    "sede": "Popayán",
+    "jornada": "Diurna"
+  },
+  {
+    "_id": {
+      "$oid": "6e0000000000000000000002"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000002"
+    },
+    "universidad": "Universidad del Cauca",
+    "carrera": "Ingeniería Civil",
+    "semestre": {
+      "$numberInt": "4"
+    },
+    "codigo_estudiantil": "100202402",
+    "sede": "Popayán",
+    "jornada": "Diurna"
+  },
+  {
+    "_id": {
+      "$oid": "6e0000000000000000000003"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000004"
+    },
+    "universidad": "Uniautónoma del Cauca",
+    "carrera": "Derecho",
+    "semestre": {
+      "$numberInt": "8"
+    },
+    "codigo_estudiantil": "20222015",
+    "sede": "Popayán",
+    "jornada": "Nocturna"
+  },
+  {
+    "_id": {
+      "$oid": "6e0000000000000000000004"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000005"
+    },
+    "universidad": "Universidad del Cauca",
+    "carrera": "Licenciatura en Educación",
+    "semestre": {
+      "$numberInt": "2"
+    },
+    "codigo_estudiantil": "100202501",
+    "sede": "Popayán",
+    "jornada": "Diurna"
+  },
+  {
+    "_id": {
+      "$oid": "6e0000000000000000000005"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000007"
+    },
+    "universidad": "Uniautónoma del Cauca",
+    "carrera": "Ingeniería de Software",
+    "semestre": {
+      "$numberInt": "6"
+    },
+    "codigo_estudiantil": "20241008",
+    "sede": "Popayán",
+    "jornada": "Diurna"
+  },
+  {
+    "_id": {
+      "$oid": "6e0000000000000000000006"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000008"
+    },
+    "universidad": "Fundación Universitaria de Popayán",
+    "carrera": "Arquitectura",
+    "semestre": {
+      "$numberInt": "5"
+    },
+    "codigo_estudiantil": "FUP9982",
+    "sede": "Popayán",
+    "jornada": "Diurna"
+  },
+  {
+    "_id": {
+      "$oid": "6e0000000000000000000007"
+    },
+    "usuario_id": {
+      "$oid": "660000000000000000000009"
+    },
+    "universidad": "Universidad del Cauca",
+    "carrera": "Administración de Empresas",
+    "semestre": {
+      "$numberInt": "7"
+    },
+    "codigo_estudiantil": "100202109",
+    "sede": "Popayán",
+    "jornada": "Nocturna"
+  }
+]

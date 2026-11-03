@@ -1,0 +1,215 @@
+[
+  {
+    "_id": {
+      "$oid": "6d0000000000000000000001"
+    },
+    "nombre_zona": "Laderas del Barrio La Villa",
+    "nivel_peligro": "Alto",
+    "tipo_riesgo": "Derrumbe",
+    "coordenadas_centro": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.6156"
+        },
+        {
+          "$numberDouble": "2.4567"
+        }
+      ]
+    },
+    "radio_metros": {
+      "$numberInt": "150"
+    },
+    "area_afectada": null,
+    "estado_zona": "Afectada",
+    "modelo_3d_url": "https://cdn.caucaresiliente.com/3dtiles/lavilla_after.json",
+    "imagenes_satelitales": [
+      "https://cdn.caucaresiliente.com/sat/lavilla_before.jpg",
+      "https://cdn.caucaresiliente.com/sat/lavilla_after.jpg"
+    ],
+    "poblacion_estimada": {
+      "$numberInt": "320"
+    },
+    "activa": true,
+    "fecha_deteccion": {
+      "$date": {
+        "$numberLong": "1788818400000"
+      }
+    },
+    "fecha_actualizacion": {
+      "$date": {
+        "$numberLong": "1788854400000"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6d0000000000000000000002"
+    },
+    "nombre_zona": "Régimen del Río Molino - Comuna 6",
+    "nivel_peligro": "Inminente",
+    "tipo_riesgo": "Inundación",
+    "coordenadas_centro": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.6043"
+        },
+        {
+          "$numberDouble": "2.4598"
+        }
+      ]
+    },
+    "radio_metros": {
+      "$numberInt": "300"
+    },
+    "area_afectada": null,
+    "estado_zona": "Afectada",
+    "modelo_3d_url": "https://cdn.caucaresiliente.com/3dtiles/riomolino_after.json",
+    "imagenes_satelitales": [
+      "https://cdn.caucaresiliente.com/sat/riomolino_before.jpg",
+      "https://cdn.caucaresiliente.com/sat/riomolino_after.jpg"
+    ],
+    "poblacion_estimada": {
+      "$numberInt": "580"
+    },
+    "activa": true,
+    "fecha_deteccion": {
+      "$date": {
+        "$numberLong": "1788843600000"
+      }
+    },
+    "fecha_actualizacion": {
+      "$date": {
+        "$numberLong": "1788858000000"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6d0000000000000000000003"
+    },
+    "nombre_zona": "Centro Histórico",
+    "nivel_peligro": "Moderado",
+    "tipo_riesgo": "Falla Estructural",
+    "coordenadas_centro": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.6092"
+        },
+        {
+          "$numberDouble": "2.4523"
+        }
+      ]
+    },
+    "radio_metros": {
+      "$numberInt": "100"
+    },
+    "area_afectada": null,
+    "estado_zona": "Afectada",
+    "modelo_3d_url": null,
+    "imagenes_satelitales": [
+      "https://cdn.caucaresiliente.com/sat/centro_after.jpg"
+    ],
+    "poblacion_estimada": {
+      "$numberInt": "1200"
+    },
+    "activa": true,
+    "fecha_deteccion": {
+      "$date": {
+        "$numberLong": "1788813000000"
+      }
+    },
+    "fecha_actualizacion": {
+      "$date": {
+        "$numberLong": "1788850800000"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6d0000000000000000000004"
+    },
+    "nombre_zona": "Sector Puente del Humilladero",
+    "nivel_peligro": "Moderado",
+    "tipo_riesgo": "Deslizamiento",
+    "coordenadas_centro": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.6189"
+        },
+        {
+          "$numberDouble": "2.4445"
+        }
+      ]
+    },
+    "radio_metros": {
+      "$numberInt": "200"
+    },
+    "area_afectada": null,
+    "estado_zona": "Afectada",
+    "modelo_3d_url": null,
+    "imagenes_satelitales": [
+      "https://cdn.caucaresiliente.com/sat/humilladero_after.jpg"
+    ],
+    "poblacion_estimada": {
+      "$numberInt": "250"
+    },
+    "activa": true,
+    "fecha_deteccion": {
+      "$date": {
+        "$numberLong": "1788822900000"
+      }
+    },
+    "fecha_actualizacion": {
+      "$date": {
+        "$numberLong": "1788856200000"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6d0000000000000000000005"
+    },
+    "nombre_zona": "Variante Norte - Tramo Bellavista",
+    "nivel_peligro": "Alto",
+    "tipo_riesgo": "Deslizamiento",
+    "coordenadas_centro": {
+      "type": "Point",
+      "coordinates": [
+        {
+          "$numberDouble": "-76.589"
+        },
+        {
+          "$numberDouble": "2.471"
+        }
+      ]
+    },
+    "radio_metros": {
+      "$numberInt": "250"
+    },
+    "area_afectada": null,
+    "estado_zona": "Destruida",
+    "modelo_3d_url": "https://cdn.caucaresiliente.com/3dtiles/bellavista_after.json",
+    "imagenes_satelitales": [
+      "https://cdn.caucaresiliente.com/sat/bellavista_before.jpg",
+      "https://cdn.caucaresiliente.com/sat/bellavista_after.jpg"
+    ],
+    "poblacion_estimada": {
+      "$numberInt": "90"
+    },
+    "activa": true,
+    "fecha_deteccion": {
+      "$date": {
+        "$numberLong": "1788849900000"
+      }
+    },
+    "fecha_actualizacion": {
+      "$date": {
+        "$numberLong": "1788865200000"
+      }
+    }
+  }
+]

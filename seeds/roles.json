@@ -1,0 +1,107 @@
+[
+  {
+    "_id": {
+      "$oid": "650000000000000000000001"
+    },
+    "nombre": "Estudiante",
+    "descripcion": "Ciudadano/Estudiante que reporta su estado y solicita ayuda",
+    "nivel_acceso": {
+      "$numberInt": "1"
+    },
+    "permisos": [
+      "ver_propio_perfil",
+      "actualizar_estado",
+      "crear_solicitud",
+      "ver_alertas"
+    ],
+    "activo": true,
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791914029958"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "650000000000000000000002"
+    },
+    "nombre": "Socorrista",
+    "descripcion": "Personal de rescate que atiende emergencias",
+    "nivel_acceso": {
+      "$numberInt": "3"
+    },
+    "permisos": [
+      "ver_solicitudes_asignadas",
+      "ver_datos_medicos",
+      "actualizar_mision",
+      "ver_zonas_riesgo"
+    ],
+    "activo": true,
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791914030025"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "650000000000000000000003"
+    },
+    "nombre": "Administrador Refugio",
+    "descripcion": "Gestiona refugios y suministros",
+    "nivel_acceso": {
+      "$numberInt": "3"
+    },
+    "permisos": [
+      "gestionar_inventario",
+      "registrar_personas",
+      "reportar_necesidades"
+    ],
+    "activo": true,
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791914030027"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "650000000000000000000004"
+    },
+    "nombre": "Centro de Control",
+    "descripcion": "Coordina misiones y recursos",
+    "nivel_acceso": {
+      "$numberInt": "4"
+    },
+    "permisos": [
+      "asignar_misiones",
+      "ver_reportes",
+      "gestionar_organismos"
+    ],
+    "activo": true,
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791914030029"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "650000000000000000000005"
+    },
+    "nombre": "Administrador",
+    "descripcion": "Acceso total al sistema",
+    "nivel_acceso": {
+      "$numberInt": "5"
+    },
+    "permisos": [
+      "*"
+    ],
+    "activo": true,
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1791914030030"
+      }
+    }
+  }
+]
