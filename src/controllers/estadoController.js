@@ -4,7 +4,7 @@ import EstadoSeguridad from '../models/EstadoSeguridad.js';
 export const actualizarEstado = async (req, res) => {
   try {
     // Tomamos el usuarioId de la URL
-    const usuarioId = Number(req.params.usuarioId);
+    const usuarioId = req.params.usuarioId;
 
     // Tomamos el nuevo estado y mensaje del body
     const { estado, mensaje_estado } = req.body;
@@ -25,10 +25,8 @@ export const actualizarEstado = async (req, res) => {
       estadoUsuario.fecha_ultima_actualizacion = new Date();
       await estadoUsuario.save();
     } else {
-      // Si no existe, lo creamos con un _id nuevo
-      const nuevoId = await EstadoSeguridad.countDocuments() + 1;
+      // Si no existe, lo creamos (Mongo genera el _id)
       estadoUsuario = new EstadoSeguridad({
-        _id: nuevoId,
         usuario_id: usuarioId,
         estado: estado,
         mensaje_estado: mensaje_estado,
@@ -53,7 +51,7 @@ export const actualizarEstado = async (req, res) => {
 
 export const consultarEstado = async (req, res) => {
   try {
-    const usuarioId = Number(req.params.usuarioId);
+    const usuarioId = req.params.usuarioId;
 
     // Buscamos el estado del usuario
     const estado = await EstadoSeguridad.findOne({ usuario_id: usuarioId });

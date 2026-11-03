@@ -1,20 +1,28 @@
 import mongoose from 'mongoose';
 
-// Definimos cómo será una zona de riesgo
+const pointSchema = new mongoose.Schema({
+  type: { type: String, enum: ['Point'], default: 'Point' },
+  coordinates: { type: [Number], required: true } // [longitud, latitud]
+}, { _id: false });
+
 const zonaRiesgoSchema = new mongoose.Schema({
-  _id: Number,                          
-  nombre_zona: String,                 
-  tipo: String,                         
-  nivel_peligro: String,                
-  descripcion: String,                 
-  latitud: Number,                   
-  longitud: Number,                    
-  radio_metros: Number,                
-  fecha_registro: Date                 
+  nombre_zona: { type: String, required: true },
+  tipo_riesgo: String,
+  nivel_peligro: String,
+  descripcion: String,
+  coordenadas_centro: pointSchema,
+  radio_metros: Number,
+  area_afectada: mongoose.Schema.Types.Mixed,
+  estado_zona: String,
+  modelo_3d_url: String,
+  imagenes_satelitales: [String],
+  poblacion_estimada: Number,
+  activa: { type: Boolean, default: true },
+  fecha_deteccion: Date,
+  fecha_actualizacion: Date
 }, {
-  collection: 'zonas_riesgo',           // Nombre de la colección
+  collection: 'zonas_riesgo',
   versionKey: false
 });
 
-// Exportamos el modelo
 export default mongoose.model('ZonaRiesgo', zonaRiesgoSchema);

@@ -3,8 +3,7 @@ import mongoose from 'mongoose';
 
 // Definimos cómo será un estado de seguridad
 const estadoSchema = new mongoose.Schema({
-  _id: Number,
-  usuario_id: Number,
+  usuario_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Usuario' },
   estado: String,                                // "A salvo", "En riesgo", "Atrapado", "Desaparecido"
   mensaje_estado: String,
   fecha_ultima_actualizacion: Date

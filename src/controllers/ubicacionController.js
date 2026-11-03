@@ -1,4 +1,5 @@
 // Importamos el modelo
+import mongoose from 'mongoose';
 import Ubicacion from '../models/Ubicacion.js';
 
 export const crearUbicacion = async (req, res) => {
@@ -11,16 +12,26 @@ export const crearUbicacion = async (req, res) => {
       return res.status(400).json({ mensaje: 'Faltan datos obligatorios (usuario_id, latitud, longitud)' });
     }
 
-    // Generamos un nuevo _id basado en el total de documentos
-    const total = await Ubicacion.countDocuments();
-    const nuevoId = total + 1;
+    // usuario_id debe ser un ObjectId válido
+    if (!mongoose.Types.ObjectId.isValid(usuario_id)) {
+      return res.status(400).json({ mensaje: 'usuario_id inválido' });
+    }
 
-    // Creamos la ubicación
+    const lat = Number(latitud);
+    const lng = Number(longitud);
+
+    if (Number.isNaN(lat) || lat < -90 || lat > 90) {
+      return res.status(400).json({ mensaje: 'Latitud inválida (debe estar entre -90 y 90)' });
+    }
+    if (Number.isNaN(lng) || lng < -180 || lng > 180) {
+      return res.status(400).json({ mensaje: 'Longitud inválida (debe estar entre -180 y 180)' });
+    }
+
+    // Creamos la ubicación (Mongo genera el _id)
     const nuevaUbicacion = new Ubicacion({
-      _id: nuevoId,
       usuario_id,
-      latitud,
-      longitud,
+      latitud: lat,
+      longitud: lng,
       direccion_aproximada,
       precision_metros,
       bateria,
@@ -47,7 +58,11 @@ export const crearUbicacion = async (req, res) => {
 export const consultarHistorial = async (req, res) => {
   try {
     // Tomamos el usuarioId de la URL
-    const usuarioId = Number(req.params.usuarioId);
+    const usuarioId = req.params.usuarioId;
+
+    if (!mongoose.Types.ObjectId.isValid(usuarioId)) {
+      return res.status(400).json({ mensaje: 'usuario_id inválido' });
+    }
 
     // Buscamos todas las ubicaciones de ese usuario, ordenadas de más reciente a más antigua
     const historial = await Ubicacion.find({ usuario_id: usuarioId }).sort({ fecha_hora: -1 });

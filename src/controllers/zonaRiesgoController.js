@@ -1,22 +1,47 @@
 import ZonaRiesgo from '../models/ZonaRiesgo.js';
 
 
+export const listarZonas = async (req, res) => {
+  try {
+    const zonas = await ZonaRiesgo.find({ activa: { $ne: false } });
+
+    res.status(200).json({
+      mensaje: 'Zonas de riesgo',
+      total: zonas.length,
+      zonas
+    });
+  } catch (error) {
+    res.status(500).json({ mensaje: 'Error al listar zonas', error: error.message });
+  }
+};
+
 export const crearZonaRiesgo = async (req, res) => {
   try {
-    // Tomamos los datos del body
+    // Tomamos los datos del body (acepta el formato nuevo y el anterior)
     const {
       nombre_zona,
+      tipo_riesgo,
       tipo,
       nivel_peligro,
       descripcion,
       latitud,
       longitud,
-      radio_metros
+      coordenadas_centro,
+      radio_metros,
+      estado_zona,
+      poblacion_estimada,
+      activa
     } = req.body;
 
+    // Coordenadas: GeoJSON [lng, lat] o latitud/longitud sueltas
+    const coords = coordenadas_centro?.coordinates
+      ?? (latitud !== undefined && longitud !== undefined
+        ? [Number(longitud), Number(latitud)]
+        : undefined);
+
     // Validación 1: campos obligatorios
-    if (!nombre_zona || !tipo || !nivel_peligro || latitud === undefined || longitud === undefined) {
-      return res.status(400).json({ mensaje: 'Faltan datos obligatorios' });
+    if (!nombre_zona || !nivel_peligro || !coords || coords.length < 2) {
+      return res.status(400).json({ mensaje: 'Faltan datos obligatorios (nombre_zona, nivel_peligro, coordenadas)' });
     }
 
     // Validación 2: niveles de peligro válidos
@@ -25,21 +50,27 @@ export const crearZonaRiesgo = async (req, res) => {
       return res.status(400).json({ mensaje: 'Nivel de peligro inválido' });
     }
 
-    // Generamos nuevo _id
-    const total = await ZonaRiesgo.countDocuments();
-    const nuevoId = total + 1;
+    const [lng, lat] = coords.map(Number);
+    if (Number.isNaN(lat) || lat < -90 || lat > 90) {
+      return res.status(400).json({ mensaje: 'Latitud inválida (debe estar entre -90 y 90)' });
+    }
+    if (Number.isNaN(lng) || lng < -180 || lng > 180) {
+      return res.status(400).json({ mensaje: 'Longitud inválida (debe estar entre -180 y 180)' });
+    }
 
-    // Creamos la zona
+    // Creamos la zona (Mongo genera el _id)
     const nuevaZona = new ZonaRiesgo({
-      _id: nuevoId,
       nombre_zona,
-      tipo,
+      tipo_riesgo: tipo_riesgo ?? tipo,
       nivel_peligro,
       descripcion,
-      latitud,
-      longitud,
+      coordenadas_centro: { type: 'Point', coordinates: [lng, lat] },
       radio_metros,
-      fecha_registro: new Date()
+      estado_zona,
+      poblacion_estimada,
+      activa: activa ?? true,
+      fecha_deteccion: new Date(),
+      fecha_actualizacion: new Date()
     });
 
     await nuevaZona.save();
@@ -65,14 +96,18 @@ export const consultarZonasCercanas = async (req, res) => {
       return res.status(400).json({ mensaje: 'Debes enviar lat y lng como números' });
     }
 
-    // Traemos todas las zonas
-    const todas = await ZonaRiesgo.find();
+    // Traemos todas las zonas activas
+    const todas = await ZonaRiesgo.find({ activa: { $ne: false } });
 
     // Filtramos las que estén dentro del radio de afectación
     // Usamos la fórmula de Haversine para calcular distancia entre 2 puntos
     const zonasCercanas = todas.filter((zona) => {
-      const distancia = calcularDistancia(lat, lng, zona.latitud, zona.longitud);
-      return distancia <= zona.radio_metros;   // Solo las que están dentro del radio
+      const coords = zona.coordenadas_centro?.coordinates;
+      if (!coords || coords.length < 2) return false;
+
+      const [lngZona, latZona] = coords;
+      const distancia = calcularDistancia(lat, lng, latZona, lngZona);
+      return distancia <= (zona.radio_metros ?? 0);   // Solo las que están dentro del radio
     });
 
     // Respondemos
