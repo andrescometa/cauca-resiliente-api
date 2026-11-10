@@ -1,22 +1,20 @@
-// Importamos express
 import express from 'express';
+import { 
+  registrarUsuario, 
+  loginUsuario, 
+  listarUsuarios, 
+  ObtenerUsuario,
+  actualizarRolUsuario,
+  actualizarEstadoOperativo
+} from '../controllers/usuarioController.js';
 
-// Importamos las funciones del controlador
-import { crearUsuario, listarUsuarios , ObtenerUsuario } from '../controllers/usuarioController.js';
-
-// Creamos el router
 const router = express.Router();
 
-// POST /api/usuarios → crear
-router.post('/', crearUsuario);
-
-// GET /api/usuarios → listar
-router.get('/', listarUsuarios);
-
-
-// GET /api/usuario → listar
+router.post('/registro', registrarUsuario); 
+router.post('/login', loginUsuario);         
+router.get('/todos', listarUsuarios);        
 router.get('/:usuarioId', ObtenerUsuario);
+router.put('/:id/rol', actualizarRolUsuario); 
+router.put('/:id/estado', actualizarEstadoOperativo); // <-- LA RUTA MÁGICA
 
-
-// Exportamos
 export default router;

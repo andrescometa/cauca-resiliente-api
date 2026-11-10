@@ -1,21 +1,20 @@
-// Importamos mongoose
 import mongoose from 'mongoose';
 
-// Definimos cómo será un usuario
 const usuarioSchema = new mongoose.Schema({
   _id: Number,                              
-  nombres: String,
-  apellidos: String,
+  nombres: { type: String, required: true },
+  apellidos: { type: String, required: true },
   tipo_documento: String,                   
-  identificacion: String,
+  identificacion: { type: String, required: true },
   genero: String, 
   edad: Number, 
-  email: String,
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
   telefono: String,
   ciudad: String,
   direccion: String,
-  fecha_registro: Date,
-  rol: String,                              
+  fecha_registro: { type: Date, default: Date.now },
+  rol_id: { type: Number, default: 1 },
   tipo_sangre: String,                      
   alergias: [String],
   discapacidades: [String],
@@ -24,11 +23,11 @@ const usuarioSchema = new mongoose.Schema({
     telefono: String,
     parentesco: String
   },
+  estado_operativo: { type: String, default: 'Disponible' }, // <-- IMPORTANTE
   activo: { type: Boolean, default: true }
 }, {
-  collection: 'usuarios',                   // Nombre de la colección en Mongo
-  versionKey: false                         // Quitamos el "__v"
+  collection: 'usuarios',                   
+  versionKey: false                         
 });
 
-// Exportamos el modelo
 export default mongoose.model('Usuario', usuarioSchema);

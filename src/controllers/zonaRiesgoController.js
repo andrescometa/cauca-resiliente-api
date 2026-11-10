@@ -104,3 +104,12 @@ function calcularDistancia(lat1, lon1, lat2, lon2) {
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   return R * c;                                       // Distancia en metros
 }
+// ============ LISTAR TODAS LAS ZONAS DE RIESGO ============
+export const listarZonasRiesgo = async (req, res) => {
+  try {
+    const zonas = await ZonaRiesgo.find();
+    res.status(200).json(zonas);
+  } catch (error) {
+    res.status(500).json({ mensaje: 'Error al listar zonas', error: error.message });
+  }
+};

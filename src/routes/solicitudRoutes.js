@@ -1,16 +1,14 @@
 import express from 'express';
+import { 
+  crearSolicitud, 
+  listarSolicitudes, // <-- AQUÍ ESTABA EL ERROR: se llama listarSolicitudes
+  actualizarEstadoSolicitud 
+} from '../controllers/solicitudController.js';
 
-// Importamos las funciones del controlador
-import { crearSolicitud, listarSolicitudes } from '../controllers/solicitudController.js';
-
-// Creamos el router
 const router = express.Router();
 
-// POST /api/solicitudes → crear
-router.post('/', crearSolicitud);
+router.post('/', crearSolicitud); 
+router.get('/', listarSolicitudes); // <-- Y aquí también
+router.put('/:id', actualizarEstadoSolicitud); 
 
-// GET /api/solicitudes → listar priorizadas
-router.get('/', listarSolicitudes);
-
-// Exportamos
 export default router;
