@@ -142,4 +142,45 @@ export const profile = async (req, res) => {
   }
 };
 
+// Actualiza la ubicacion actual del usuario autenticado. La app Android la
+// llama desde POST /api/user/location y espera { success, user }.
+export const updateLocation = async (req, res) => {
+  try {
+    const auth = req.headers.authorization || '';
+    const token = auth.replace('Bearer ', '');
+    const decoded = jwt.verify(token, SECRET);
+
+    const { latitude, longitude, address } = req.body;
+    const lat = Number(latitude);
+    const lng = Number(longitude);
+
+    if (Number.isNaN(lat) || Number.isNaN(lng)) {
+      return res.status(400).json({ mensaje: 'latitude y longitude son obligatorios' });
+    }
+    if (lat < -90 || lat > 90 || lng < -180 || lng > 180) {
+      return res.status(400).json({ mensaje: 'Coordenadas invalidas' });
+    }
+
+    const usuario = await Usuario.findById(Number(decoded.id));
+    if (!usuario) return res.status(404).json({ mensaje: 'Usuario no encontrado' });
+
+    usuario.ubicacion_actual = { type: 'Point', coordinates: [lng, lat] };
+    if (address) usuario.direccion = address;
+    await usuario.save();
+
+    res.json({
+      success: true,
+      user: {
+        id: String(usuario._id),
+        name: usuario.nombres,
+        email: usuario.email,
+        phone: usuario.telefono,
+        direccion: usuario.direccion ?? null
+      }
+    });
+  } catch (e) {
+    res.status(401).json({ mensaje: 'No autorizado' });
+  }
+};
+
 export { esSocorrista };

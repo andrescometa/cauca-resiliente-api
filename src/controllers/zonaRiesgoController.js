@@ -117,14 +117,22 @@ export const consultarZonasCercanas = async (req, res) => {
 };
 
 // ============ LISTAR TODAS LAS ZONAS DE RIESGO ============
+// La app Android espera { mensaje, total, zonas }.
 export const listarZonasRiesgo = async (req, res) => {
   try {
-    const zonas = await ZonaRiesgo.find();
-    res.status(200).json(zonas);
+    const zonas = await ZonaRiesgo.find({ activa: { $ne: false } });
+    res.status(200).json({
+      mensaje: 'Zonas de riesgo',
+      total: zonas.length,
+      zonas
+    });
   } catch (error) {
     res.status(500).json({ mensaje: 'Error al listar zonas', error: error.message });
   }
 };
+
+// Alias en plural conservado por compatibilidad con clientes anteriores.
+export const listarZonas = listarZonasRiesgo;
 
 // Usa la fórmula de Haversine para calcular la distancia entre 2 puntos en metros
 function calcularDistancia(lat1, lon1, lat2, lon2) {

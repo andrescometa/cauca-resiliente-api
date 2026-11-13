@@ -78,10 +78,22 @@ export const listarAsignacionesPorSocorrista = async (req, res) => {
       })
       .sort({ fecha_hora_asignacion: -1 });
 
+    // Los identificadores son numéricos, por eso no se puede usar populate().
+    // Adjuntamos la solicitud a cada asignación manualmente.
+    const solicitudes = await Solicitud.find({
+      _id: { $in: asignaciones.map((a) => a.solicitud_id) }
+    });
+    const porId = new Map(solicitudes.map((s) => [s._id, s]));
+
+    const asignacionesConSolicitud = asignaciones.map((a) => ({
+      ...a.toObject(),
+      solicitud_id: porId.get(a.solicitud_id) ?? a.solicitud_id
+    }));
+
     res.status(200).json({
       mensaje: 'Solicitudes asignadas',
-      total: asignaciones.length,
-      asignaciones
+      total: asignacionesConSolicitud.length,
+      asignaciones: asignacionesConSolicitud
     });
   } catch (error) {
     res.status(500).json({ mensaje: 'Error al listar asignaciones', error: error.message });
