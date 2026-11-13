@@ -1,24 +1,14 @@
-// ===== ARCHIVO: controllers/usuarioController.js =====
 import Usuario from '../models/usuario.js';
 import bcrypt from 'bcryptjs';
 
+// ============ REGISTRAR USUARIO ============
 export const registrarUsuario = async (req, res) => {
   try {
-    const { 
-      email, password, nombres, apellidos, identificacion, 
-      rol_id, departamento_id, municipio_id, tipo_documento, telefono
-    } = req.body;
-    
-    // Validación manual y estricta (si falla, responde con error 400 y no rompe Mongoose)
-    if (!departamento_id || !municipio_id || !tipo_documento || !telefono) {
-      return res.status(400).json({ mensaje: 'Faltan datos obligatorios (Departamento, Municipio, Tipo de Doc o Teléfono).' });
-    }
-
+    const { email, password, nombres, apellidos, identificacion } = req.body;
     const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!regexEmail.test(email)) {
       return res.status(400).json({ mensaje: 'El correo electrónico no es válido' });
     }
-
     const usuarioExiste = await Usuario.findOne({ email });
     if (usuarioExiste) {
       return res.status(400).json({ mensaje: 'El correo ya está registrado' });
@@ -131,3 +121,4 @@ export const actualizarEstadoOperativo = async (req, res) => {
     res.status(500).json({ mensaje: 'Error al actualizar estado', error: error.message });
   }
 };
+

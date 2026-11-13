@@ -1,29 +1,31 @@
-// ===== ARCHIVO: models/usuario.js =====
 import mongoose from 'mongoose';
 
+// Ubicación GeoJSON opcional. Se define como subesquema para evitar que
+// Mongoose cree un Point vacío (coordinates: []) y rompa el índice 2dsphere.
+const ubicacionActualSchema = new mongoose.Schema({
+  type: { type: String, enum: ['Point'], default: 'Point' },
+  coordinates: [Number]
+}, { _id: false });
+
 const usuarioSchema = new mongoose.Schema({
-  _id: { type: Number },
+  _id: Number,
   nombres: { type: String, required: true },
   apellidos: { type: String, required: true },
-  tipo_documento: { type: String }, // Ya no es required a nivel de Mongoose
+  tipo_documento: String,
   identificacion: { type: String, required: true },
-  genero: { type: String },
-  edad: { type: Number },
+  genero: String,
+  edad: Number,
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  telefono: { type: String, required: true },
-  
-  // AQUÍ ESTABA EL ERROR: Mongoose los rechazaba
-  departamento_id: { type: Number, ref: 'Departamento' }, 
-  municipio_id: { type: Number, ref: 'Municipio' }, 
-  direccion: { type: String },
-  
+  telefono: String,
+  ciudad: String,
+  direccion: String,
   fecha_registro: { type: Date, default: Date.now },
-  rol: String,                              
   rol_id: { type: Number, default: 1 },
-  tipo_sangre: { type: String },                      
-  alergias: { type: [String], default: ['Ninguna'] },
-  discapacidades: { type: [String], default: ['Ninguna'] },
+  rol: String,
+  tipo_sangre: String,
+  alergias: [String],
+  discapacidades: [String],
   contacto_emergencia: {
     nombre: { type: String },
     telefono: { type: String },
@@ -31,8 +33,8 @@ const usuarioSchema = new mongoose.Schema({
   },
   estado_operativo: { type: String, default: 'Disponible' },
   ubicacion_actual: {
-    type: { type: String, enum: ['Point'], default: 'Point' },
-    coordinates: [Number]
+    type: ubicacionActualSchema,
+    default: undefined
   },
   activo: { type: Boolean, default: true }
 }, {
