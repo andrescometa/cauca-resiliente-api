@@ -1,6 +1,13 @@
 // Importamos mongoose
 import mongoose from 'mongoose';
 
+// Ubicación GeoJSON opcional. Se define como subesquema para evitar que
+// Mongoose cree un Point vacío (coordinates: []) y rompa el índice 2dsphere.
+const ubicacionActualSchema = new mongoose.Schema({
+  type: { type: String, enum: ['Point'], default: 'Point' },
+  coordinates: [Number]
+}, { _id: false });
+
 // Definimos cómo será un usuario
 const usuarioSchema = new mongoose.Schema({
   nombres: String,
@@ -26,8 +33,8 @@ const usuarioSchema = new mongoose.Schema({
     parentesco: String
   },
   ubicacion_actual: {
-    type: { type: String, enum: ['Point'], default: 'Point' },
-    coordinates: [Number]
+    type: ubicacionActualSchema,
+    default: undefined
   },
   activo: { type: Boolean, default: true }
 }, {
