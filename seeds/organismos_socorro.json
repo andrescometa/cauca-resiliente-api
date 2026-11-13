@@ -1,7 +1,7 @@
 [
   {
     "_id": {
-      "$oid": "6b0000000000000000000001"
+      "$numberInt": "1"
     },
     "nombre_organismo": "Cuerpo de Bomberos Voluntarios Popayán",
     "tipo": "Bomberos",
@@ -31,7 +31,7 @@
   },
   {
     "_id": {
-      "$oid": "6b0000000000000000000002"
+      "$numberInt": "2"
     },
     "nombre_organismo": "Cruz Roja Colombiana Seccional Cauca",
     "tipo": "Atención Médica",
@@ -61,7 +61,7 @@
   },
   {
     "_id": {
-      "$oid": "6b0000000000000000000003"
+      "$numberInt": "3"
     },
     "nombre_organismo": "Defensa Civil Seccional Cauca",
     "tipo": "Rescate y Evacuación",
@@ -90,7 +90,7 @@
   },
   {
     "_id": {
-      "$oid": "6b0000000000000000000004"
+      "$numberInt": "4"
     },
     "nombre_organismo": "Scouts de Emergencia Popayán",
     "tipo": "Apoyo Logístico",
@@ -119,7 +119,7 @@
   },
   {
     "_id": {
-      "$oid": "6b0000000000000000000005"
+      "$numberInt": "5"
     },
     "nombre_organismo": "Policía Nacional - Estación Popayán",
     "tipo": "Policía",

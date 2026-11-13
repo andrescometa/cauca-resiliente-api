@@ -1,7 +1,7 @@
 [
   {
     "_id": {
-      "$oid": "650000000000000000000001"
+      "$numberInt": "1"
     },
     "nombre": "Estudiante",
     "descripcion": "Ciudadano/Estudiante que reporta su estado y solicita ayuda",
@@ -23,7 +23,7 @@
   },
   {
     "_id": {
-      "$oid": "650000000000000000000002"
+      "$numberInt": "2"
     },
     "nombre": "Socorrista",
     "descripcion": "Personal de rescate que atiende emergencias",
@@ -45,7 +45,7 @@
   },
   {
     "_id": {
-      "$oid": "650000000000000000000003"
+      "$numberInt": "3"
     },
     "nombre": "Administrador Refugio",
     "descripcion": "Gestiona refugios y suministros",
@@ -66,7 +66,7 @@
   },
   {
     "_id": {
-      "$oid": "650000000000000000000004"
+      "$numberInt": "4"
     },
     "nombre": "Centro de Control",
     "descripcion": "Coordina misiones y recursos",
@@ -87,7 +87,7 @@
   },
   {
     "_id": {
-      "$oid": "650000000000000000000005"
+      "$numberInt": "5"
     },
     "nombre": "Administrador",
     "descripcion": "Acceso total al sistema",

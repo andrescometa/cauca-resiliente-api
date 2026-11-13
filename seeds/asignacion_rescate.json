@@ -1,16 +1,16 @@
 [
   {
     "_id": {
-      "$oid": "6f0000000000000000000001"
+      "$numberInt": "1"
     },
     "solicitud_id": {
-      "$oid": "690000000000000000000001"
+      "$numberInt": "1"
     },
     "organismo_id": {
-      "$oid": "6b0000000000000000000002"
+      "$numberInt": "2"
     },
     "socorrista_usuario_id": {
-      "$oid": "660000000000000000000003"
+      "$numberInt": "3"
     },
     "estado_atencion": "Finalizado",
     "fecha_hora_asignacion": {
@@ -36,16 +36,16 @@
   },
   {
     "_id": {
-      "$oid": "6f0000000000000000000002"
+      "$numberInt": "2"
     },
     "solicitud_id": {
-      "$oid": "690000000000000000000002"
+      "$numberInt": "2"
     },
     "organismo_id": {
-      "$oid": "6b0000000000000000000003"
+      "$numberInt": "3"
     },
     "socorrista_usuario_id": {
-      "$oid": "660000000000000000000006"
+      "$numberInt": "6"
     },
     "estado_atencion": "En camino",
     "fecha_hora_asignacion": {
@@ -63,16 +63,16 @@
   },
   {
     "_id": {
-      "$oid": "6f0000000000000000000003"
+      "$numberInt": "3"
     },
     "solicitud_id": {
-      "$oid": "690000000000000000000004"
+      "$numberInt": "4"
     },
     "organismo_id": {
-      "$oid": "6b0000000000000000000001"
+      "$numberInt": "1"
     },
     "socorrista_usuario_id": {
-      "$oid": "660000000000000000000006"
+      "$numberInt": "6"
     },
     "estado_atencion": "En el sitio",
     "fecha_hora_asignacion": {
@@ -94,16 +94,16 @@
   },
   {
     "_id": {
-      "$oid": "6f0000000000000000000004"
+      "$numberInt": "4"
     },
     "solicitud_id": {
-      "$oid": "690000000000000000000005"
+      "$numberInt": "5"
     },
     "organismo_id": {
-      "$oid": "6b0000000000000000000002"
+      "$numberInt": "2"
     },
     "socorrista_usuario_id": {
-      "$oid": "660000000000000000000003"
+      "$numberInt": "3"
     },
     "estado_atencion": "En el sitio",
     "fecha_hora_asignacion": {
@@ -125,16 +125,16 @@
   },
   {
     "_id": {
-      "$oid": "6ab3267af2126f52e347aa9c"
+      "$numberInt": "5"
     },
     "solicitud_id": {
-      "$oid": "690000000000000000000008"
+      "$numberInt": "8"
     },
     "organismo_id": {
-      "$oid": "6b0000000000000000000001"
+      "$numberInt": "1"
     },
     "socorrista_usuario_id": {
-      "$oid": "660000000000000000000003"
+      "$numberInt": "3"
     },
     "estado_atencion": "Finalizado",
     "fecha_hora_llegada": {

@@ -1,16 +1,20 @@
 import mongoose from 'mongoose';
 
-const pointSchema = new mongoose.Schema({
+const puntoSchema = new mongoose.Schema({
   type: { type: String, enum: ['Point'], default: 'Point' },
   coordinates: { type: [Number], required: true } // [longitud, latitud]
 }, { _id: false });
 
 const zonaRiesgoSchema = new mongoose.Schema({
-  nombre_zona: { type: String, required: true },
+  _id: Number,
+  nombre_zona: String,
+  tipo: String,
   tipo_riesgo: String,
   nivel_peligro: String,
   descripcion: String,
-  coordenadas_centro: pointSchema,
+  latitud: Number,
+  longitud: Number,
+  coordenadas_centro: { type: puntoSchema, default: undefined },
   radio_metros: Number,
   area_afectada: mongoose.Schema.Types.Mixed,
   estado_zona: String,
@@ -18,6 +22,7 @@ const zonaRiesgoSchema = new mongoose.Schema({
   imagenes_satelitales: [String],
   poblacion_estimada: Number,
   activa: { type: Boolean, default: true },
+  fecha_registro: Date,
   fecha_deteccion: Date,
   fecha_actualizacion: Date
 }, {

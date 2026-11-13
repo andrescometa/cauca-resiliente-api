@@ -1,7 +1,7 @@
 [
   {
     "_id": {
-      "$oid": "660000000000000000000001"
+      "$numberInt": "1"
     },
     "nombres": "María Fernanda",
     "apellidos": "Valencia Gómez",
@@ -16,7 +16,7 @@
     "ciudad": "Popayán",
     "direccion": "Calle 5 # 3-12",
     "rol_id": {
-      "$oid": "650000000000000000000001"
+      "$numberInt": "1"
     },
     "fecha_registro": {
       "$date": {
@@ -57,7 +57,7 @@
   },
   {
     "_id": {
-      "$oid": "660000000000000000000002"
+      "$numberInt": "2"
     },
     "nombres": "Carlos",
     "apellidos": "Mina",
@@ -72,7 +72,7 @@
     "ciudad": "Popayán",
     "direccion": "Calle 5 # 6-20, Centro, Popayán",
     "rol_id": {
-      "$oid": "650000000000000000000001"
+      "$numberInt": "1"
     },
     "fecha_registro": {
       "$date": {
@@ -113,7 +113,7 @@
   },
   {
     "_id": {
-      "$oid": "660000000000000000000003"
+      "$numberInt": "3"
     },
     "nombres": "Laura Sofía",
     "apellidos": "Díaz",
@@ -128,7 +128,7 @@
     "ciudad": "Popayán",
     "direccion": "Avenida Norte # 15-45",
     "rol_id": {
-      "$oid": "650000000000000000000002"
+      "$numberInt": "2"
     },
     "fecha_registro": {
       "$date": {
@@ -169,7 +169,7 @@
   },
   {
     "_id": {
-      "$oid": "660000000000000000000004"
+      "$numberInt": "4"
     },
     "nombres": "Jorge Alberto",
     "apellidos": "Cauca Hurtado",
@@ -184,7 +184,7 @@
     "ciudad": "Popayán",
     "direccion": "Carrera 6 # 12-30, Norte, Popayán",
     "rol_id": {
-      "$oid": "650000000000000000000001"
+      "$numberInt": "1"
     },
     "fecha_registro": {
       "$date": {
@@ -225,7 +225,7 @@
   },
   {
     "_id": {
-      "$oid": "660000000000000000000005"
+      "$numberInt": "5"
     },
     "nombres": "Ana",
     "apellidos": "López Mosquera",
@@ -240,7 +240,7 @@
     "ciudad": "Popayán",
     "direccion": "Calle 12 # 7-56",
     "rol_id": {
-      "$oid": "650000000000000000000001"
+      "$numberInt": "1"
     },
     "fecha_registro": {
       "$date": {
@@ -281,7 +281,7 @@
   },
   {
     "_id": {
-      "$oid": "660000000000000000000006"
+      "$numberInt": "6"
     },
     "nombres": "Pedro",
     "apellidos": "Guerrero",
@@ -296,7 +296,7 @@
     "ciudad": "Popayán",
     "direccion": "Calle 18 # 8-15, Sur, Popayán",
     "rol_id": {
-      "$oid": "650000000000000000000002"
+      "$numberInt": "2"
     },
     "fecha_registro": {
       "$date": {
@@ -337,7 +337,7 @@
   },
   {
     "_id": {
-      "$oid": "660000000000000000000007"
+      "$numberInt": "7"
     },
     "nombres": "Juan Pablo",
     "apellidos": "Arias Delgado",
@@ -352,7 +352,7 @@
     "ciudad": "Popayán",
     "direccion": "Carrera 9 # 2-15",
     "rol_id": {
-      "$oid": "650000000000000000000001"
+      "$numberInt": "1"
     },
     "fecha_registro": {
       "$date": {
@@ -393,7 +393,7 @@
   },
   {
     "_id": {
-      "$oid": "660000000000000000000008"
+      "$numberInt": "8"
     },
     "nombres": "Daniela",
     "apellidos": "Burbano",
@@ -408,7 +408,7 @@
     "ciudad": "Popayán",
     "direccion": "Calle 25 # 9-40",
     "rol_id": {
-      "$oid": "650000000000000000000001"
+      "$numberInt": "1"
     },
     "fecha_registro": {
       "$date": {
@@ -449,7 +449,7 @@
   },
   {
     "_id": {
-      "$oid": "660000000000000000000009"
+      "$numberInt": "9"
     },
     "nombres": "Santiago Esteban",
     "apellidos": "Ortega Paz",
@@ -464,7 +464,7 @@
     "ciudad": "Popayán",
     "direccion": "Carrera 9 # 25-40, Popayán",
     "rol_id": {
-      "$oid": "650000000000000000000001"
+      "$numberInt": "1"
     },
     "fecha_registro": {
       "$date": {
@@ -505,7 +505,7 @@
   },
   {
     "_id": {
-      "$oid": "660000000000000000000010"
+      "$numberInt": "10"
     },
     "nombres": "Valentina",
     "apellidos": "Muñoz Rivera",
@@ -520,7 +520,7 @@
     "ciudad": "Popayán",
     "direccion": "Carrera 11 # 18-22",
     "rol_id": {
-      "$oid": "650000000000000000000002"
+      "$numberInt": "2"
     },
     "fecha_registro": {
       "$date": {
@@ -561,7 +561,7 @@
   },
   {
     "_id": {
-      "$oid": "6ae9fe9b36267b24bb9a9c23"
+      "$numberInt": "11"
     },
     "nombres": "Didier",
     "apellidos": "Felipe valencia",
@@ -577,7 +577,7 @@
     },
     "rol": "usuario",
     "rol_id": {
-      "$oid": "650000000000000000000001"
+      "$numberInt": "1"
     },
     "alergias": [],
     "discapacidades": [],

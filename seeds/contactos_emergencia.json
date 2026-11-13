@@ -1,10 +1,10 @@
 [
   {
     "_id": {
-      "$oid": "6c0000000000000000000001"
+      "$numberInt": "1"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000001"
+      "$numberInt": "1"
     },
     "nombre_contacto": "Luisa Gómez",
     "telefono_contacto": "3176543210",
@@ -16,10 +16,10 @@
   },
   {
     "_id": {
-      "$oid": "6c0000000000000000000002"
+      "$numberInt": "2"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000001"
+      "$numberInt": "1"
     },
     "nombre_contacto": "Carlos Valencia",
     "telefono_contacto": "3156789012",
@@ -31,10 +31,10 @@
   },
   {
     "_id": {
-      "$oid": "6c0000000000000000000003"
+      "$numberInt": "3"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000002"
+      "$numberInt": "2"
     },
     "nombre_contacto": "Ana Mina",
     "telefono_contacto": "3109876543",
@@ -46,10 +46,10 @@
   },
   {
     "_id": {
-      "$oid": "6c0000000000000000000004"
+      "$numberInt": "4"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000003"
+      "$numberInt": "3"
     },
     "nombre_contacto": "Roberto Díaz",
     "telefono_contacto": "3187654321",
@@ -61,10 +61,10 @@
   },
   {
     "_id": {
-      "$oid": "6c0000000000000000000005"
+      "$numberInt": "5"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000004"
+      "$numberInt": "4"
     },
     "nombre_contacto": "Patricia Cauca",
     "telefono_contacto": "3154321098",
@@ -76,10 +76,10 @@
   },
   {
     "_id": {
-      "$oid": "6c0000000000000000000006"
+      "$numberInt": "6"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000005"
+      "$numberInt": "5"
     },
     "nombre_contacto": "Carlos López",
     "telefono_contacto": "3124567890",
@@ -91,10 +91,10 @@
   },
   {
     "_id": {
-      "$oid": "6c0000000000000000000007"
+      "$numberInt": "7"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000006"
+      "$numberInt": "6"
     },
     "nombre_contacto": "Marta Guerrero",
     "telefono_contacto": "3161234567",
@@ -106,10 +106,10 @@
   },
   {
     "_id": {
-      "$oid": "6c0000000000000000000008"
+      "$numberInt": "8"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000007"
+      "$numberInt": "7"
     },
     "nombre_contacto": "Andrés Arias",
     "telefono_contacto": "3149876543",
@@ -121,10 +121,10 @@
   },
   {
     "_id": {
-      "$oid": "6c0000000000000000000009"
+      "$numberInt": "9"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000008"
+      "$numberInt": "8"
     },
     "nombre_contacto": "Gloria Burbano",
     "telefono_contacto": "3171234567",
@@ -136,10 +136,10 @@
   },
   {
     "_id": {
-      "$oid": "6c0000000000000000000010"
+      "$numberInt": "10"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000009"
+      "$numberInt": "9"
     },
     "nombre_contacto": "Felipe Ortega",
     "telefono_contacto": "3134567890",
@@ -151,10 +151,10 @@
   },
   {
     "_id": {
-      "$oid": "6c0000000000000000000011"
+      "$numberInt": "11"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000010"
+      "$numberInt": "10"
     },
     "nombre_contacto": "Diana Rivera",
     "telefono_contacto": "3198765432",

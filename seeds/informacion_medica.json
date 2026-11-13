@@ -1,10 +1,10 @@
 [
   {
     "_id": {
-      "$oid": "6a0000000000000000000001"
+      "$numberInt": "1"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000001"
+      "$numberInt": "1"
     },
     "tipo_sangre": "O+",
     "eps": "Nueva EPS",
@@ -35,10 +35,10 @@
   },
   {
     "_id": {
-      "$oid": "6a0000000000000000000002"
+      "$numberInt": "2"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000002"
+      "$numberInt": "2"
     },
     "tipo_sangre": "A+",
     "eps": "Sanitas",
@@ -68,10 +68,10 @@
   },
   {
     "_id": {
-      "$oid": "6a0000000000000000000003"
+      "$numberInt": "3"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000003"
+      "$numberInt": "3"
     },
     "tipo_sangre": "B+",
     "eps": "Salud Total",
@@ -97,10 +97,10 @@
   },
   {
     "_id": {
-      "$oid": "6a0000000000000000000004"
+      "$numberInt": "4"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000004"
+      "$numberInt": "4"
     },
     "tipo_sangre": "AB+",
     "eps": "Asmet Salud",
@@ -131,10 +131,10 @@
   },
   {
     "_id": {
-      "$oid": "6a0000000000000000000005"
+      "$numberInt": "5"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000005"
+      "$numberInt": "5"
     },
     "tipo_sangre": "O-",
     "eps": "Nueva EPS",
@@ -166,10 +166,10 @@
   },
   {
     "_id": {
-      "$oid": "6a0000000000000000000006"
+      "$numberInt": "6"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000006"
+      "$numberInt": "6"
     },
     "tipo_sangre": "O+",
     "eps": "Coosalud",
@@ -193,10 +193,10 @@
   },
   {
     "_id": {
-      "$oid": "6a0000000000000000000007"
+      "$numberInt": "7"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000007"
+      "$numberInt": "7"
     },
     "tipo_sangre": "A-",
     "eps": "Sanitas",
@@ -228,10 +228,10 @@
   },
   {
     "_id": {
-      "$oid": "6a0000000000000000000008"
+      "$numberInt": "8"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000008"
+      "$numberInt": "8"
     },
     "tipo_sangre": "B-",
     "eps": "Nueva EPS",
@@ -255,10 +255,10 @@
   },
   {
     "_id": {
-      "$oid": "6a0000000000000000000009"
+      "$numberInt": "9"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000009"
+      "$numberInt": "9"
     },
     "tipo_sangre": "O+",
     "eps": "Salud Total",
@@ -286,10 +286,10 @@
   },
   {
     "_id": {
-      "$oid": "6a0000000000000000000010"
+      "$numberInt": "10"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000010"
+      "$numberInt": "10"
     },
     "tipo_sangre": "AB-",
     "eps": "Asmet Salud",

@@ -1,7 +1,9 @@
 import mongoose from 'mongoose';
 
+// Contactos de emergencia registrados por un usuario.
 const contactoEmergenciaSchema = new mongoose.Schema({
-  usuario_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Usuario', required: true },
+  _id: Number,
+  usuario_id: { type: Number, required: true },
   nombre_contacto: String,
   telefono_contacto: String,
   parentesco: String,

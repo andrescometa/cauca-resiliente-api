@@ -1,17 +1,24 @@
-// Importamos mongoose
 import mongoose from 'mongoose';
 
-// Definimos cómo será una asignación de rescate
+// Asignación de una solicitud a un socorrista.
+// Los documentos existentes usan socorrista_usuario_id; se conserva
+// socorrista_id como alias para compatibilidad con datos anteriores.
 const asignacionSchema = new mongoose.Schema({
-  _id: Number,                         
-  solicitud_id: Number,                 
-  socorrista_id: Number,                
-  estado_atencion: String,             
-  fecha_asignacion: Date               
+  _id: Number,
+  solicitud_id: { type: Number, required: true },
+  organismo_id: { type: Number, default: null },
+  socorrista_usuario_id: { type: Number, required: true },
+  socorrista_id: { type: Number, default: null },
+  estado_atencion: String,
+  fecha_asignacion: Date,
+  fecha_hora_asignacion: Date,
+  fecha_hora_llegada: Date,
+  fecha_hora_cierre: Date,
+  observaciones: String,
+  recursos_utilizados: [String]
 }, {
-  collection: 'asignacion_rescate',     // Nombre de la colección en Mongo
+  collection: 'asignacion_rescate',
   versionKey: false
 });
 
-// Exportamos el modelo
 export default mongoose.model('Asignacion', asignacionSchema);

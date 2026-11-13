@@ -1,7 +1,7 @@
 [
   {
     "_id": {
-      "$oid": "6d0000000000000000000001"
+      "$numberInt": "1"
     },
     "nombre_zona": "Laderas del Barrio La Villa",
     "nivel_peligro": "Alto",
@@ -44,7 +44,7 @@
   },
   {
     "_id": {
-      "$oid": "6d0000000000000000000002"
+      "$numberInt": "2"
     },
     "nombre_zona": "Régimen del Río Molino - Comuna 6",
     "nivel_peligro": "Inminente",
@@ -87,7 +87,7 @@
   },
   {
     "_id": {
-      "$oid": "6d0000000000000000000003"
+      "$numberInt": "3"
     },
     "nombre_zona": "Centro Histórico",
     "nivel_peligro": "Moderado",
@@ -129,7 +129,7 @@
   },
   {
     "_id": {
-      "$oid": "6d0000000000000000000004"
+      "$numberInt": "4"
     },
     "nombre_zona": "Sector Puente del Humilladero",
     "nivel_peligro": "Moderado",
@@ -171,7 +171,7 @@
   },
   {
     "_id": {
-      "$oid": "6d0000000000000000000005"
+      "$numberInt": "5"
     },
     "nombre_zona": "Variante Norte - Tramo Bellavista",
     "nivel_peligro": "Alto",

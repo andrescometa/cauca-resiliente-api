@@ -1,7 +1,7 @@
 [
   {
     "_id": {
-      "$oid": "700000000000000000000001"
+      "$numberInt": "1"
     },
     "tipo_alerta": "Evacuación",
     "mensaje": "Evacuación preventiva en Laderas del Barrio La Villa por riesgo de derrumbe",
@@ -22,14 +22,14 @@
     },
     "usuarios_notificados": [
       {
-        "$oid": "660000000000000000000001"
+        "$numberInt": "1"
       },
       {
-        "$oid": "660000000000000000000007"
+        "$numberInt": "7"
       }
     ],
     "emitida_por": {
-      "$oid": "660000000000000000000010"
+      "$numberInt": "10"
     },
     "activa": true,
     "fecha_emision": {
@@ -45,7 +45,7 @@
   },
   {
     "_id": {
-      "$oid": "700000000000000000000002"
+      "$numberInt": "2"
     },
     "tipo_alerta": "Réplica",
     "mensaje": "Réplica de magnitud 4.5 detectada. Mantenga la calma y ubíquese en zonas seguras",
@@ -66,23 +66,23 @@
     },
     "usuarios_notificados": [
       {
-        "$oid": "660000000000000000000001"
+        "$numberInt": "1"
       },
       {
-        "$oid": "660000000000000000000002"
+        "$numberInt": "2"
       },
       {
-        "$oid": "660000000000000000000003"
+        "$numberInt": "3"
       },
       {
-        "$oid": "660000000000000000000005"
+        "$numberInt": "5"
       },
       {
-        "$oid": "660000000000000000000007"
+        "$numberInt": "7"
       }
     ],
     "emitida_por": {
-      "$oid": "660000000000000000000010"
+      "$numberInt": "10"
     },
     "activa": true,
     "fecha_emision": {
@@ -98,7 +98,7 @@
   },
   {
     "_id": {
-      "$oid": "700000000000000000000003"
+      "$numberInt": "3"
     },
     "tipo_alerta": "Vía Bloqueada",
     "mensaje": "Variante Norte - Tramo Bellavista bloqueado por deslizamiento",
@@ -119,7 +119,7 @@
     },
     "usuarios_notificados": [],
     "emitida_por": {
-      "$oid": "660000000000000000000010"
+      "$numberInt": "10"
     },
     "activa": true,
     "fecha_emision": {
@@ -131,7 +131,7 @@
   },
   {
     "_id": {
-      "$oid": "700000000000000000000004"
+      "$numberInt": "4"
     },
     "tipo_alerta": "Refugio Disponible",
     "mensaje": "Refugio habilitado en el Coliseo Municipal. Capacidad para 200 personas",
@@ -152,7 +152,7 @@
     },
     "usuarios_notificados": [],
     "emitida_por": {
-      "$oid": "660000000000000000000010"
+      "$numberInt": "10"
     },
     "activa": true,
     "fecha_emision": {

@@ -1,10 +1,10 @@
 [
   {
     "_id": {
-      "$oid": "6e0000000000000000000001"
+      "$numberInt": "1"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000001"
+      "$numberInt": "1"
     },
     "universidad": "Uniautónoma del Cauca",
     "carrera": "Ingeniería de Software",
@@ -17,10 +17,10 @@
   },
   {
     "_id": {
-      "$oid": "6e0000000000000000000002"
+      "$numberInt": "2"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000002"
+      "$numberInt": "2"
     },
     "universidad": "Universidad del Cauca",
     "carrera": "Ingeniería Civil",
@@ -33,10 +33,10 @@
   },
   {
     "_id": {
-      "$oid": "6e0000000000000000000003"
+      "$numberInt": "3"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000004"
+      "$numberInt": "4"
     },
     "universidad": "Uniautónoma del Cauca",
     "carrera": "Derecho",
@@ -49,10 +49,10 @@
   },
   {
     "_id": {
-      "$oid": "6e0000000000000000000004"
+      "$numberInt": "4"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000005"
+      "$numberInt": "5"
     },
     "universidad": "Universidad del Cauca",
     "carrera": "Licenciatura en Educación",
@@ -65,10 +65,10 @@
   },
   {
     "_id": {
-      "$oid": "6e0000000000000000000005"
+      "$numberInt": "5"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000007"
+      "$numberInt": "7"
     },
     "universidad": "Uniautónoma del Cauca",
     "carrera": "Ingeniería de Software",
@@ -81,10 +81,10 @@
   },
   {
     "_id": {
-      "$oid": "6e0000000000000000000006"
+      "$numberInt": "6"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000008"
+      "$numberInt": "8"
     },
     "universidad": "Fundación Universitaria de Popayán",
     "carrera": "Arquitectura",
@@ -97,10 +97,10 @@
   },
   {
     "_id": {
-      "$oid": "6e0000000000000000000007"
+      "$numberInt": "7"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000009"
+      "$numberInt": "9"
     },
     "universidad": "Universidad del Cauca",
     "carrera": "Administración de Empresas",
