@@ -1,16 +1,19 @@
 import express from 'express';
+import { 
+  crearUbicacion, 
+  consultarHistorial,
+  listarDepartamentos,
+  listarMunicipiosPorDepartamento
+} from '../controllers/ubicacionController.js';
 
-// Importamos las funciones del controlador
-import { crearUbicacion, consultarHistorial } from '../controllers/ubicacionController.js';
-
-// Creamos el router
 const router = express.Router();
 
-// POST /api/ubicaciones → crear
-router.post('/', crearUbicacion);
+// 1. PRIMERO las rutas específicas (Departamentos y Municipios)
+router.get('/departamentos', listarDepartamentos);
+router.get('/municipios/:departamentoId', listarMunicipiosPorDepartamento);
 
-// GET /api/ubicaciones/:usuarioId → consultar historial
+// 2. DESPUÉS las rutas dinámicas (con :usuarioId)
+router.post('/', crearUbicacion);
 router.get('/:usuarioId', consultarHistorial);
 
-// Exportamos
 export default router;

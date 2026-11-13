@@ -1,21 +1,23 @@
+// ===== ARCHIVO: models/Solicitud.js =====
 import mongoose from 'mongoose';
 
-// Definimos cómo será una solicitud de ayuda
 const solicitudSchema = new mongoose.Schema({
-  usuario_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Usuario' },
-  tipo_ayuda: String,                      
+  // IMPORTANTE: Obligamos a que el ID sea un Número
+  _id: { type: Number },
+  usuario_id: { type: Number, required: true }, 
+  tipo_ayuda: { type: String, required: true },                      
   descripcion_emergencia: String,          
-  nivel_prioridad: String,                   
-  estado_solicitud: String,                 
+  nivel_prioridad: { type: String, required: true },                   
+  estado_solicitud: { type: String, default: 'Pendiente' }, 
   latitud: { type: Number, min: -90, max: 90 },
   longitud: { type: Number, min: -180, max: 180 },
-  personas_afectadas: Number,               
-  requiere_ambulancia: Boolean,             
-  fecha_hora: Date                        
+  personas_afectadas: { type: Number, default: 1 },               
+  requiere_ambulancia: { type: Boolean, default: false },   
+  socorrista_id: { type: Number, default: null }, 
+  fecha_hora: { type: Date, default: Date.now }                        
 }, {
-  collection: 'solicitudes_ayuda',          // Nombre de la colección
+  collection: 'solicitudes_ayuda',
   versionKey: false
 });
 
-// Exportamos el modelo
 export default mongoose.model('Solicitud', solicitudSchema);

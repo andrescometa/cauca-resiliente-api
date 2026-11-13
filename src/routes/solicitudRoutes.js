@@ -1,16 +1,19 @@
+// ===== ARCHIVO: routes/solicitudRoutes.js =====
 import express from 'express';
+import { 
+  crearSolicitud, 
+  listarSolicitudes, 
+  actualizarSolicitud, 
+  obtenerMiSolicitudActiva // <-- Importamos la nueva
+} from '../controllers/solicitudController.js';
 
-// Importamos las funciones del controlador
-import { crearSolicitud, listarSolicitudes } from '../controllers/solicitudController.js';
-
-// Creamos el router
 const router = express.Router();
 
-// POST /api/solicitudes → crear
 router.post('/', crearSolicitud);
-
-// GET /api/solicitudes → listar priorizadas
 router.get('/', listarSolicitudes);
+router.put('/:id', actualizarSolicitud);
 
-// Exportamos
+// RUTA NUEVA
+router.get('/activa/:usuarioId', obtenerMiSolicitudActiva);
+
 export default router;

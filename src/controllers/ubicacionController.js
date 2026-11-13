@@ -1,85 +1,58 @@
-// Importamos el modelo
 import mongoose from 'mongoose';
 import Ubicacion from '../models/Ubicacion.js';
+import Departamento from '../models/Departamento.js';
+import Municipio from '../models/Municipio.js';
 
+// ============ TU CÓDIGO ORIGINAL ============
 export const crearUbicacion = async (req, res) => {
   try {
-    // Tomamos los datos que vienen del body (Postman)
     const { usuario_id, latitud, longitud, direccion_aproximada, precision_metros, bateria } = req.body;
-
-    // Validación: usuario_id, latitud y longitud son obligatorios
     if (!usuario_id || latitud === undefined || longitud === undefined) {
-      return res.status(400).json({ mensaje: 'Faltan datos obligatorios (usuario_id, latitud, longitud)' });
+      return res.status(400).json({ mensaje: 'Faltan datos obligatorios' });
     }
-
-    // usuario_id debe ser un ObjectId válido
-    if (!mongoose.Types.ObjectId.isValid(usuario_id)) {
-      return res.status(400).json({ mensaje: 'usuario_id inválido' });
-    }
-
     const lat = Number(latitud);
     const lng = Number(longitud);
+    if (Number.isNaN(lat) || lat < -90 || lat > 90) return res.status(400).json({ mensaje: 'Latitud inválida' });
+    if (Number.isNaN(lng) || lng < -180 || lng > 180) return res.status(400).json({ mensaje: 'Longitud inválida' });
 
-    if (Number.isNaN(lat) || lat < -90 || lat > 90) {
-      return res.status(400).json({ mensaje: 'Latitud inválida (debe estar entre -90 y 90)' });
-    }
-    if (Number.isNaN(lng) || lng < -180 || lng > 180) {
-      return res.status(400).json({ mensaje: 'Longitud inválida (debe estar entre -180 y 180)' });
-    }
-
-    // Creamos la ubicación (Mongo genera el _id)
     const nuevaUbicacion = new Ubicacion({
-      usuario_id,
-      latitud: lat,
-      longitud: lng,
-      direccion_aproximada,
-      precision_metros,
-      bateria,
-      fecha_hora: new Date()              // Fecha automática del servidor
+      usuario_id, latitud: lat, longitud: lng, direccion_aproximada, precision_metros, bateria, fecha_hora: new Date()
     });
-
-    // La guardamos en MongoDB
     await nuevaUbicacion.save();
-
-    // Respondemos 201 (creado)
-    res.status(201).json({
-      mensaje: 'Ubicación registrada correctamente',
-      ubicacion: nuevaUbicacion
-    });
-
+    res.status(201).json({ mensaje: 'Ubicación registrada', ubicacion: nuevaUbicacion });
   } catch (error) {
-    res.status(400).json({
-      mensaje: 'Error al registrar ubicación',
-      error: error.message
-    });
+    res.status(400).json({ mensaje: 'Error al registrar', error: error.message });
   }
 };
 
 export const consultarHistorial = async (req, res) => {
   try {
-    // Tomamos el usuarioId de la URL
     const usuarioId = req.params.usuarioId;
-
-    if (!mongoose.Types.ObjectId.isValid(usuarioId)) {
-      return res.status(400).json({ mensaje: 'usuario_id inválido' });
-    }
-
-    // Buscamos todas las ubicaciones de ese usuario, ordenadas de más reciente a más antigua
     const historial = await Ubicacion.find({ usuario_id: usuarioId }).sort({ fecha_hora: -1 });
-
-    // Si no hay ubicaciones, 404
-    if (historial.length === 0) {
-      return res.status(404).json({ mensaje: 'No hay ubicaciones para ese usuario' });
-    }
-
-    // Respondemos 200 con el historial
-    res.status(200).json({
-      mensaje: 'Historial de ubicaciones',
-      total: historial.length,
-      historial
-    });
-
+    if (historial.length === 0) return res.status(404).json({ mensaje: 'No hay ubicaciones para ese usuario' });
+    res.status(200).json({ mensaje: 'Historial de ubicaciones', total: historial.length, historial });
   } catch (error) {
     res.status(500).json({ mensaje: 'Error al consultar historial', error: error.message });
+  }
+};
+
+// Listar Departamentos
+export const listarDepartamentos = async (req, res) => {
+  try {
+    const departamentos = await Departamento.find().sort({ nombre: 1 });
+    res.status(200).json(departamentos);
+  } catch (error) {
+    res.status(500).json({ mensaje: 'Error al listar departamentos', error: error.message });
+  }
+};
+// Listar Municipios por Departamento
+export const listarMunicipiosPorDepartamento = async (req, res) => {
+  try {
+    const { departamentoId } = req.params;
+    // Forzamos a número para que busque bien en la base de datos
+    const municipios = await Municipio.find({ departamento_id: Number(departamentoId) }).sort({ nombre: 1 });
+    res.status(200).json(municipios);
+  } catch (error) {
+    res.status(500).json({ mensaje: 'Error al listar municipios', error: error.message });
   }
 };

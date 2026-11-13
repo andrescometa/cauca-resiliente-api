@@ -1,22 +1,25 @@
-// Importamos express
 import express from 'express';
+import { 
+  registrarUsuario, 
+  loginUsuario, 
+  listarUsuarios, 
+  ObtenerUsuario,
+  actualizarRolUsuario,
+  actualizarEstadoOperativo
+} from '../controllers/usuarioController.js';
 
-// Importamos las funciones del controlador
-import { crearUsuario, listarUsuarios , ObtenerUsuario } from '../controllers/usuarioController.js';
-
-// Creamos el router
 const router = express.Router();
 
-// POST /api/usuarios → crear
-router.post('/', crearUsuario);
+// 1. PRIMERO van las rutas específicas (login, registro, etc.)
+router.post('/registro', registrarUsuario); 
+router.post('/login', loginUsuario);         
+router.get('/todos', listarUsuarios);        
 
-// GET /api/usuarios → listar
-router.get('/', listarUsuarios);
+// 2. DESPUÉS van las rutas de actualización
+router.put('/:id/rol', actualizarRolUsuario); 
+router.put('/:id/estado', actualizarEstadoOperativo); 
 
-
-// GET /api/usuario → listar
+// 3. AL FINAL va la ruta dinámica (la que usa el ID)
 router.get('/:usuarioId', ObtenerUsuario);
 
-
-// Exportamos
 export default router;

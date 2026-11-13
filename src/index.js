@@ -4,7 +4,6 @@ import dotenv from 'dotenv';             // Lee el archivo .env
 import conectarDB from './config/db.js'; // Nuestra función de conexión
 import usuarioRoutes from './routes/usuarioRoutes.js'; //Importamos los el archivo de rutas de usuario
 import authRoutes from './routes/authRoutes.js';
-import userRoutes from './routes/userRoutes.js';
 import estadoRoutes from './routes/estadoRoutes.js'; //importamos el archivo de rutas de estado
 import ubicacionRoutes from './routes/ubicacionRoutes.js'; //importamos el archivo de rutas de ubicacion
 import solicitudRoutes from './routes/solicitudRoutes.js'; //importamos el archivo de rutas de solicitud
@@ -14,6 +13,9 @@ import alertsRoutes from './routes/alertsRoutes.js' //importamos el archivo de  
 import mapRoutes from './routes/mapRoutes.js';
 import contactoRoutes from './routes/contactoRoutes.js';
 
+
+import dns from 'node:dns';
+dns.setServers(['8.8.8.8', '1.1.1.1']);
 
 dotenv.config();                         // Carga las variables del .env
 const app = express();                   // Creamos la app de express
@@ -30,11 +32,9 @@ app.get('/', (req, res) => {
 });
 //todas la peticiones que hagamos son manejadas por el controlador de rutas correspondiente
 app.use('/api/auth', authRoutes);
-app.use('/api/user', userRoutes);
 app.use('/api/usuarios', usuarioRoutes); //
 app.use('/api/estados', estadoRoutes);
 app.use('/api/ubicaciones', ubicacionRoutes);
-app.use('/api/solicitud', solicitudRoutes);
 app.use('/api/solicitudes', solicitudRoutes);
 app.use('/api/asignaciones', asignacionRoutes);
 app.use('/api/zonas-riesgo', zonaRiesgoRoutes);
