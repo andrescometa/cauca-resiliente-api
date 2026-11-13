@@ -1,15 +1,9 @@
 import jwt from 'jsonwebtoken';
 import Usuario from '../models/usuario.js';
 import ContactoEmergencia from '../models/ContactoEmergencia.js';
+import { esSocorrista } from '../config/roles.js';
 
 const SECRET = process.env.JWT_SECRET || 'cauca_secret';
-const ROL_SOCORRISTA_ID = '650000000000000000000002';
-
-const esSocorrista = (usuario) => {
-  const rol = String(usuario?.rol || '').trim().toLowerCase();
-  if (rol === 'socorrista') return true;
-  return String(usuario?.rol_id || '') === ROL_SOCORRISTA_ID;
-};
 
 const usuarioDesdeToken = async (req) => {
   const auth = req.headers.authorization || '';
@@ -18,7 +12,7 @@ const usuarioDesdeToken = async (req) => {
 
   try {
     const decoded = jwt.verify(token, SECRET);
-    return await Usuario.findById(decoded.id);
+    return await Usuario.findById(Number(decoded.id));
   } catch {
     return null;
   }

@@ -1,4 +1,3 @@
-import mongoose from 'mongoose';
 import Asignacion from '../models/Asignacion.js';
 import Solicitud from '../models/Solicitud.js';
 
@@ -13,30 +12,39 @@ export const crearAsignacion = async (req, res) => {
       return res.status(400).json({ mensaje: 'Faltan datos (solicitud_id, socorrista_usuario_id)' });
     }
 
-    // Validación 2: identificadores válidos de Mongo
-    if (!mongoose.Types.ObjectId.isValid(solicitud_id) || !mongoose.Types.ObjectId.isValid(socorrista)) {
+    // Validación 2: identificadores numéricos válidos
+    const solicitudId = Number(solicitud_id);
+    const socorristaId = Number(socorrista);
+    if (!Number.isInteger(solicitudId) || !Number.isInteger(socorristaId)) {
       return res.status(400).json({ mensaje: 'solicitud_id o socorrista_usuario_id inválido' });
     }
 
     // Validación 3: la solicitud debe existir
-    const solicitud = await Solicitud.findById(solicitud_id);
+    const solicitud = await Solicitud.findById(solicitudId);
     if (!solicitud) {
       return res.status(404).json({ mensaje: 'La solicitud no existe' });
     }
 
     // Validación 4: la solicitud no debe tener ya una asignación activa
     const existente = await Asignacion.findOne({
-      solicitud_id,
+      solicitud_id: solicitudId,
       estado_atencion: { $ne: 'Finalizado' }
     });
     if (existente) {
       return res.status(400).json({ mensaje: 'La solicitud ya tiene una asignación activa' });
     }
 
+    // Generamos nuevo _id numérico
+    const total = await Asignacion.countDocuments();
+    const nuevoId = total + 1;
+
     const nuevaAsignacion = new Asignacion({
-      solicitud_id,
-      socorrista_usuario_id: socorrista,
+      _id: nuevoId,
+      solicitud_id: solicitudId,
+      socorrista_usuario_id: socorristaId,
+      socorrista_id: socorristaId,
       estado_atencion: 'En camino',
+      fecha_asignacion: new Date(),
       fecha_hora_asignacion: new Date()
     });
 
@@ -55,19 +63,19 @@ export const crearAsignacion = async (req, res) => {
 export const listarAsignacionesPorSocorrista = async (req, res) => {
   try {
     const { socorristaId } = req.params;
+    const id = Number(socorristaId);
 
-    if (!mongoose.Types.ObjectId.isValid(socorristaId)) {
+    if (!Number.isInteger(id)) {
       return res.status(400).json({ mensaje: 'socorristaId inválido' });
     }
 
     const asignaciones = await Asignacion
       .find({
         $or: [
-          { socorrista_usuario_id: socorristaId },
-          { socorrista_id: socorristaId }
+          { socorrista_usuario_id: id },
+          { socorrista_id: id }
         ]
       })
-      .populate('solicitud_id')
       .sort({ fecha_hora_asignacion: -1 });
 
     res.status(200).json({
@@ -85,7 +93,8 @@ export const actualizarAsignacion = async (req, res) => {
     const { id } = req.params;
     const { estado_atencion } = req.body;
 
-    if (!mongoose.Types.ObjectId.isValid(id)) {
+    const asignacionId = Number(id);
+    if (!Number.isInteger(asignacionId)) {
       return res.status(400).json({ mensaje: 'ID de asignación inválido' });
     }
 
@@ -94,7 +103,7 @@ export const actualizarAsignacion = async (req, res) => {
       return res.status(400).json({ mensaje: 'Estado de atención inválido' });
     }
 
-    const asignacion = await Asignacion.findById(id);
+    const asignacion = await Asignacion.findById(asignacionId);
     if (!asignacion) {
       return res.status(404).json({ mensaje: 'Asignación no encontrada' });
     }

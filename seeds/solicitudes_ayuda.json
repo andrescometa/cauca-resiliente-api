@@ -1,10 +1,10 @@
 [
   {
     "_id": {
-      "$oid": "690000000000000000000001"
+      "$numberInt": "1"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000001"
+      "$numberInt": "1"
     },
     "tipo_ayuda": "Incendio",
     "descripcion_emergencia": "Cortocircuito e incendio en cocina",
@@ -40,10 +40,10 @@
     },
     "asignacion": {
       "organismo_id": {
-        "$oid": "6b0000000000000000000002"
+        "$numberInt": "2"
       },
       "socorrista_id": {
-        "$oid": "660000000000000000000003"
+        "$numberInt": "3"
       },
       "fecha_asignacion": {
         "$date": {
@@ -61,10 +61,10 @@
   },
   {
     "_id": {
-      "$oid": "690000000000000000000002"
+      "$numberInt": "2"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000002"
+      "$numberInt": "2"
     },
     "tipo_ayuda": "Rescate",
     "descripcion_emergencia": "Vivienda inundada por desbordamiento de río",
@@ -96,10 +96,10 @@
     "fecha_cierre": null,
     "asignacion": {
       "organismo_id": {
-        "$oid": "6b0000000000000000000003"
+        "$numberInt": "3"
       },
       "socorrista_id": {
-        "$oid": "660000000000000000000006"
+        "$numberInt": "6"
       },
       "fecha_asignacion": {
         "$date": {
@@ -117,10 +117,10 @@
   },
   {
     "_id": {
-      "$oid": "690000000000000000000003"
+      "$numberInt": "3"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000003"
+      "$numberInt": "3"
     },
     "tipo_ayuda": "Apoyo Logístico",
     "descripcion_emergencia": "Rescate y evacuación de mascotas en zona de riesgo",
@@ -162,10 +162,10 @@
   },
   {
     "_id": {
-      "$oid": "690000000000000000000004"
+      "$numberInt": "4"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000004"
+      "$numberInt": "4"
     },
     "tipo_ayuda": "Atención Médica",
     "descripcion_emergencia": "Posible fractura por caída durante réplica",
@@ -205,10 +205,10 @@
   },
   {
     "_id": {
-      "$oid": "690000000000000000000005"
+      "$numberInt": "5"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000005"
+      "$numberInt": "5"
     },
     "tipo_ayuda": "Rescate",
     "descripcion_emergencia": "Atrapada en segundo piso del bloque universitario",
@@ -240,10 +240,10 @@
     "fecha_cierre": null,
     "asignacion": {
       "organismo_id": {
-        "$oid": "6b0000000000000000000002"
+        "$numberInt": "2"
       },
       "socorrista_id": {
-        "$oid": "660000000000000000000003"
+        "$numberInt": "3"
       },
       "fecha_asignacion": {
         "$date": {
@@ -261,10 +261,10 @@
   },
   {
     "_id": {
-      "$oid": "690000000000000000000006"
+      "$numberInt": "6"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000006"
+      "$numberInt": "6"
     },
     "tipo_ayuda": "Apoyo Logístico",
     "descripcion_emergencia": "Solicitud de equipo de corte para remoción de escombros",
@@ -306,10 +306,10 @@
   },
   {
     "_id": {
-      "$oid": "690000000000000000000007"
+      "$numberInt": "7"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000007"
+      "$numberInt": "7"
     },
     "tipo_ayuda": "Víveres/Agua",
     "descripcion_emergencia": "Punto de encuentro requiere agua potable",
@@ -351,10 +351,10 @@
   },
   {
     "_id": {
-      "$oid": "690000000000000000000008"
+      "$numberInt": "8"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000008"
+      "$numberInt": "8"
     },
     "tipo_ayuda": "Evacuación",
     "descripcion_emergencia": "Vía bloqueada por deslizamiento de tierra",
@@ -403,10 +403,10 @@
   },
   {
     "_id": {
-      "$oid": "690000000000000000000009"
+      "$numberInt": "9"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000009"
+      "$numberInt": "9"
     },
     "tipo_ayuda": "Víveres/Agua",
     "descripcion_emergencia": "Solicitud de kit de primeros auxilios",
@@ -448,10 +448,10 @@
   },
   {
     "_id": {
-      "$oid": "690000000000000000000010"
+      "$numberInt": "10"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000010"
+      "$numberInt": "10"
     },
     "tipo_ayuda": "Atención Médica",
     "descripcion_emergencia": "Apoyo médico para traslado de paciente",
@@ -492,10 +492,10 @@
   },
   {
     "_id": {
-      "$oid": "6ab3261b24bfffd52d2df360"
+      "$numberInt": "11"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000001"
+      "$numberInt": "1"
     },
     "tipo_ayuda": "Atención Médica",
     "descripcion_emergencia": "SOS de prueba desde la API: caída en escaleras",
@@ -545,10 +545,10 @@
   },
   {
     "_id": {
-      "$oid": "6ae78bf70f8cfecbfe389036"
+      "$numberInt": "12"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000001"
+      "$numberInt": "1"
     },
     "tipo_ayuda": "Atención Médica",
     "descripcion_emergencia": "necesito medicacion",

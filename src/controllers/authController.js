@@ -1,37 +1,15 @@
 import jwt from 'jsonwebtoken';
-import mongoose from 'mongoose';
+import bcrypt from 'bcryptjs';
 import Usuario from '../models/usuario.js';
+import { ROLES, normalizarRol, esSocorrista, rolDeUsuario } from '../config/roles.js';
 
 const SECRET = process.env.JWT_SECRET || 'cauca_secret';
 
-// Roles disponibles en la app.
-const ROLES = {
-  usuario: {
-    nombre: 'usuario',
-    id: new mongoose.Types.ObjectId('650000000000000000000001')
-  },
-  socorrista: {
-    nombre: 'socorrista',
-    id: new mongoose.Types.ObjectId('650000000000000000000002')
-  }
+// Calcula el siguiente _id numérico libre de la colección.
+const siguienteId = async (modelo) => {
+  const ultimo = await modelo.findOne().sort({ _id: -1 }).lean();
+  return (ultimo?._id ?? 0) + 1;
 };
-
-const ROL_SOCORRISTA_ID = ROLES.socorrista.id.toString();
-
-const normalizarRol = (rol) => {
-  const valor = String(rol || '').trim().toLowerCase();
-  return valor === 'socorrista' ? ROLES.socorrista : ROLES.usuario;
-};
-
-// Los usuarios antiguos solo tienen rol_id, por eso resolvemos el rol
-// tanto por el campo "rol" como por el identificador del rol.
-const esSocorrista = (usuario) => {
-  const rol = String(usuario?.rol || '').trim().toLowerCase();
-  if (rol === 'socorrista') return true;
-  return String(usuario?.rol_id || '') === ROL_SOCORRISTA_ID;
-};
-
-const rolDeUsuario = (usuario) => (esSocorrista(usuario) ? 'socorrista' : 'usuario');
 
 export const register = async (req, res) => {
   try {
@@ -53,11 +31,11 @@ export const register = async (req, res) => {
     if (!name || !email || !phone || !password) {
       return res.status(400).json({ mensaje: 'Nombre, correo, teléfono y contraseña son obligatorios' });
     }
-    const exists = await Usuario.findOne({ email });
-    if (exists) return res.status(400).json({ mensaje: 'Email ya registrado' });
+    const existe = await Usuario.findOne({ email });
+    if (existe) return res.status(400).json({ mensaje: 'Email ya registrado' });
 
-    const rolFinal = normalizarRol(rol);
-    if (rolFinal.nombre === 'socorrista' && (!identificacion || !tipo_sangre)) {
+    const rolId = normalizarRol(rol);
+    if (rolId === ROLES.SOCORRISTA && (!identificacion || !tipo_sangre)) {
       return res.status(400).json({ mensaje: 'Para registrarse como socorrista la identificación y el tipo de sangre son obligatorios' });
     }
 
@@ -66,7 +44,10 @@ export const register = async (req, res) => {
     const nombres = partes.shift() || '';
     const apellidosFinal = apellidos || partes.join(' ');
 
+    const passwordEncriptada = await bcrypt.hash(password, 10);
+
     const nuevo = new Usuario({
+      _id: await siguienteId(Usuario),
       nombres,
       apellidos: apellidosFinal,
       identificacion: identificacion || phone,
@@ -78,14 +59,14 @@ export const register = async (req, res) => {
       tipo_sangre,
       email,
       telefono: phone,
-      password,
+      password: passwordEncriptada,
       fecha_registro: new Date(),
-      rol: rolFinal.nombre,
-      rol_id: rolFinal.id,
+      rol: rolId === ROLES.SOCORRISTA ? 'socorrista' : 'usuario',
+      rol_id: rolId,
       activo: true
     });
     await nuevo.save();
-    const token = jwt.sign({ id: nuevo._id, rol: rolFinal.nombre }, SECRET, { expiresIn: '7d' });
+    const token = jwt.sign({ id: nuevo._id, rol: rolDeUsuario(nuevo) }, SECRET, { expiresIn: '7d' });
     res.status(201).json({
       token,
       user: {
@@ -105,7 +86,17 @@ export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await Usuario.findOne({ email });
-    if (!user || user.password !== password) return res.status(401).json({ mensaje: 'Credenciales inválidas' });
+    if (!user) return res.status(401).json({ mensaje: 'Credenciales inválidas' });
+
+    // Aceptamos contraseñas almacenadas como hash bcrypt y, por compatibilidad
+    // con registros antiguos, también en texto plano.
+    const stored = user.password || '';
+    const passwordValida = /^\$2[aby]\$/.test(stored)
+      ? await bcrypt.compare(password, stored)
+      : stored === password;
+
+    if (!passwordValida) return res.status(401).json({ mensaje: 'Credenciales inválidas' });
+
     const token = jwt.sign({ id: user._id, rol: rolDeUsuario(user) }, SECRET, { expiresIn: '7d' });
     res.json({
       token,
@@ -127,7 +118,7 @@ export const profile = async (req, res) => {
     const auth = req.headers.authorization || '';
     const token = auth.replace('Bearer ', '');
     const decoded = jwt.verify(token, SECRET);
-    const user = await Usuario.findById(decoded.id);
+    const user = await Usuario.findById(Number(decoded.id));
     if (!user) return res.status(404).json({ mensaje: 'No encontrado' });
     res.json({
       id: String(user._id),
@@ -150,3 +141,5 @@ export const profile = async (req, res) => {
     res.status(401).json({ mensaje: 'No autorizado' });
   }
 };
+
+export { esSocorrista };

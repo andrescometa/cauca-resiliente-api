@@ -1,21 +1,30 @@
 import mongoose from 'mongoose';
 
-// Definimos cómo será una solicitud de ayuda
+const puntoSchema = new mongoose.Schema({
+  type: { type: String, enum: ['Point'], default: 'Point' },
+  coordinates: [Number]
+}, { _id: false });
+
 const solicitudSchema = new mongoose.Schema({
-  usuario_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Usuario' },
-  tipo_ayuda: String,                      
-  descripcion_emergencia: String,          
-  nivel_prioridad: String,                   
-  estado_solicitud: String,                 
-  latitud: { type: Number, min: -90, max: 90 },
-  longitud: { type: Number, min: -180, max: 180 },
-  personas_afectadas: Number,               
-  requiere_ambulancia: Boolean,             
-  fecha_hora: Date                        
+  _id: Number,
+  usuario_id: { type: Number, required: true },
+  tipo_ayuda: { type: String, required: true },
+  descripcion_emergencia: String,
+  nivel_prioridad: { type: String, required: true },
+  estado_solicitud: { type: String, default: 'Pendiente' },
+  latitud: Number,
+  longitud: Number,
+  ubicacion_solicitud: { type: puntoSchema, default: undefined },
+  imagenes_adjuntas: [String],
+  personas_afectadas: Number,
+  requiere_ambulancia: Boolean,
+  socorrista_id: { type: Number, default: null },
+  asignacion: mongoose.Schema.Types.Mixed,
+  fecha_hora: { type: Date, default: Date.now },
+  fecha_cierre: Date
 }, {
-  collection: 'solicitudes_ayuda',          // Nombre de la colección
+  collection: 'solicitudes_ayuda',
   versionKey: false
 });
 
-// Exportamos el modelo
 export default mongoose.model('Solicitud', solicitudSchema);

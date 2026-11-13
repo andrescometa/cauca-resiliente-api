@@ -1,10 +1,10 @@
 [
   {
     "_id": {
-      "$oid": "680000000000000000000001"
+      "$numberInt": "1"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000001"
+      "$numberInt": "1"
     },
     "direccion_aproximada": "Calle 5 # 3-12, Popayán",
     "coordenadas": {
@@ -32,10 +32,10 @@
   },
   {
     "_id": {
-      "$oid": "680000000000000000000002"
+      "$numberInt": "2"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000002"
+      "$numberInt": "2"
     },
     "direccion_aproximada": "Carrera 8 # 10-20, Santander de Quilichao",
     "coordenadas": {
@@ -63,10 +63,10 @@
   },
   {
     "_id": {
-      "$oid": "680000000000000000000003"
+      "$numberInt": "3"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000003"
+      "$numberInt": "3"
     },
     "direccion_aproximada": "Avenida Norte # 15-45, Popayán",
     "coordenadas": {
@@ -94,10 +94,10 @@
   },
   {
     "_id": {
-      "$oid": "680000000000000000000004"
+      "$numberInt": "4"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000004"
+      "$numberInt": "4"
     },
     "direccion_aproximada": "Diagonal 2 # 8-30, Puerto Tejada",
     "coordenadas": {
@@ -125,10 +125,10 @@
   },
   {
     "_id": {
-      "$oid": "680000000000000000000005"
+      "$numberInt": "5"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000005"
+      "$numberInt": "5"
     },
     "direccion_aproximada": "Calle 12 # 7-56, Popayán",
     "coordenadas": {
@@ -156,10 +156,10 @@
   },
   {
     "_id": {
-      "$oid": "680000000000000000000006"
+      "$numberInt": "6"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000006"
+      "$numberInt": "6"
     },
     "direccion_aproximada": "Carrera 5 # 4-18, Santander de Quilichao",
     "coordenadas": {
@@ -187,10 +187,10 @@
   },
   {
     "_id": {
-      "$oid": "680000000000000000000007"
+      "$numberInt": "7"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000007"
+      "$numberInt": "7"
     },
     "direccion_aproximada": "Carrera 9 # 2-15, Popayán",
     "coordenadas": {
@@ -218,10 +218,10 @@
   },
   {
     "_id": {
-      "$oid": "680000000000000000000008"
+      "$numberInt": "8"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000008"
+      "$numberInt": "8"
     },
     "direccion_aproximada": "Calle 25 # 9-40, Popayán",
     "coordenadas": {
@@ -249,10 +249,10 @@
   },
   {
     "_id": {
-      "$oid": "680000000000000000000009"
+      "$numberInt": "9"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000009"
+      "$numberInt": "9"
     },
     "direccion_aproximada": "Calle 4 # 6-11, Timbío",
     "coordenadas": {
@@ -280,10 +280,10 @@
   },
   {
     "_id": {
-      "$oid": "680000000000000000000010"
+      "$numberInt": "10"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000010"
+      "$numberInt": "10"
     },
     "direccion_aproximada": "Carrera 11 # 18-22, Popayán",
     "coordenadas": {
@@ -311,10 +311,10 @@
   },
   {
     "_id": {
-      "$oid": "6ab3264124bfffd52d2df38c"
+      "$numberInt": "11"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000001"
+      "$numberInt": "1"
     },
     "coordenadas": {
       "type": "Point",
@@ -354,10 +354,10 @@
   },
   {
     "_id": {
-      "$oid": "6ae92b01c292cc7d770e280e"
+      "$numberInt": "12"
     },
     "usuario_id": {
-      "$oid": "660000000000000000000004"
+      "$numberInt": "4"
     },
     "latitud": {
       "$numberDouble": "37.4219983"
@@ -377,10 +377,10 @@
   },
   {
     "_id": {
-      "$oid": "6ae9ff0136267b24bb9a9c24"
+      "$numberInt": "13"
     },
     "usuario_id": {
-      "$oid": "6ae9fe9b36267b24bb9a9c23"
+      "$numberInt": "11"
     },
     "latitud": {
       "$numberDouble": "37.4219983"

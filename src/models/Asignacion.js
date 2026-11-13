@@ -4,11 +4,13 @@ import mongoose from 'mongoose';
 // Los documentos existentes usan socorrista_usuario_id; se conserva
 // socorrista_id como alias para compatibilidad con datos anteriores.
 const asignacionSchema = new mongoose.Schema({
-  solicitud_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Solicitud' },
-  organismo_id: { type: mongoose.Schema.Types.ObjectId },
-  socorrista_usuario_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Usuario' },
-  socorrista_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Usuario' },
+  _id: Number,
+  solicitud_id: { type: Number, required: true },
+  organismo_id: { type: Number, default: null },
+  socorrista_usuario_id: { type: Number, required: true },
+  socorrista_id: { type: Number, default: null },
   estado_atencion: String,
+  fecha_asignacion: Date,
   fecha_hora_asignacion: Date,
   fecha_hora_llegada: Date,
   fecha_hora_cierre: Date,

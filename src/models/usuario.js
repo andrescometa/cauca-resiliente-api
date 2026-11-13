@@ -1,4 +1,3 @@
-// Importamos mongoose
 import mongoose from 'mongoose';
 
 // Ubicación GeoJSON opcional. Se define como subesquema para evitar que
@@ -8,23 +7,23 @@ const ubicacionActualSchema = new mongoose.Schema({
   coordinates: [Number]
 }, { _id: false });
 
-// Definimos cómo será un usuario
 const usuarioSchema = new mongoose.Schema({
-  nombres: String,
-  apellidos: String,
-  tipo_documento: String,                   
-  identificacion: String,
-  genero: String, 
-  edad: Number, 
-  email: String,
-  password: String,
+  _id: Number,
+  nombres: { type: String, required: true },
+  apellidos: { type: String, required: true },
+  tipo_documento: String,
+  identificacion: { type: String, required: true },
+  genero: String,
+  edad: Number,
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
   telefono: String,
   ciudad: String,
   direccion: String,
-  fecha_registro: Date,
-  rol: String,                              
-  rol_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Rol' },
-  tipo_sangre: String,                      
+  fecha_registro: { type: Date, default: Date.now },
+  rol_id: { type: Number, default: 1 },
+  rol: String,
+  tipo_sangre: String,
   alergias: [String],
   discapacidades: [String],
   contacto_emergencia: {
@@ -32,15 +31,20 @@ const usuarioSchema = new mongoose.Schema({
     telefono: String,
     parentesco: String
   },
+  contacto_principal: {
+    nombre: String,
+    telefono: String,
+    parentesco: String
+  },
+  estado_operativo: { type: String, default: 'Disponible' },
   ubicacion_actual: {
     type: ubicacionActualSchema,
     default: undefined
   },
   activo: { type: Boolean, default: true }
 }, {
-  collection: 'usuarios',                   // Nombre de la colección en Mongo
-  versionKey: false                         // Quitamos el "__v"
+  collection: 'usuarios',
+  versionKey: false
 });
 
-// Exportamos el modelo
 export default mongoose.model('Usuario', usuarioSchema);

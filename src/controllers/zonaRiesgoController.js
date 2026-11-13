@@ -1,27 +1,12 @@
 import ZonaRiesgo from '../models/ZonaRiesgo.js';
 
-
-export const listarZonas = async (req, res) => {
-  try {
-    const zonas = await ZonaRiesgo.find({ activa: { $ne: false } });
-
-    res.status(200).json({
-      mensaje: 'Zonas de riesgo',
-      total: zonas.length,
-      zonas
-    });
-  } catch (error) {
-    res.status(500).json({ mensaje: 'Error al listar zonas', error: error.message });
-  }
-};
-
 export const crearZonaRiesgo = async (req, res) => {
   try {
-    // Tomamos los datos del body (acepta el formato nuevo y el anterior)
+    // Aceptamos el formato nuevo (tipo_riesgo, coordenadas_centro) y el anterior (tipo, latitud/longitud)
     const {
       nombre_zona,
-      tipo_riesgo,
       tipo,
+      tipo_riesgo,
       nivel_peligro,
       descripcion,
       latitud,
@@ -40,8 +25,8 @@ export const crearZonaRiesgo = async (req, res) => {
         : undefined);
 
     // Validación 1: campos obligatorios
-    if (!nombre_zona || !nivel_peligro || !coords || coords.length < 2) {
-      return res.status(400).json({ mensaje: 'Faltan datos obligatorios (nombre_zona, nivel_peligro, coordenadas)' });
+    if (!nombre_zona || !(tipo || tipo_riesgo) || !nivel_peligro || !coords || coords.length < 2) {
+      return res.status(400).json({ mensaje: 'Faltan datos obligatorios (nombre_zona, tipo, nivel_peligro, coordenadas)' });
     }
 
     // Validación 2: niveles de peligro válidos
@@ -58,19 +43,26 @@ export const crearZonaRiesgo = async (req, res) => {
       return res.status(400).json({ mensaje: 'Longitud inválida (debe estar entre -180 y 180)' });
     }
 
-    // Creamos la zona (Mongo genera el _id)
+    // Generamos nuevo _id numérico
+    const total = await ZonaRiesgo.countDocuments();
+    const nuevoId = total + 1;
+
+    // Creamos la zona
     const nuevaZona = new ZonaRiesgo({
+      _id: nuevoId,
       nombre_zona,
-      tipo_riesgo: tipo_riesgo ?? tipo,
+      tipo: tipo || tipo_riesgo,
+      tipo_riesgo: tipo_riesgo || tipo,
       nivel_peligro,
       descripcion,
+      latitud: lat,
+      longitud: lng,
       coordenadas_centro: { type: 'Point', coordinates: [lng, lat] },
       radio_metros,
       estado_zona,
       poblacion_estimada,
-      activa: activa ?? true,
-      fecha_deteccion: new Date(),
-      fecha_actualizacion: new Date()
+      activa: activa === undefined ? true : activa,
+      fecha_registro: new Date()
     });
 
     await nuevaZona.save();
@@ -96,18 +88,16 @@ export const consultarZonasCercanas = async (req, res) => {
       return res.status(400).json({ mensaje: 'Debes enviar lat y lng como números' });
     }
 
-    // Traemos todas las zonas activas
-    const todas = await ZonaRiesgo.find({ activa: { $ne: false } });
+    // Traemos todas las zonas
+    const todas = await ZonaRiesgo.find();
 
     // Filtramos las que estén dentro del radio de afectación
     // Usamos la fórmula de Haversine para calcular distancia entre 2 puntos
     const zonasCercanas = todas.filter((zona) => {
-      const coords = zona.coordenadas_centro?.coordinates;
-      if (!coords || coords.length < 2) return false;
-
-      const [lngZona, latZona] = coords;
-      const distancia = calcularDistancia(lat, lng, latZona, lngZona);
-      return distancia <= (zona.radio_metros ?? 0);   // Solo las que están dentro del radio
+      const [zLng, zLat] = zona.coordenadas_centro?.coordinates ?? [zona.longitud, zona.latitud];
+      if (zLat === undefined || zLng === undefined) return false;
+      const distancia = calcularDistancia(lat, lng, zLat, zLng);
+      return distancia <= zona.radio_metros;   // Solo las que están dentro del radio
     });
 
     // Respondemos
@@ -123,6 +113,16 @@ export const consultarZonasCercanas = async (req, res) => {
 
   } catch (error) {
     res.status(500).json({ mensaje: 'Error al consultar zonas', error: error.message });
+  }
+};
+
+// ============ LISTAR TODAS LAS ZONAS DE RIESGO ============
+export const listarZonasRiesgo = async (req, res) => {
+  try {
+    const zonas = await ZonaRiesgo.find();
+    res.status(200).json(zonas);
+  } catch (error) {
+    res.status(500).json({ mensaje: 'Error al listar zonas', error: error.message });
   }
 };
 

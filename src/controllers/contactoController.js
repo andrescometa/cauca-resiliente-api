@@ -2,7 +2,12 @@ import ContactoEmergencia from '../models/ContactoEmergencia.js';
 
 export const getContactosPorUsuario = async (req, res) => {
   try {
-    const { usuarioId } = req.params;
+    const usuarioId = Number(req.params.usuarioId);
+
+    if (!Number.isInteger(usuarioId)) {
+      return res.status(400).json({ mensaje: 'usuarioId inválido' });
+    }
+
     const contactos = await ContactoEmergencia
       .find({ usuario_id: usuarioId })
       .sort({ prioridad: 1 });

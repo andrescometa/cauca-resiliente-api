@@ -24,7 +24,7 @@ const anonymizers = {
     identificacion: `1000000${i + 1}`,
     telefono: phone('300000', i),
     email: `usuario${i + 1}@demo.local`,
-    direccion: `Calle Demo #${i + 1}`,
+    direccion: `Calle Demo # ${i + 1}`,
     password: DEMO_PASSWORD,
     ubicacion_actual: doc.ubicacion_actual
       ? { ...doc.ubicacion_actual, coordinates: jitter(i) }
