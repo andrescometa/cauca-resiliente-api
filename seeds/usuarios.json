@@ -598,6 +598,16 @@
       "$date": {
         "$numberLong": "1793720863068"
       }
+    },
+    "contacto_emergencia": {
+      "nombre": "Laura Sofía Díaz",
+      "telefono": "3187654321",
+      "parentesco": "Hermana"
+    },
+    "contacto_principal": {
+      "nombre": "Laura Sofía Díaz",
+      "telefono": "3187654321",
+      "parentesco": "Hermana"
     }
   }
 ]

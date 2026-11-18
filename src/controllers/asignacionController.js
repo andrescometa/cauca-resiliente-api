@@ -60,6 +60,34 @@ export const crearAsignacion = async (req, res) => {
   }
 };
 
+export const obtenerSeguimientoSolicitud = async (req, res) => {
+  try {
+    const solicitudId = Number(req.params.solicitudId);
+    if (!Number.isInteger(solicitudId)) {
+      return res.status(400).json({ mensaje: 'solicitudId inválido' });
+    }
+
+    const [solicitud, asignacion] = await Promise.all([
+      Solicitud.findById(solicitudId),
+      Asignacion
+        .findOne({ solicitud_id: solicitudId })
+        .sort({ fecha_hora_asignacion: -1 })
+    ]);
+
+    if (!solicitud) {
+      return res.status(404).json({ mensaje: 'La solicitud no existe' });
+    }
+
+    res.status(200).json({
+      mensaje: 'Seguimiento de solicitud',
+      solicitud,
+      asignacion
+    });
+  } catch (error) {
+    res.status(500).json({ mensaje: 'Error al consultar seguimiento', error: error.message });
+  }
+};
+
 export const listarAsignacionesPorSocorrista = async (req, res) => {
   try {
     const { socorristaId } = req.params;

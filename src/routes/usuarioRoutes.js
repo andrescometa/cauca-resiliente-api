@@ -5,7 +5,9 @@ import {
   listarUsuarios, 
   ObtenerUsuario,
   actualizarRolUsuario,
-  actualizarEstadoOperativo
+  actualizarEstadoOperativo,
+  actualizarPerfil,
+  actualizarFoto
 } from '../controllers/usuarioController.js';
 
 const router = express.Router();
@@ -16,5 +18,7 @@ router.get('/todos', listarUsuarios);
 router.get('/:usuarioId', ObtenerUsuario);
 router.put('/:id/rol', actualizarRolUsuario); 
 router.put('/:id/estado', actualizarEstadoOperativo); // <-- LA RUTA MÁGICA
+router.put('/:id/perfil', actualizarPerfil);
+router.put('/:id/foto', actualizarFoto);
 
 export default router;

@@ -24,6 +24,9 @@ const usuarioSchema = new mongoose.Schema({
   rol_id: { type: Number, default: 1 },
   rol: String,
   tipo_sangre: String,
+  // Foto de perfil almacenada como data URL (base64) para poder mostrarla
+  // en la app sin depender de un servidor de archivos.
+  foto: String,
   alergias: [String],
   discapacidades: [String],
   contacto_emergencia: {

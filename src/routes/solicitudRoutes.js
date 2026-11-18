@@ -1,14 +1,16 @@
 import express from 'express';
 import { 
   crearSolicitud, 
-  listarSolicitudes, // <-- AQUÍ ESTABA EL ERROR: se llama listarSolicitudes
+  listarSolicitudes,
+  listarSolicitudesPendientes,
   actualizarEstadoSolicitud 
 } from '../controllers/solicitudController.js';
 
 const router = express.Router();
 
 router.post('/', crearSolicitud); 
-router.get('/', listarSolicitudes); // <-- Y aquí también
+router.get('/pendientes', listarSolicitudesPendientes);
+router.get('/', listarSolicitudes);
 router.put('/:id', actualizarEstadoSolicitud); 
 
 export default router;

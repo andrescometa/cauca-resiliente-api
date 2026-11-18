@@ -1,5 +1,42 @@
 import Usuario from '../models/usuario.js';
 import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+
+const SECRET = process.env.JWT_SECRET || 'cauca_secret';
+
+// Devuelve el usuario autenticado del token o null si el token no es válido.
+const usuarioDesdeToken = (req) => {
+  const auth = req.headers.authorization || '';
+  const token = auth.replace('Bearer ', '');
+  if (!token || token === auth) return null;
+
+  try {
+    const decoded = jwt.verify(token, SECRET);
+    return Number(decoded.id);
+  } catch {
+    return null;
+  }
+};
+
+// Formatea el usuario con la misma estructura que devuelve /api/user/profile.
+const perfilPublico = (usuario) => ({
+  id: String(usuario._id),
+  name: usuario.nombres,
+  apellidos: usuario.apellidos ?? null,
+  email: usuario.email,
+  phone: usuario.telefono ?? null,
+  foto: usuario.foto ?? null,
+  tipo_documento: usuario.tipo_documento ?? null,
+  identificacion: usuario.identificacion ?? null,
+  genero: usuario.genero ?? null,
+  edad: usuario.edad ?? null,
+  ciudad: usuario.ciudad ?? null,
+  direccion: usuario.direccion ?? null,
+  tipo_sangre: usuario.tipo_sangre ?? null,
+  rol: usuario.rol ?? null,
+  fecha_registro: usuario.fecha_registro ?? null,
+  contacto_emergencia: usuario.contacto_emergencia ?? null
+});
 
 // ============ REGISTRAR USUARIO ============
 export const registrarUsuario = async (req, res) => {
@@ -106,5 +143,111 @@ export const actualizarEstadoOperativo = async (req, res) => {
     res.status(200).json({ mensaje: 'Estado operativo actualizado', usuario: usuarioActualizado });
   } catch (error) {
     res.status(500).json({ mensaje: 'Error al actualizar estado', error: error.message });
+  }
+};
+
+// ============ ACTUALIZAR PERFIL (nombre, teléfono, correo) ============
+export const actualizarPerfil = async (req, res) => {
+  try {
+    const usuarioId = Number(req.params.id);
+    const usuarioAutenticado = usuarioDesdeToken(req);
+    if (!usuarioAutenticado) return res.status(401).json({ mensaje: 'No autorizado' });
+    if (usuarioAutenticado !== usuarioId) {
+      return res.status(403).json({ mensaje: 'Solo puedes editar tu propio perfil' });
+    }
+
+    const { nombres, apellidos, telefono, email, direccion, ciudad } = req.body;
+
+    const usuario = await Usuario.findById(usuarioId);
+    if (!usuario) return res.status(404).json({ mensaje: 'Usuario no encontrado' });
+
+    if (nombres !== undefined) {
+      const nombresLimpios = String(nombres).trim();
+      if (nombresLimpios.length < 2) {
+        return res.status(400).json({ mensaje: 'El nombre es obligatorio' });
+      }
+      usuario.nombres = nombresLimpios;
+    }
+
+    if (apellidos !== undefined) {
+      usuario.apellidos = String(apellidos).trim();
+    }
+
+    if (telefono !== undefined) {
+      const telefonoLimpio = String(telefono).trim();
+      if (telefonoLimpio && !/^[0-9+\s-]{7,20}$/.test(telefonoLimpio)) {
+        return res.status(400).json({ mensaje: 'El número de teléfono no es válido' });
+      }
+      usuario.telefono = telefonoLimpio;
+    }
+
+    if (email !== undefined) {
+      const correoLimpio = String(email).trim().toLowerCase();
+      const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!regexEmail.test(correoLimpio)) {
+        return res.status(400).json({ mensaje: 'El correo electrónico no es válido' });
+      }
+      const otroUsuario = await Usuario.findOne({ email: correoLimpio, _id: { $ne: usuarioId } });
+      if (otroUsuario) {
+        return res.status(400).json({ mensaje: 'El correo ya está registrado' });
+      }
+      usuario.email = correoLimpio;
+    }
+
+    if (direccion !== undefined) usuario.direccion = String(direccion).trim();
+    if (ciudad !== undefined) usuario.ciudad = String(ciudad).trim();
+
+    await usuario.save();
+
+    res.status(200).json({
+      mensaje: 'Perfil actualizado correctamente',
+      usuario: perfilPublico(usuario)
+    });
+  } catch (error) {
+    res.status(500).json({ mensaje: 'Error al actualizar el perfil', error: error.message });
+  }
+};
+
+// ============ ACTUALIZAR FOTO DE PERFIL ============
+export const actualizarFoto = async (req, res) => {
+  try {
+    const usuarioId = Number(req.params.id);
+    const usuarioAutenticado = usuarioDesdeToken(req);
+    if (!usuarioAutenticado) return res.status(401).json({ mensaje: 'No autorizado' });
+    if (usuarioAutenticado !== usuarioId) {
+      return res.status(403).json({ mensaje: 'Solo puedes editar tu propio perfil' });
+    }
+
+    const { foto } = req.body;
+
+    if (foto === null || foto === '') {
+      // Se permite quitar la foto de perfil.
+      const usuario = await Usuario.findByIdAndUpdate(usuarioId, { foto: null }, { new: true });
+      if (!usuario) return res.status(404).json({ mensaje: 'Usuario no encontrado' });
+      return res.status(200).json({
+        mensaje: 'Foto eliminada correctamente',
+        usuario: perfilPublico(usuario)
+      });
+    }
+
+    if (typeof foto !== 'string' || !foto.startsWith('data:image/')) {
+      return res.status(400).json({ mensaje: 'La foto debe enviarse como imagen en base64' });
+    }
+
+    const base64 = foto.split(',')[1] || '';
+    // 2 MB de base64 ≈ 1.5 MB de imagen.
+    if (base64.length > 2_800_000) {
+      return res.status(400).json({ mensaje: 'La foto es demasiado grande, máximo 2 MB' });
+    }
+
+    const usuario = await Usuario.findByIdAndUpdate(usuarioId, { foto }, { new: true });
+    if (!usuario) return res.status(404).json({ mensaje: 'Usuario no encontrado' });
+
+    res.status(200).json({
+      mensaje: 'Foto actualizada correctamente',
+      usuario: perfilPublico(usuario)
+    });
+  } catch (error) {
+    res.status(500).json({ mensaje: 'Error al actualizar la foto', error: error.message });
   }
 };

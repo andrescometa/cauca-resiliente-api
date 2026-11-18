@@ -1,21 +1,24 @@
 import express from 'express';
-
-// Importamos las funciones del controlador (agregamos listarZonasRiesgo)
-import { 
-  crearZonaRiesgo, 
-  consultarZonasCercanas, 
-  listarZonasRiesgo 
+import {
+  crearZonaRiesgo,
+  consultarZonasCercanas,
+  listarZonasRiesgo,
+  obtenerZonaRiesgo,
+  actualizarZonaRiesgo,
+  eliminarZonaRiesgo
 } from '../controllers/zonaRiesgoController.js';
+import { requiereAdmin } from '../middleware/adminAuth.js';
 
 const router = express.Router();
 
-// POST /api/zonas-riesgo → crear
-router.post('/', crearZonaRiesgo);
-
-// GET /api/zonas-riesgo → listar todas (¡ESTA ERA LA QUE FALTABA!)
+// Público: la app consulta las zonas activas.
 router.get('/', listarZonasRiesgo);
-
-// GET /api/zonas-riesgo/cercanas → consultar cercanas
 router.get('/cercanas', consultarZonasCercanas);
+router.get('/:id', obtenerZonaRiesgo);
+
+// Solo administradores pueden crear, editar o desactivar zonas.
+router.post('/', requiereAdmin, crearZonaRiesgo);
+router.put('/:id', requiereAdmin, actualizarZonaRiesgo);
+router.delete('/:id', requiereAdmin, eliminarZonaRiesgo);
 
 export default router;

@@ -163,5 +163,50 @@
       "$numberInt": "1"
     },
     "notificado": false
+  },
+  {
+    "_id": {
+      "$numberInt": "12"
+    },
+    "usuario_id": {
+      "$numberInt": "11"
+    },
+    "nombre_contacto": "Laura Sofía Díaz",
+    "telefono_contacto": "3187654321",
+    "parentesco": "Hermana",
+    "prioridad": {
+      "$numberInt": "1"
+    },
+    "notificado": false
+  },
+  {
+    "_id": {
+      "$numberInt": "13"
+    },
+    "usuario_id": {
+      "$numberInt": "11"
+    },
+    "nombre_contacto": "Valentina Muñoz Rivera",
+    "telefono_contacto": "3190123456",
+    "parentesco": "Prima",
+    "prioridad": {
+      "$numberInt": "2"
+    },
+    "notificado": false
+  },
+  {
+    "_id": {
+      "$numberInt": "14"
+    },
+    "usuario_id": {
+      "$numberInt": "11"
+    },
+    "nombre_contacto": "Daniela Burbano",
+    "telefono_contacto": "3176543210",
+    "parentesco": "Amiga",
+    "prioridad": {
+      "$numberInt": "3"
+    },
+    "notificado": false
   }
 ]

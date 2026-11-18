@@ -33,7 +33,14 @@ export const esSocorrista = (usuario) => {
   return Number(usuario?.rol_id) === ROLES.SOCORRISTA;
 };
 
+export const esAdmin = (usuario) => {
+  const rol = String(usuario?.rol || '').trim().toLowerCase();
+  if (rol === 'admin' || rol === 'administrador') return true;
+  return Number(usuario?.rol_id) === ROLES.ADMIN;
+};
+
 export const rolDeUsuario = (usuario) => {
+  if (esAdmin(usuario)) return 'admin';
   if (esSocorrista(usuario)) return 'socorrista';
   return 'usuario';
 };
