@@ -21,7 +21,8 @@ import { iniciarUsgsWorker } from './workers/UsgsWorker.js';
 import { iniciarDefensoriaWorker } from './workers/defensoria.worker.js';
 import { iniciarIdeamWorker } from './workers/ideam-worker.js';
 
-
+import dns from 'node:dns';
+dns.setServers(['8.8.8.8', '8.8.4.4']);
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
