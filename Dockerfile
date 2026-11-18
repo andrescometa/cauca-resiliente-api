@@ -17,11 +17,11 @@ RUN npm ci --omit=dev && npm cache clean --force
 # Código de la aplicación
 COPY . .
 
-# Railway inyecta la variable PORT en tiempo de ejecución; la app la lee con
-# process.env.PORT y escucha en 0.0.0.0. El valor de aquí es solo el respaldo
-# para ejecuciones locales del contenedor.
-ENV PORT=3000
-EXPOSE 3000
+# Railway inyecta PORT=8080 en tiempo de ejecución; la app la lee con
+# process.env.PORT y escucha en 0.0.0.0. El dominio público del servicio apunta
+# a este mismo puerto (8080).
+ENV PORT=8080
+EXPOSE 8080
 
 # Ejecutar como usuario sin privilegios (la imagen oficial de Node lo incluye).
 USER node
