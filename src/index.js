@@ -26,7 +26,7 @@ import { iniciarIdeamWorker } from './workers/ideam-worker.js';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+
 // Configuración de CORS para permitir que Netlify se conecte
 app.use(cors());
 app.use(express.json({ limit: '4mb' }));
@@ -58,6 +58,7 @@ conectarDB();
 iniciarUsgsWorker(); // Iniciar el worker de sismos
 iniciarDefensoriaWorker()
 iniciarIdeamWorker(); 
-app.listen(PORT, () => {
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, '0.0.0.0',  () => {
   console.log(`Servidor corriendo en el puerto ${PORT}`);
 });
