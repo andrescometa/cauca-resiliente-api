@@ -1,8 +1,9 @@
 import jwt from 'jsonwebtoken';
 import Usuario from '../models/usuario.js';
 import { esAdmin } from '../config/roles.js';
+import JWT_SECRET from '../config/env.js';
 
-const SECRET = process.env.JWT_SECRET || 'cauca_secret';
+const SECRET = JWT_SECRET;
 
 export const requiereAdmin = async (req, res, next) => {
   const auth = req.headers.authorization || '';

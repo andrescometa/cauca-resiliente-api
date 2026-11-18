@@ -1,12 +1,18 @@
 // ===== ARCHIVO: controllers/estadoController.js =====
 import EstadoSeguridad from '../models/EstadoSeguridad.js';
+import { siguienteId } from '../utils/ids.js';
+
+const ESTADOS_VALIDOS = [
+  'A salvo', 'En riesgo', 'Atrapado', 'Desaparecido',
+  'Necesita ayuda', 'Emergencia', 'Sin conexión'
+];
 
 export const actualizarEstado = async (req, res) => {
   try {
     const usuarioId = Number(req.params.usuarioId);
     const { estado, mensaje_estado } = req.body;
 
-    const estadosValidos = ['A salvo', 'En riesgo', 'Atrapado', 'Desaparecido'];
+    const estadosValidos = ESTADOS_VALIDOS;
     if (!estadosValidos.includes(estado)) {
       return res.status(400).json({ mensaje: 'Estado inválido' });
     }
@@ -21,11 +27,8 @@ export const actualizarEstado = async (req, res) => {
       await estadoUsuario.save();
     } else {
       // Si no existe, creamos el registro
-      const ultimoEstado = await EstadoSeguridad.findOne({ _id: { $type: 'number' } }).sort({ _id: -1 });
-      const nuevoId = ultimoEstado ? ultimoEstado._id + 1 : 1;
-
       estadoUsuario = new EstadoSeguridad({
-        _id: nuevoId,
+        _id: await siguienteId(EstadoSeguridad),
         usuario_id: usuarioId,
         estado: estado,
         mensaje_estado: mensaje_estado,

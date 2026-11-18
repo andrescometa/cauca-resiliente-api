@@ -5,13 +5,9 @@ import crypto from 'crypto';
 import Alerta from '../models/alerts.js';
 import { enviarPushPorTopic } from '../services/fcmService.js';
 import { coordsDeMunicipio } from '../utils/municipiosCauca.js';
+import { siguienteId } from '../utils/ids.js';
 
 const URL_INDICE = 'https://bart.ideam.gov.co/ospa/Alertas/modelos/deslizamientos/ultimo/';
-
-async function siguienteId() {
-  const ultima = await Alerta.findOne().sort({ _id: -1 }).lean();
-  return (ultima?._id ?? 0) + 1;
-}
 
 async function consultarAlertasIdeam() {
   try {
@@ -23,14 +19,17 @@ async function consultarAlertasIdeam() {
 
     const $ = cheerio.load(indexResponse.data);
     
-    // 2. Encontrar el enlace al CSV más reciente (el que tenga "2026" en el nombre)
-    let csvUrl = null;
+    // 2. Encontrar el enlace al CSV más reciente del índice (sin fijar el año).
+    const enlacesCsv = [];
     $('a').each((i, el) => {
       const href = $(el).attr('href');
-      if (href && href.endsWith('.csv') && href.includes('2026')) {
-        csvUrl = URL_INDICE + href;
+      if (href && href.toLowerCase().endsWith('.csv')) {
+        enlacesCsv.push(href);
       }
     });
+
+    const csvRelativo = enlacesCsv.sort().pop();
+    const csvUrl = csvRelativo ? new URL(csvRelativo, URL_INDICE).href : null;
 
     if (!csvUrl) {
       console.log('[IDEAM] No se encontró CSV en el índice');
@@ -96,7 +95,7 @@ async function consultarAlertasIdeam() {
       const coords = coordsDeMunicipio(municipio);
 
       const nuevaAlerta = new Alerta({
-        _id: await siguienteId(),
+        _id: await siguienteId(Alerta),
         tipo_alerta: 'Alerta por Deslizamiento',
         mensaje,
         categoria: 'Alerta',

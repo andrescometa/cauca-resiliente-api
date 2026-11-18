@@ -11,12 +11,14 @@ export const CAUCA_POLYGON = {
   maxLng: -75.5
 };
 
-// Bounding box de Colombia
+// Bounding box aproximado de Colombia (antes era el mundo entero, por eso
+// TODO se clasificaba como "cerca" y se enviaban push de sismos de cualquier
+// país; además el TTL nunca borraba nada porque "lejos" era inalcanzable).
 export const COLOMBIA_BOUNDS = {
-  minLat: -90.0,
-  maxLat: 90.0,
-  minLng: -180.0,
-  maxLng: 180.0
+  minLat: -4.3,
+  maxLat: 13.6,
+  minLng: -82.0,
+  maxLng: -66.8
 };
 
 // Radio en km para considerar "cerca" por distancia (fronteras: Ecuador, Panamá)

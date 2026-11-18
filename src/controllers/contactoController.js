@@ -1,11 +1,9 @@
 import ContactoEmergencia from '../models/ContactoEmergencia.js';
+import { siguienteId } from '../utils/ids.js';
 
 const MAX_CONTACTOS = 5;
 
-const siguienteId = async () => {
-  const ultimo = await ContactoEmergencia.findOne().sort({ _id: -1 }).lean();
-  return (ultimo?._id ?? 0) + 1;
-};
+const siguienteIdContacto = () => siguienteId(ContactoEmergencia);
 
 const normalizarTelefono = (telefono) => String(telefono || '').replace(/[^0-9+]/g, '');
 
@@ -73,7 +71,7 @@ export const crearContacto = async (req, res) => {
       : total + 1;
 
     const nuevo = new ContactoEmergencia({
-      _id: await siguienteId(),
+      _id: await siguienteIdContacto(),
       usuario_id: usuarioId,
       nombre_contacto: String(nombre_contacto).trim(),
       telefono_contacto: normalizarTelefono(telefono_contacto),

@@ -2,14 +2,10 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 import Usuario from '../models/usuario.js';
 import { ROLES, normalizarRol, esSocorrista, rolDeUsuario } from '../config/roles.js';
+import JWT_SECRET from '../config/env.js';
+import { siguienteId } from '../utils/ids.js';
 
-const SECRET = process.env.JWT_SECRET || 'cauca_secret';
-
-// Calcula el siguiente _id numérico libre de la colección.
-const siguienteId = async (modelo) => {
-  const ultimo = await modelo.findOne().sort({ _id: -1 }).lean();
-  return (ultimo?._id ?? 0) + 1;
-};
+const SECRET = JWT_SECRET;
 
 export const register = async (req, res) => {
   try {
@@ -105,7 +101,7 @@ export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
     const emailNormalizado = String(email || '').trim().toLowerCase();
-    const user = await Usuario.findOne({ email: emailNormalizado });
+    const user = await Usuario.findOne({ email: emailNormalizado }).select('+password');
     if (!user) return res.status(401).json({ mensaje: 'Credenciales inválidas' });
 
     // Aceptamos contraseñas almacenadas como hash bcrypt y, por compatibilidad

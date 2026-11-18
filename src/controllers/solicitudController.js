@@ -2,15 +2,14 @@ import Solicitud from '../models/Solicitud.js';
 import Asignacion from '../models/Asignacion.js';
 import Usuario from '../models/usuario.js';
 import Ubicacion from '../models/Ubicacion.js';
+import { siguienteId } from '../utils/ids.js';
 
 export const crearSolicitud = async (req, res) => {
   try {
     const { usuario_id, tipo_ayuda, descripcion_emergencia, nivel_prioridad, latitud, longitud, personas_afectadas, requiere_ambulancia } = req.body;
-    const total = await Solicitud.countDocuments();
-    const nuevoId = total + 1;
 
     const nuevaSolicitud = new Solicitud({
-      _id: nuevoId,
+      _id: await siguienteId(Solicitud),
       usuario_id,
       tipo_ayuda,
       descripcion_emergencia,
@@ -162,7 +161,7 @@ export const actualizarEstadoSolicitud = async (req, res) => {
     const solicitudActualizada = await Solicitud.findByIdAndUpdate(
       solicitudId,
       datosAActualizar,
-      { new: true }
+      { returnDocument: 'after' }
     );
 
     if (!solicitudActualizada) return res.status(404).json({ mensaje: 'Solicitud no encontrada' });

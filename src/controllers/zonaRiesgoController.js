@@ -1,11 +1,9 @@
 import ZonaRiesgo from '../models/ZonaRiesgo.js';
+import { siguienteId } from '../utils/ids.js';
 
 const NIVELES = ['Moderado', 'Alto', 'Inminente'];
 
-const siguienteId = async () => {
-  const ultima = await ZonaRiesgo.findOne().sort({ _id: -1 }).lean();
-  return (ultima?._id ?? 0) + 1;
-};
+const siguienteIdZona = () => siguienteId(ZonaRiesgo);
 
 const texto = (valor) => String(valor ?? '').trim();
 
@@ -124,7 +122,7 @@ export const crearZonaRiesgo = async (req, res) => {
     }
 
     const zona = new ZonaRiesgo({
-      _id: await siguienteId(),
+      _id: await siguienteIdZona(),
       nombre_zona: texto(nombre_zona),
       tipo: tipoFinal,
       tipo_riesgo: texto(tipo_riesgo || tipo),

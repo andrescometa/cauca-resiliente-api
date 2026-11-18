@@ -27,6 +27,10 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const app = express();
 
+// Railway (y otros proxys) envían la IP real en X-Forwarded-For; sin esto el
+// limitador de login vería a todos los clientes con la misma IP.
+app.set('trust proxy', 1);
+
 // Configuración de CORS para permitir que Netlify se conecte
 app.use(cors());
 app.use(express.json({ limit: '4mb' }));
@@ -54,11 +58,31 @@ app.use('/api/contactos', contactoRoutes);
 app.use('/api/devices', deviceTokenRoutes);
 
 
-conectarDB();
-iniciarUsgsWorker(); // Iniciar el worker de sismos
-iniciarDefensoriaWorker()
-iniciarIdeamWorker(); 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, '0.0.0.0',  () => {
-  console.log(`Servidor corriendo en el puerto ${PORT}`);
+// 404 en JSON (antes Express devolvía HTML).
+app.use((req, res) => {
+  res.status(404).json({ mensaje: 'Ruta no encontrada' });
 });
+
+// Manejador global de errores: evita respuestas HTML y dobles respuestas.
+app.use((error, req, res, next) => {
+  if (res.headersSent) return next(error);
+  console.error('Error no controlado:', error);
+  return res.status(500).json({ mensaje: 'Error interno del servidor' });
+});
+
+const iniciar = async () => {
+  // Esperamos la conexión antes de aceptar peticiones: así el healthcheck de
+  // Railway no reporta "saludable" mientras MongoDB todavía no responde.
+  await conectarDB();
+
+  iniciarUsgsWorker(); // Iniciar el worker de sismos
+  iniciarDefensoriaWorker();
+  iniciarIdeamWorker();
+
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Servidor corriendo en el puerto ${PORT}`);
+  });
+};
+
+iniciar();

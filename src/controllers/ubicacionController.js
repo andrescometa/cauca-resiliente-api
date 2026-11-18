@@ -1,7 +1,7 @@
-import mongoose from 'mongoose';
 import Ubicacion from '../models/Ubicacion.js';
 import Departamento from '../models/Departamento.js';
 import Municipio from '../models/Municipio.js';
+import { siguienteId } from '../utils/ids.js';
 
 // ============ TU CÓDIGO ORIGINAL ============
 export const crearUbicacion = async (req, res) => {
@@ -16,6 +16,7 @@ export const crearUbicacion = async (req, res) => {
     if (Number.isNaN(lng) || lng < -180 || lng > 180) return res.status(400).json({ mensaje: 'Longitud inválida' });
 
     const nuevaUbicacion = new Ubicacion({
+      _id: await siguienteId(Ubicacion),
       usuario_id, latitud: lat, longitud: lng, direccion_aproximada, precision_metros, bateria, fecha_hora: new Date()
     });
     await nuevaUbicacion.save();

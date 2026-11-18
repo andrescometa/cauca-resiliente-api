@@ -3,6 +3,7 @@ import axios from 'axios';
 import Alerta from '../models/alerts.js';
 import { enviarPushPorTopic } from '../services/fcmService.js';
 import { clasificarRelevancia, distanciaKm, CAUCA_CENTER } from '../utils/geo.js';
+import { siguienteId } from '../utils/ids.js';
 
 const URL_FEED = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_day.geojson';
 
@@ -28,11 +29,6 @@ function departamentoAproximado(lat, lng) {
     (d) => lat >= d.minLat && lat <= d.maxLat && lng >= d.minLng && lng <= d.maxLng
   );
   return depto?.nombre || 'Colombia';
-}
-
-async function siguienteId() {
-  const ultima = await Alerta.findOne().sort({ _id: -1 }).lean();
-  return (ultima?._id ?? 0) + 1;
 }
 
 async function consultarSismosRecientes() {
@@ -88,7 +84,7 @@ async function consultarSismosRecientes() {
       }
 
       const nuevaAlerta = new Alerta({
-        _id: await siguienteId(),
+        _id: await siguienteId(Alerta),
         tipo_alerta: tipoAlerta,
         mensaje,
         categoria: 'Alerta',

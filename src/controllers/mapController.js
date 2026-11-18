@@ -4,8 +4,9 @@ import ContactoEmergencia from '../models/ContactoEmergencia.js';
 import Alerta from '../models/alerts.js';
 import ZonaRiesgo from '../models/ZonaRiesgo.js'; 
 import { esSocorrista } from '../config/roles.js';
+import JWT_SECRET from '../config/env.js';
 
-const SECRET = process.env.JWT_SECRET || 'cauca_secret';
+const SECRET = JWT_SECRET;
 
 const usuarioDesdeToken = async (req) => {
   const auth = req.headers.authorization || '';

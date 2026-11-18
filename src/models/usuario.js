@@ -16,7 +16,9 @@ const usuarioSchema = new mongoose.Schema({
   genero: String,
   edad: Number,
   email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
+  // select: false evita que el hash se filtre en cualquier consulta normal
+  // (ej. GET /api/usuarios/todos). Para autenticar se usa .select('+password').
+  password: { type: String, required: true, select: false },
   telefono: String,
   ciudad: String,
   direccion: String,

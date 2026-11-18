@@ -4,14 +4,10 @@ import * as cheerio from 'cheerio';
 import Alerta from '../models/alerts.js';
 import { enviarPushPorTopic } from '../services/fcmService.js';
 import { coordsDeMunicipio } from '../utils/municipiosCauca.js';
+import { siguienteId } from '../utils/ids.js';
 
 const URL_SAT = 'https://alertastempranas.defensoria.gov.co/';
 const KEYWORDS_CAUCA = ['cauca', 'popayán', 'popayan', 'balboa', 'mercaderes', 'patía'];
-
-async function siguienteId() {
-  const ultima = await Alerta.findOne().sort({ _id: -1 }).lean();
-  return (ultima?._id ?? 0) + 1;
-}
 
 async function consultarAlertasDefensoria() {
   try {
@@ -67,7 +63,7 @@ async function consultarAlertasDefensoria() {
         
 
         const nuevaAlerta = new Alerta({
-          _id: await siguienteId(),
+          _id: await siguienteId(Alerta),
           tipo_alerta: `Alerta Temprana ${tipo}`,
           mensaje: temaClave,
           categoria: 'Alerta',

@@ -1,5 +1,6 @@
 import Asignacion from '../models/Asignacion.js';
 import Solicitud from '../models/Solicitud.js';
+import { siguienteId } from '../utils/ids.js';
 
 export const crearAsignacion = async (req, res) => {
   try {
@@ -34,9 +35,8 @@ export const crearAsignacion = async (req, res) => {
       return res.status(400).json({ mensaje: 'La solicitud ya tiene una asignación activa' });
     }
 
-    // Generamos nuevo _id numérico
-    const total = await Asignacion.countDocuments();
-    const nuevoId = total + 1;
+    // Generamos nuevo _id numérico de forma atómica
+    const nuevoId = await siguienteId(Asignacion);
 
     const nuevaAsignacion = new Asignacion({
       _id: nuevoId,

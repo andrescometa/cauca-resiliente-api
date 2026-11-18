@@ -1,5 +1,6 @@
 import Alerta from '../models/alerts.js';
 import { enviarPushPorTopic } from '../services/fcmService.js';
+import { siguienteId } from '../utils/ids.js';
 
 const CATEGORIAS = ['Noticia', 'Alerta', 'Recomendación'];
 const SEVERIDADES = [
@@ -12,10 +13,7 @@ const SEVERIDADES = [
   'Alta'
 ];
 
-const siguienteId = async () => {
-  const ultima = await Alerta.findOne().sort({ _id: -1 }).lean();
-  return (ultima?._id ?? 0) + 1;
-};
+const siguienteIdAlerta = () => siguienteId(Alerta);
 
 const texto = (valor) => String(valor ?? '').trim();
 
@@ -142,8 +140,21 @@ export const crearAlerta = async (req, res) => {
       return res.status(400).json({ mensaje: 'fecha_expiracion inválida' });
     }
 
+    const fuente = texto(req.body.fuente) || undefined;
+    // El índice único {fuente, externalId} es sparse: si llega una fuente sin
+    // externalId, dos alertas manuales de la misma fuente chocarían (E11000).
+    const externalId = texto(req.body.externalId)
+      || (fuente ? `manual-${Date.now()}-${Math.random().toString(36).slice(2, 8)}` : undefined);
+
+    // Las alertas manuales son relevantes por definición. Antes quedaban con
+    // relevancia 'lejos' (default del esquema) y el TTL las borraba a los 7 días.
+    const relevanciaSolicitada = texto(req.body.relevancia).toLowerCase();
+    const relevancia = ['dentro', 'cerca', 'lejos'].includes(relevanciaSolicitada)
+      ? relevanciaSolicitada
+      : 'dentro';
+
     const alerta = new Alerta({
-      _id: await siguienteId(),
+      _id: await siguienteIdAlerta(),
       tipo_alerta: tipoAlerta,
       mensaje,
       categoria,
@@ -154,7 +165,9 @@ export const crearAlerta = async (req, res) => {
         : undefined,
       usuarios_notificados: [],
       emitida_por: req.usuario?._id ?? null,
-      fuente: texto(req.body.fuente) || undefined,
+      fuente,
+      externalId,
+      relevancia,
       url_oficial: texto(req.body.url_oficial) || undefined,
       activa: req.body.activa !== false,
       fecha_emision: fechaEmision,
@@ -163,33 +176,35 @@ export const crearAlerta = async (req, res) => {
     });
 
     await alerta.save();
-    res.status(201).json({ mensaje: 'Alerta creada correctamente', alerta });
+
+    // Determinar topic según categoría/fuente. El push se lanza aquí, dentro
+    // del try y con "alerta" ya creada (antes estaba después del catch y
+    // lanzaba ReferenceError, así que nunca se enviaba).
+    let topic = 'alertas_cauca';
+    if (fuente === 'SGC' || tipoAlerta.toLowerCase().includes('sismo')) {
+      topic = 'alertas_sismo';
+    } else if (fuente === 'IDEAM') {
+      topic = 'alertas_hidro';
+    }
+
+    // Enviar push sin bloquear la respuesta.
+    enviarPushPorTopic(
+      topic,
+      {
+        title: alerta.tipo_alerta || 'Nueva alerta',
+        body: alerta.mensaje
+      },
+      {
+        alertId: String(alerta._id),
+        category: alerta.categoria || 'Alerta',
+        severity: alerta.nivel_severidad || ''
+      }
+    ).catch((err) => console.error('Push falló:', err.message));
+
+    return res.status(201).json({ mensaje: 'Alerta creada correctamente', alerta });
   } catch (error) {
-    res.status(400).json({ mensaje: 'Error al crear la alerta', error: error.message });
+    return res.status(400).json({ mensaje: 'Error al crear la alerta', error: error.message });
   }
-
-
-  // Determinar topic según categoría/fuente
-let topic = 'alertas_cauca'; // topic general
-if (alerta.fuente === 'SGC' || alerta.tipo_alerta?.includes('sismo')) {
-  topic = 'alertas_sismo';
-} else if (alerta.fuente === 'IDEAM') {
-  topic = 'alertas_hidro';
-}
-
-// Enviar push (no bloquear la respuesta)
-enviarPushPorTopic(
-  topic,
-  {
-    title: alerta.tipo_alerta || 'Nueva alerta',
-    body: alerta.mensaje
-  },
-  {
-    alertId: String(alerta._id),
-    category: alerta.categoria || 'Alerta',
-    severity: alerta.nivel_severidad || ''
-  }
-).catch(err => console.error('Push falló:', err.message))
 };
 
 // ============ ACTUALIZAR ============
