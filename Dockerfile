@@ -1,39 +1,31 @@
-# syntax = docker/dockerfile:1
+# syntax=docker/dockerfile:1
 
-# Adjust NODE_VERSION as desired
-ARG NODE_VERSION=20.20.2
-FROM node:${NODE_VERSION}-slim AS base
+# Imagen para Railway (build con Dockerfile).
+# Se usa Node 24 porque es la versión con la que se probó la API.
+ARG NODE_VERSION=24
+FROM node:${NODE_VERSION}-slim
 
-LABEL fly_launch_runtime="Node.js"
-
-# Node.js app lives here
 WORKDIR /app
 
-# Set production environment
-ENV NODE_ENV="production"
+ENV NODE_ENV=production
 
+# Solo dependencias de producción: no se necesitan nodemon ni herramientas de
+# desarrollo dentro del contenedor.
+COPY package.json package-lock.json ./
+RUN npm ci --omit=dev && npm cache clean --force
 
-# Throw-away build stage to reduce size of final image
-FROM base AS build
-
-# Install packages needed to build node modules
-RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential node-gyp pkg-config python-is-python3
-
-# Install node modules
-COPY package-lock.json package.json ./
-RUN npm ci
-
-# Copy application code
+# Código de la aplicación
 COPY . .
 
-
-# Final stage for app image
-FROM base
-
-# Copy built application
-COPY --from=build /app /app
-
-# Start the server by default, this can be overwritten at runtime
+# Railway inyecta la variable PORT en tiempo de ejecución; la app la lee con
+# process.env.PORT y escucha en 0.0.0.0. El valor de aquí es solo el respaldo
+# para ejecuciones locales del contenedor.
+ENV PORT=3000
 EXPOSE 3000
-CMD [ "npm", "run", "start" ]
+
+# Ejecutar como usuario sin privilegios (la imagen oficial de Node lo incluye).
+USER node
+
+# "node" directo en vez de "npm start": npm no reenvía bien SIGTERM y añade un
+# proceso extra en el contenedor.
+CMD ["node", "src/index.js"]
