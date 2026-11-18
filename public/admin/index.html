@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin · Cauca Resiliente</title>
+  <style>
+    :root {
+      --bg: #f4f6fb;
+      --surface: #ffffff;
+      --border: #dfe5f0;
+      --text: #17213a;
+      --muted: #66708a;
+      --primary: #1f4fa8;
+      --primary-soft: #e8efff;
+      --danger: #c62828;
+      --danger-soft: #fdecec;
+      --warning: #b26a00;
+      --warning-soft: #fff4df;
+      --success: #1b7a4b;
+      --success-soft: #e4f7ed;
+      --radius: 14px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    button, input, select, textarea { font: inherit; }
+    .hidden { display: none !important; }
+
+    /* Login */
+    .login-wrap {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+    .login-card {
+      width: 100%;
+      max-width: 400px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: 0 20px 60px rgba(23, 33, 58, .08);
+    }
+    .login-card h1 { margin: 0 0 6px; font-size: 22px; }
+    .login-card p { margin: 0 0 22px; color: var(--muted); font-size: 14px; }
+    .field { margin-bottom: 14px; min-width: 0; }
+    .field input, .field select, .field textarea { min-width: 0; }
+    .field label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+    .field input, .field select, .field textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 12px;
+      background: #fff;
+      color: var(--text);
+      outline: none;
+    }
+    .field input:focus, .field select:focus, .field textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(31, 79, 168, .12);
+    }
+    .field textarea { min-height: 90px; resize: vertical; }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .check { display: flex; align-items: center; gap: 8px; font-size: 14px; }
+    .check input { width: auto; }
+
+    /* Layout */
+    .app-header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; }
+    .brand-logo {
+      width: 38px; height: 38px; border-radius: 12px;
+      background: var(--primary); color: #fff;
+      display: grid; place-items: center; font-weight: 800;
+    }
+    .brand h1 { margin: 0; font-size: 17px; }
+    .brand small { color: var(--muted); }
+    .user-box { display: flex; align-items: center; gap: 12px; font-size: 13px; color: var(--muted); }
+
+    main { max-width: 1180px; margin: 0 auto; padding: 22px; }
+    .tabs { display: flex; gap: 8px; margin-bottom: 18px; }
+    .tab {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--muted);
+      padding: 9px 16px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .tab.active { background: var(--primary); border-color: var(--primary); color: #fff; }
+
+    .panel-grid { display: grid; grid-template-columns: minmax(0, 1fr) 390px; gap: 18px; align-items: start; }
+    @media (max-width: 900px) { .panel-grid { grid-template-columns: 1fr; } }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .card-head {
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .card-head h2 { margin: 0; font-size: 16px; }
+    .list { padding: 10px; display: flex; flex-direction: column; gap: 10px; }
+
+    .item {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      display: flex;
+      gap: 12px;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .item h3 { margin: 0 0 4px; font-size: 15px; }
+    .item p { margin: 0 0 8px; color: var(--muted); font-size: 13px; line-height: 1.45; }
+    .meta { display: flex; flex-wrap: wrap; gap: 6px; font-size: 12px; color: var(--muted); }
+    .badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      border-radius: 999px; padding: 3px 9px; font-weight: 700; font-size: 11px;
+    }
+    .badge.inactive { background: var(--danger-soft); color: var(--danger); }
+    .badge.active { background: var(--success-soft); color: var(--success); }
+    .badge.level { background: var(--warning-soft); color: var(--warning); }
+    .actions { display: flex; gap: 6px; flex-shrink: 0; }
+
+    .btn {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      border-radius: 10px;
+      padding: 9px 14px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .btn:hover { background: #f7f9ff; }
+    .btn.primary { background: var(--primary); border-color: var(--primary); color: #fff; }
+    .btn.primary:hover { background: #183f87; }
+    .btn.danger { background: var(--danger-soft); border-color: #f3c7c7; color: var(--danger); }
+    .btn.small { padding: 6px 10px; font-size: 12px; }
+    .btn:disabled { opacity: .55; cursor: not-allowed; }
+
+    .form { padding: 16px 18px 20px; }
+    .form h2 { margin: 0 0 14px; font-size: 16px; }
+    .form-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px; }
+
+    .empty { padding: 34px 16px; text-align: center; color: var(--muted); font-size: 14px; }
+    .alert-bar {
+      margin-bottom: 14px;
+      border-radius: 10px;
+      padding: 10px 14px;
+      background: var(--danger-soft);
+      color: var(--danger);
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .ok-bar {
+      margin-bottom: 14px;
+      border-radius: 10px;
+      padding: 10px 14px;
+      background: var(--success-soft);
+      color: var(--success);
+      font-size: 13px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div id="loginView" class="login-wrap">
+    <form id="loginForm" class="login-card">
+      <h1>Cauca Resiliente</h1>
+      <p>Panel de administración de alertas y zonas de riesgo.</p>
+      <div id="loginError" class="alert-bar hidden"></div>
+      <div class="field">
+        <label for="email">Correo</label>
+        <input id="email" type="email" autocomplete="username" required>
+      </div>
+      <div class="field">
+        <label for="password">Contraseña</label>
+        <input id="password" type="password" autocomplete="current-password" required>
+      </div>
+      <button class="btn primary" style="width:100%" type="submit">Ingresar</button>
+    </form>
+  </div>
+
+  <div id="appView" class="hidden">
+    <header class="app-header">
+      <div class="brand">
+        <div class="brand-logo">CR</div>
+        <div>
+          <h1>Panel de administración</h1>
+          <small>Alertas y zonas de riesgo en tiempo real</small>
+        </div>
+      </div>
+      <div class="user-box">
+        <span id="userEmail"></span>
+        <button id="logoutBtn" class="btn small">Salir</button>
+      </div>
+    </header>
+
+    <main>
+      <div id="message" class="hidden"></div>
+      <div class="tabs">
+        <button class="tab active" data-tab="alertas">Alertas</button>
+        <button class="tab" data-tab="zonas">Zonas de riesgo</button>
+      </div>
+
+      <section id="tabAlertas" class="panel-grid">
+        <div class="card">
+          <div class="card-head">
+            <h2>Alertas registradas</h2>
+            <button id="nuevaAlerta" class="btn primary small">Nueva alerta</button>
+          </div>
+          <div id="listaAlertas" class="list"></div>
+        </div>
+
+        <form id="formAlerta" class="card form hidden">
+          <h2 id="tituloFormAlerta">Nueva alerta</h2>
+          <input type="hidden" id="alertaId">
+          <div class="field">
+            <label for="aCategoria">Categoría</label>
+            <select id="aCategoria" required>
+              <option value="Alerta">Alerta</option>
+              <option value="Noticia">Noticia</option>
+              <option value="Recomendación">Recomendación</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="aTipo">Tipo de alerta</label>
+            <input id="aTipo" placeholder="Ej. Sismo, Deslizamiento, Evacuación" required>
+          </div>
+          <div class="field">
+            <label for="aMensaje">Mensaje</label>
+            <textarea id="aMensaje" required></textarea>
+          </div>
+          <div class="field">
+            <label for="aSeveridad">Nivel de severidad</label>
+            <select id="aSeveridad">
+              <option>Informativa</option>
+              <option>Preventiva</option>
+              <option>Urgente</option>
+              <option>Crítica</option>
+            </select>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="aLat">Latitud</label>
+              <input id="aLat" type="number" step="any" placeholder="2.4448">
+            </div>
+            <div class="field">
+              <label for="aLng">Longitud</label>
+              <input id="aLng" type="number" step="any" placeholder="-76.6147">
+            </div>
+          </div>
+          <div class="field">
+            <label for="aRadio">Radio (metros)</label>
+            <input id="aRadio" type="number" min="1" step="1" placeholder="300">
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="aEmision">Emisión</label>
+              <input id="aEmision" type="datetime-local">
+            </div>
+            <div class="field">
+              <label for="aExpira">Expiración</label>
+              <input id="aExpira" type="datetime-local">
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="aFuente">Fuente</label>
+              <input id="aFuente" placeholder="SGC, IDEAM, UNGRD...">
+            </div>
+            <div class="field">
+              <label for="aUrl">URL oficial</label>
+              <input id="aUrl" type="url" placeholder="https://...">
+            </div>
+          </div>
+          <label class="check"><input id="aActiva" type="checkbox" checked> Activa</label>
+          <div class="form-actions">
+            <button type="button" class="btn" id="cancelarAlerta">Cancelar</button>
+            <button type="submit" class="btn primary" id="guardarAlerta">Guardar</button>
+          </div>
+        </form>
+      </section>
+
+      <section id="tabZonas" class="panel-grid hidden">
+        <div class="card">
+          <div class="card-head">
+            <h2>Zonas de riesgo registradas</h2>
+            <button id="nuevaZona" class="btn primary small">Nueva zona</button>
+          </div>
+          <div id="listaZonas" class="list"></div>
+        </div>
+
+        <form id="formZona" class="card form hidden">
+          <h2 id="tituloFormZona">Nueva zona</h2>
+          <input type="hidden" id="zonaId">
+          <div class="field">
+            <label for="zNombre">Nombre de la zona</label>
+            <input id="zNombre" required>
+          </div>
+          <div class="field">
+            <label for="zTipo">Tipo de riesgo</label>
+            <input id="zTipo" placeholder="Deslizamiento, inundación..." required>
+          </div>
+          <div class="field">
+            <label for="zNivel">Nivel de peligro</label>
+            <select id="zNivel">
+              <option>Moderado</option>
+              <option>Alto</option>
+              <option>Inminente</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="zDescripcion">Descripción</label>
+            <textarea id="zDescripcion"></textarea>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="zLat">Latitud</label>
+              <input id="zLat" type="number" step="any" required>
+            </div>
+            <div class="field">
+              <label for="zLng">Longitud</label>
+              <input id="zLng" type="number" step="any" required>
+            </div>
+          </div>
+          <div class="field">
+            <label for="zRadio">Radio (metros)</label>
+            <input id="zRadio" type="number" min="1" step="1" value="300">
+          </div>
+          <div class="field">
+            <label for="zPoblacion">Población estimada</label>
+            <input id="zPoblacion" type="number" min="0" step="1">
+          </div>
+          <div class="field">
+            <label for="zEstado">Estado de la zona</label>
+            <input id="zEstado" placeholder="Activa, en monitoreo...">
+          </div>
+          <label class="check"><input id="zActiva" type="checkbox" checked> Activa</label>
+          <div class="form-actions">
+            <button type="button" class="btn" id="cancelarZona">Cancelar</button>
+            <button type="submit" class="btn primary" id="guardarZona">Guardar</button>
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const API = '/api';
+    const state = {
+      token: localStorage.getItem('cr_admin_token') || '',
+      email: localStorage.getItem('cr_admin_email') || '',
+      alertas: [],
+      zonas: []
+    };
+
+    const $ = (id) => document.getElementById(id);
+
+    const esc = (value) => String(value ?? '')
+      .replaceAll('&', '&amp;')
+      .replaceAll('<', '&lt;')
+      .replaceAll('>', '&gt;')
+      .replaceAll('"', '&quot;')
+      .replaceAll("'", '&#039;');
+
+    const toLocalInput = (iso) => {
+      if (!iso) return '';
+      const fecha = new Date(iso);
+      if (Number.isNaN(fecha.getTime())) return '';
+      const pad = (n) => String(n).padStart(2, '0');
+      return `${fecha.getFullYear()}-${pad(fecha.getMonth() + 1)}-${pad(fecha.getDate())}T${pad(fecha.getHours())}:${pad(fecha.getMinutes())}`;
+    };
+
+    const formatoFecha = (iso) => {
+      if (!iso) return 'Sin fecha';
+      const fecha = new Date(iso);
+      if (Number.isNaN(fecha.getTime())) return 'Sin fecha';
+      return fecha.toLocaleString('es-CO', { dateStyle: 'medium', timeStyle: 'short' });
+    };
+
+    function mostrarMensaje(texto, tipo = 'error') {
+      const box = $('message');
+      box.textContent = texto;
+      box.className = tipo === 'ok' ? 'ok-bar' : 'alert-bar';
+      clearTimeout(mostrarMensaje.timer);
+      mostrarMensaje.timer = setTimeout(() => box.classList.add('hidden'), 4000);
+    }
+
+    async function api(path, options = {}) {
+      const headers = { ...(options.headers || {}) };
+      if (options.body) headers['Content-Type'] = 'application/json';
+      if (state.token) headers.Authorization = `Bearer ${state.token}`;
+
+      const respuesta = await fetch(`${API}${path}`, { ...options, headers });
+      const data = await respuesta.json().catch(() => ({}));
+      if (!respuesta.ok) {
+        throw new Error(data.mensaje || `Error HTTP ${respuesta.status}`);
+      }
+      return data;
+    }
+
+    async function iniciarSesion(evento) {
+      evento.preventDefault();
+      const error = $('loginError');
+      error.classList.add('hidden');
+      try {
+        const data = await api('/auth/login', {
+          method: 'POST',
+          body: JSON.stringify({ email: $('email').value.trim(), password: $('password').value })
+        });
+        if (data.user?.rol !== 'admin') {
+          throw new Error('Esta cuenta no tiene permisos de administrador');
+        }
+        state.token = data.token;
+        state.email = data.user.email;
+        localStorage.setItem('cr_admin_token', state.token);
+        localStorage.setItem('cr_admin_email', state.email);
+        await entrarAlPanel();
+      } catch (e) {
+        error.textContent = e.message;
+        error.classList.remove('hidden');
+      }
+    }
+
+    async function entrarAlPanel() {
+      try {
+        const perfil = await api('/user/profile');
+        if (perfil.rol !== 'admin') throw new Error('Se requieren permisos de administrador');
+        $('userEmail').textContent = perfil.email || state.email;
+        $('loginView').classList.add('hidden');
+        $('appView').classList.remove('hidden');
+        await Promise.all([cargarAlertas(), cargarZonas()]);
+      } catch (e) {
+        cerrarSesion();
+        const error = $('loginError');
+        error.textContent = e.message;
+        error.classList.remove('hidden');
+      }
+    }
+
+    function cerrarSesion() {
+      state.token = '';
+      localStorage.removeItem('cr_admin_token');
+      localStorage.removeItem('cr_admin_email');
+      $('appView').classList.add('hidden');
+      $('loginView').classList.remove('hidden');
+    }
+
+    async function cargarAlertas() {
+      try {
+        state.alertas = await api('/alerts?todas=1');
+        renderAlertas();
+      } catch (e) {
+        $('listaAlertas').innerHTML = `<div class="empty">${esc(e.message)}</div>`;
+      }
+    }
+
+    function renderAlertas() {
+      const contenedor = $('listaAlertas');
+      if (!state.alertas.length) {
+        contenedor.innerHTML = '<div class="empty">No hay alertas registradas.</div>';
+        return;
+      }
+      contenedor.innerHTML = state.alertas.map((alerta) => {
+        const estado = alerta.activa === false
+          ? '<span class="badge inactive">Inactiva</span>'
+          : '<span class="badge active">Activa</span>';
+        return `
+          <article class="item">
+            <div>
+              <h3>${esc(alerta.tipo_alerta || 'Alerta')}</h3>
+              <p>${esc(alerta.mensaje || '')}</p>
+              <div class="meta">
+                ${estado}
+                <span class="badge level">${esc(alerta.categoria || 'Sin categoría')}</span>
+                <span>${esc(alerta.nivel_severidad || 'Sin severidad')}</span>
+                <span>${esc(formatoFecha(alerta.fecha_emision))}</span>
+                ${alerta.fuente ? `<span>Fuente: ${esc(alerta.fuente)}</span>` : ''}
+              </div>
+            </div>
+            <div class="actions">
+              <button class="btn small" data-editar-alerta="${alerta._id}">Editar</button>
+              <button class="btn small danger" data-eliminar-alerta="${alerta._id}">Desactivar</button>
+            </div>
+          </article>`;
+      }).join('');
+    }
+
+    function abrirFormAlerta(alerta = null) {
+      $('formAlerta').classList.remove('hidden');
+      $('tituloFormAlerta').textContent = alerta ? 'Editar alerta' : 'Nueva alerta';
+      $('alertaId').value = alerta?._id ?? '';
+      $('aCategoria').value = alerta?.categoria || 'Alerta';
+      $('aTipo').value = alerta?.tipo_alerta || '';
+      $('aMensaje').value = alerta?.mensaje || '';
+      $('aSeveridad').value = alerta?.nivel_severidad || 'Urgente';
+      const coords = alerta?.zona_afectada?.coordinates;
+      $('aLat').value = coords?.[1] ?? '';
+      $('aLng').value = coords?.[0] ?? '';
+      $('aRadio').value = alerta?.radio_metros ?? '';
+      $('aEmision').value = toLocalInput(alerta?.fecha_emision);
+      $('aExpira').value = toLocalInput(alerta?.fecha_expiracion);
+      $('aFuente').value = alerta?.fuente || '';
+      $('aUrl').value = alerta?.url_oficial || '';
+      $('aActiva').checked = alerta?.activa !== false;
+    }
+
+    function cerrarFormAlerta() {
+      $('formAlerta').classList.add('hidden');
+      $('formAlerta').reset();
+      $('alertaId').value = '';
+    }
+
+    async function guardarAlerta(evento) {
+      evento.preventDefault();
+      const id = $('alertaId').value;
+      const lat = $('aLat').value.trim();
+      const lng = $('aLng').value.trim();
+      if ((lat && !lng) || (!lat && lng)) {
+        mostrarMensaje('Debes completar latitud y longitud juntas');
+        return;
+      }
+
+      const body = {
+        categoria: $('aCategoria').value,
+        tipo_alerta: $('aTipo').value.trim(),
+        mensaje: $('aMensaje').value.trim(),
+        nivel_severidad: $('aSeveridad').value,
+        latitud: lat || undefined,
+        longitud: lng || undefined,
+        radio_metros: $('aRadio').value || undefined,
+        fecha_emision: $('aEmision').value || undefined,
+        fecha_expiracion: $('aExpira').value || undefined,
+        fuente: $('aFuente').value.trim(),
+        url_oficial: $('aUrl').value.trim(),
+        activa: $('aActiva').checked
+      };
+
+      try {
+        $('guardarAlerta').disabled = true;
+        if (id) {
+          await api(`/alerts/${id}`, { method: 'PUT', body: JSON.stringify(body) });
+          mostrarMensaje('Alerta actualizada', 'ok');
+        } else {
+          await api('/alerts', { method: 'POST', body: JSON.stringify(body) });
+          mostrarMensaje('Alerta creada', 'ok');
+        }
+        cerrarFormAlerta();
+        await cargarAlertas();
+      } catch (e) {
+        mostrarMensaje(e.message);
+      } finally {
+        $('guardarAlerta').disabled = false;
+      }
+    }
+
+    async function desactivarAlerta(id) {
+      if (!confirm('¿Desactivar esta alerta?')) return;
+      try {
+        await api(`/alerts/${id}`, { method: 'DELETE' });
+        mostrarMensaje('Alerta desactivada', 'ok');
+        await cargarAlertas();
+      } catch (e) {
+        mostrarMensaje(e.message);
+      }
+    }
+
+    async function cargarZonas() {
+      try {
+        state.zonas = (await api('/zonas-riesgo?todas=1')).zonas || [];
+        renderZonas();
+      } catch (e) {
+        $('listaZonas').innerHTML = `<div class="empty">${esc(e.message)}</div>`;
+      }
+    }
+
+    function renderZonas() {
+      const contenedor = $('listaZonas');
+      if (!state.zonas.length) {
+        contenedor.innerHTML = '<div class="empty">No hay zonas de riesgo registradas.</div>';
+        return;
+      }
+      contenedor.innerHTML = state.zonas.map((zona) => {
+        const estado = zona.activa === false
+          ? '<span class="badge inactive">Inactiva</span>'
+          : '<span class="badge active">Activa</span>';
+        return `
+          <article class="item">
+            <div>
+              <h3>${esc(zona.nombre_zona || 'Zona sin nombre')}</h3>
+              <p>${esc(zona.descripcion || 'Sin descripción')}</p>
+              <div class="meta">
+                ${estado}
+                <span class="badge level">${esc(zona.nivel_peligro || 'Sin nivel')}</span>
+                <span>${esc(zona.tipo || zona.tipo_riesgo || 'Sin tipo')}</span>
+                <span>${zona.radio_metros ? `${zona.radio_metros} m` : 'Sin radio'}</span>
+                <span>${esc(formatoFecha(zona.fecha_registro))}</span>
+              </div>
+            </div>
+            <div class="actions">
+              <button class="btn small" data-editar-zona="${zona._id}">Editar</button>
+              <button class="btn small danger" data-eliminar-zona="${zona._id}">Desactivar</button>
+            </div>
+          </article>`;
+      }).join('');
+    }
+
+    function abrirFormZona(zona = null) {
+      $('formZona').classList.remove('hidden');
+      $('tituloFormZona').textContent = zona ? 'Editar zona' : 'Nueva zona';
+      $('zonaId').value = zona?._id ?? '';
+      $('zNombre').value = zona?.nombre_zona || '';
+      $('zTipo').value = zona?.tipo || zona?.tipo_riesgo || '';
+      $('zNivel').value = zona?.nivel_peligro || 'Moderado';
+      $('zDescripcion').value = zona?.descripcion || '';
+      $('zLat').value = zona?.latitud ?? '';
+      $('zLng').value = zona?.longitud ?? '';
+      $('zRadio').value = zona?.radio_metros ?? 300;
+      $('zPoblacion').value = zona?.poblacion_estimada ?? '';
+      $('zEstado').value = zona?.estado_zona || '';
+      $('zActiva').checked = zona?.activa !== false;
+    }
+
+    function cerrarFormZona() {
+      $('formZona').classList.add('hidden');
+      $('formZona').reset();
+      $('zonaId').value = '';
+    }
+
+    async function guardarZona(evento) {
+      evento.preventDefault();
+      const id = $('zonaId').value;
+      const body = {
+        nombre_zona: $('zNombre').value.trim(),
+        tipo: $('zTipo').value.trim(),
+        nivel_peligro: $('zNivel').value,
+        descripcion: $('zDescripcion').value.trim(),
+        latitud: $('zLat').value,
+        longitud: $('zLng').value,
+        radio_metros: $('zRadio').value,
+        poblacion_estimada: $('zPoblacion').value || undefined,
+        estado_zona: $('zEstado').value.trim(),
+        activa: $('zActiva').checked
+      };
+
+      try {
+        $('guardarZona').disabled = true;
+        if (id) {
+          await api(`/zonas-riesgo/${id}`, { method: 'PUT', body: JSON.stringify(body) });
+          mostrarMensaje('Zona actualizada', 'ok');
+        } else {
+          await api('/zonas-riesgo', { method: 'POST', body: JSON.stringify(body) });
+          mostrarMensaje('Zona creada', 'ok');
+        }
+        cerrarFormZona();
+        await cargarZonas();
+      } catch (e) {
+        mostrarMensaje(e.message);
+      } finally {
+        $('guardarZona').disabled = false;
+      }
+    }
+
+    async function desactivarZona(id) {
+      if (!confirm('¿Desactivar esta zona de riesgo?')) return;
+      try {
+        await api(`/zonas-riesgo/${id}`, { method: 'DELETE' });
+        mostrarMensaje('Zona desactivada', 'ok');
+        await cargarZonas();
+      } catch (e) {
+        mostrarMensaje(e.message);
+      }
+    }
+
+    // Eventos
+    $('loginForm').addEventListener('submit', iniciarSesion);
+    $('logoutBtn').addEventListener('click', cerrarSesion);
+    $('nuevaAlerta').addEventListener('click', () => abrirFormAlerta());
+    $('cancelarAlerta').addEventListener('click', cerrarFormAlerta);
+    $('formAlerta').addEventListener('submit', guardarAlerta);
+    $('nuevaZona').addEventListener('click', () => abrirFormZona());
+    $('cancelarZona').addEventListener('click', cerrarFormZona);
+    $('formZona').addEventListener('submit', guardarZona);
+
+    document.querySelectorAll('.tab').forEach((tab) => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach((t) => t.classList.remove('active'));
+        tab.classList.add('active');
+        const esAlertas = tab.dataset.tab === 'alertas';
+        $('tabAlertas').classList.toggle('hidden', !esAlertas);
+        $('tabZonas').classList.toggle('hidden', esAlertas);
+      });
+    });
+
+    document.addEventListener('click', (evento) => {
+      const editarAlerta = evento.target.closest('[data-editar-alerta]');
+      if (editarAlerta) {
+        const alerta = state.alertas.find((a) => String(a._id) === editarAlerta.dataset.editarAlerta);
+        if (alerta) abrirFormAlerta(alerta);
+        return;
+      }
+
+      const eliminarAlerta = evento.target.closest('[data-eliminar-alerta]');
+      if (eliminarAlerta) {
+        desactivarAlerta(eliminarAlerta.dataset.eliminarAlerta);
+        return;
+      }
+
+      const editarZona = evento.target.closest('[data-editar-zona]');
+      if (editarZona) {
+        const zona = state.zonas.find((z) => String(z._id) === editarZona.dataset.editarZona);
+        if (zona) abrirFormZona(zona);
+        return;
+      }
+
+      const eliminarZona = evento.target.closest('[data-eliminar-zona]');
+      if (eliminarZona) {
+        desactivarZona(eliminarZona.dataset.eliminarZona);
+      }
+    });
+
+    if (state.token) entrarAlPanel();
+  </script>
+</body>
+</html>

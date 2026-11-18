@@ -30,4 +30,6 @@ const zonaRiesgoSchema = new mongoose.Schema({
   versionKey: false
 });
 
+zonaRiesgoSchema.index({ coordenadas_centro: '2dsphere' });
+
 export default mongoose.model('ZonaRiesgo', zonaRiesgoSchema);

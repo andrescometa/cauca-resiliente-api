@@ -31,18 +31,32 @@ export const register = async (req, res) => {
     if (!name || !email || !phone || !password) {
       return res.status(400).json({ mensaje: 'Nombre, correo, teléfono y contraseña son obligatorios' });
     }
-    const existe = await Usuario.findOne({ email });
+
+    const emailNormalizado = String(email).trim().toLowerCase();
+    const telefonoNormalizado = String(phone).trim();
+
+    const existe = await Usuario.findOne({ email: emailNormalizado });
     if (existe) return res.status(400).json({ mensaje: 'Email ya registrado' });
 
     const rolId = normalizarRol(rol);
+    if (rolId !== ROLES.USUARIO && rolId !== ROLES.SOCORRISTA) {
+      return res.status(400).json({ mensaje: 'Rol no permitido en el registro' });
+    }
     if (rolId === ROLES.SOCORRISTA && (!identificacion || !tipo_sangre)) {
       return res.status(400).json({ mensaje: 'Para registrarse como socorrista la identificación y el tipo de sangre son obligatorios' });
     }
 
     // "name" llega como nombre completo desde la app; separamos nombres y apellidos.
-    const partes = String(name).trim().split(/\s+/);
-    const nombres = partes.shift() || '';
-    const apellidosFinal = apellidos || partes.join(' ');
+    const partes = String(name).trim().split(/\s+/).filter(Boolean);
+    const nombres = partes.shift() || 'Usuario';
+    // Si el usuario solo escribe un nombre, usamos el mismo como apellido para
+    // no romper el campo obligatorio del esquema.
+    const apellidosFinal = String(apellidos || partes.join(' ') || nombres).trim() || nombres;
+
+    // La app puede enviar "CC - Cédula de Ciudadanía"; guardamos solo el código
+    // porque el validador de la colección solo admite CC, CE, TI o PAS.
+    const tipoDocCodigo = String(tipo_documento || 'CC').split('-')[0].trim().toUpperCase();
+    const tipoDocValido = ['CC', 'CE', 'TI', 'PAS'].includes(tipoDocCodigo) ? tipoDocCodigo : 'CC';
 
     const passwordEncriptada = await bcrypt.hash(password, 10);
 
@@ -50,15 +64,15 @@ export const register = async (req, res) => {
       _id: await siguienteId(Usuario),
       nombres,
       apellidos: apellidosFinal,
-      identificacion: identificacion || phone,
-      tipo_documento: tipo_documento || 'CC',
+      identificacion: String(identificacion || telefonoNormalizado).trim(),
+      tipo_documento: tipoDocValido,
       genero,
       edad,
       ciudad,
       direccion,
       tipo_sangre,
-      email,
-      telefono: phone,
+      email: emailNormalizado,
+      telefono: telefonoNormalizado,
       password: passwordEncriptada,
       fecha_registro: new Date(),
       rol: rolId === ROLES.SOCORRISTA ? 'socorrista' : 'usuario',
@@ -78,14 +92,20 @@ export const register = async (req, res) => {
       }
     });
   } catch (e) {
-    res.status(400).json({ mensaje: 'Error al registrar', error: e.message });
+    res.status(400).json({
+      mensaje: e?.name === 'ValidationError'
+        ? 'Revisa los datos del registro: ' + Object.values(e.errors || {}).map((x) => x.message).join(', ')
+        : 'Error al registrar',
+      error: e.message
+    });
   }
 };
 
 export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
-    const user = await Usuario.findOne({ email });
+    const emailNormalizado = String(email || '').trim().toLowerCase();
+    const user = await Usuario.findOne({ email: emailNormalizado });
     if (!user) return res.status(401).json({ mensaje: 'Credenciales inválidas' });
 
     // Aceptamos contraseñas almacenadas como hash bcrypt y, por compatibilidad
@@ -105,6 +125,10 @@ export const login = async (req, res) => {
         name: user.nombres,
         email: user.email,
         phone: user.telefono,
+        apellidos: user.apellidos ?? null,
+        foto: user.foto ?? null,
+        identificacion: user.identificacion ?? null,
+        ciudad: user.ciudad ?? null,
         rol: rolDeUsuario(user)
       }
     });
@@ -126,6 +150,7 @@ export const profile = async (req, res) => {
       email: user.email,
       phone: user.telefono,
       apellidos: user.apellidos ?? null,
+      foto: user.foto ?? null,
       tipo_documento: user.tipo_documento ?? null,
       identificacion: user.identificacion ?? null,
       genero: user.genero ?? null,

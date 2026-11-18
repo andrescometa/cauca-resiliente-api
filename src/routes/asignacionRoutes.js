@@ -1,7 +1,7 @@
 import express from 'express';
 
 // Importamos las funciones del controlador
-import { crearAsignacion, actualizarAsignacion, listarAsignacionesPorSocorrista } from '../controllers/asignacionController.js';
+import { crearAsignacion, actualizarAsignacion, listarAsignacionesPorSocorrista, obtenerSeguimientoSolicitud } from '../controllers/asignacionController.js';
 
 // Creamos el router
 const router = express.Router();
@@ -11,6 +11,9 @@ router.post('/', crearAsignacion);
 
 // GET /api/asignaciones/socorrista/:socorristaId → solicitudes asignadas
 router.get('/socorrista/:socorristaId', listarAsignacionesPorSocorrista);
+
+// GET /api/asignaciones/solicitud/:solicitudId → seguimiento de una solicitud
+router.get('/solicitud/:solicitudId', obtenerSeguimientoSolicitud);
 
 // PUT /api/asignaciones/:id → actualizar estado
 router.put('/:id', actualizarAsignacion);

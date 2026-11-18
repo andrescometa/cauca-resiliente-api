@@ -1,0 +1,212 @@
+[
+  {
+    "_id": {
+      "$numberInt": "1"
+    },
+    "usuario_id": {
+      "$numberInt": "1"
+    },
+    "nombre_contacto": "Luisa Gómez",
+    "telefono_contacto": "3176543210",
+    "parentesco": "Madre",
+    "prioridad": {
+      "$numberInt": "1"
+    },
+    "notificado": false
+  },
+  {
+    "_id": {
+      "$numberInt": "2"
+    },
+    "usuario_id": {
+      "$numberInt": "1"
+    },
+    "nombre_contacto": "Carlos Valencia",
+    "telefono_contacto": "3156789012",
+    "parentesco": "Padre",
+    "prioridad": {
+      "$numberInt": "2"
+    },
+    "notificado": false
+  },
+  {
+    "_id": {
+      "$numberInt": "3"
+    },
+    "usuario_id": {
+      "$numberInt": "2"
+    },
+    "nombre_contacto": "Ana Mina",
+    "telefono_contacto": "3109876543",
+    "parentesco": "Hermana",
+    "prioridad": {
+      "$numberInt": "1"
+    },
+    "notificado": false
+  },
+  {
+    "_id": {
+      "$numberInt": "4"
+    },
+    "usuario_id": {
+      "$numberInt": "3"
+    },
+    "nombre_contacto": "Roberto Díaz",
+    "telefono_contacto": "3187654321",
+    "parentesco": "Padre",
+    "prioridad": {
+      "$numberInt": "1"
+    },
+    "notificado": false
+  },
+  {
+    "_id": {
+      "$numberInt": "5"
+    },
+    "usuario_id": {
+      "$numberInt": "4"
+    },
+    "nombre_contacto": "Patricia Cauca",
+    "telefono_contacto": "3154321098",
+    "parentesco": "Esposa",
+    "prioridad": {
+      "$numberInt": "1"
+    },
+    "notificado": true
+  },
+  {
+    "_id": {
+      "$numberInt": "6"
+    },
+    "usuario_id": {
+      "$numberInt": "5"
+    },
+    "nombre_contacto": "Carlos López",
+    "telefono_contacto": "3124567890",
+    "parentesco": "Padre",
+    "prioridad": {
+      "$numberInt": "1"
+    },
+    "notificado": true
+  },
+  {
+    "_id": {
+      "$numberInt": "7"
+    },
+    "usuario_id": {
+      "$numberInt": "6"
+    },
+    "nombre_contacto": "Marta Guerrero",
+    "telefono_contacto": "3161234567",
+    "parentesco": "Madre",
+    "prioridad": {
+      "$numberInt": "1"
+    },
+    "notificado": false
+  },
+  {
+    "_id": {
+      "$numberInt": "8"
+    },
+    "usuario_id": {
+      "$numberInt": "7"
+    },
+    "nombre_contacto": "Andrés Arias",
+    "telefono_contacto": "3149876543",
+    "parentesco": "Hermano",
+    "prioridad": {
+      "$numberInt": "1"
+    },
+    "notificado": false
+  },
+  {
+    "_id": {
+      "$numberInt": "9"
+    },
+    "usuario_id": {
+      "$numberInt": "8"
+    },
+    "nombre_contacto": "Gloria Burbano",
+    "telefono_contacto": "3171234567",
+    "parentesco": "Madre",
+    "prioridad": {
+      "$numberInt": "1"
+    },
+    "notificado": true
+  },
+  {
+    "_id": {
+      "$numberInt": "10"
+    },
+    "usuario_id": {
+      "$numberInt": "9"
+    },
+    "nombre_contacto": "Felipe Ortega",
+    "telefono_contacto": "3134567890",
+    "parentesco": "Padre",
+    "prioridad": {
+      "$numberInt": "1"
+    },
+    "notificado": false
+  },
+  {
+    "_id": {
+      "$numberInt": "11"
+    },
+    "usuario_id": {
+      "$numberInt": "10"
+    },
+    "nombre_contacto": "Diana Rivera",
+    "telefono_contacto": "3198765432",
+    "parentesco": "Hermana",
+    "prioridad": {
+      "$numberInt": "1"
+    },
+    "notificado": false
+  },
+  {
+    "_id": {
+      "$numberInt": "12"
+    },
+    "usuario_id": {
+      "$numberInt": "11"
+    },
+    "nombre_contacto": "Laura Sofía Díaz",
+    "telefono_contacto": "3187654321",
+    "parentesco": "Hermana",
+    "prioridad": {
+      "$numberInt": "1"
+    },
+    "notificado": false
+  },
+  {
+    "_id": {
+      "$numberInt": "13"
+    },
+    "usuario_id": {
+      "$numberInt": "11"
+    },
+    "nombre_contacto": "Valentina Muñoz Rivera",
+    "telefono_contacto": "3190123456",
+    "parentesco": "Prima",
+    "prioridad": {
+      "$numberInt": "2"
+    },
+    "notificado": false
+  },
+  {
+    "_id": {
+      "$numberInt": "14"
+    },
+    "usuario_id": {
+      "$numberInt": "11"
+    },
+    "nombre_contacto": "Daniela Burbano",
+    "telefono_contacto": "3176543210",
+    "parentesco": "Amiga",
+    "prioridad": {
+      "$numberInt": "3"
+    },
+    "notificado": false
+  }
+]
